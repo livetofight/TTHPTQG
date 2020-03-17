@@ -5,9 +5,16 @@ namespace App\Http\Controllers\API\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Services\StudentService;
 
 class StudentController extends Controller
 {
+    private $studentService;
+
+    public function __construct(StudentService $studentService)
+    {
+        $this->studentService = $studentService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +22,13 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $data=$this->studentService->getListStudent();
+        if($data==NULL){
+             return response()->json($data, 204);
+        }
+        return response()->json($data, 200);
     }
+
 
     /**
      * Show the form for creating a new resource.

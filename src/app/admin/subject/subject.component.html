@@ -1,0 +1,91 @@
+<section class="content-header">
+    <h1>
+        Môn Học
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Môn Học</a></li>
+        <li class="active">Danh sách môn học</li>
+    </ol>
+</section>
+
+<section class="content">
+    <ng-template #template>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">
+                <strong>Tạo mới môn học</strong>
+            </h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+
+        </div>
+        <!--Form Add KH-->
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label for="tenkh">Tên Môn Học</label>
+                    <input type="text" class="form-control" id="ten" name="ten" formControlName="ten" placeholder="Nhập tên môn học (bắt buộc)" />
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+
+            </form>
+        </div>
+        <!--End form add KH-->
+    </ng-template>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">Danh sách môn học</h3>
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-block btn-primary" (click)="openModal(template)">
+                            <i class="fa fa-plus"></i> Thêm mới
+                        </button>
+                    </div>
+                </div>
+                <div class="box-header" style=" height: 50px;line-height: 50px;white-space: nowrap;">
+                    <h3 class="box-title">Danh sách môn học</h3>
+                </div>
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Tên</th>
+                                <th>Ngày tạo</th>
+                                <th>Ngày cập nhật</th>
+                                <th>Công cụ</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <i title="Sửa" class="fa fa-pencil-square-o" style="margin-right: 5px;margin-left: 5px;"></i> <i title=" Hiện " class="fa fa-eye"> </i> <i title=" Ẩn " class="fa fa-eye-slash"> </i>
+
+                                    <i title=" Xóa " class="fa fa-trash-o " style="color: darkred; "></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->

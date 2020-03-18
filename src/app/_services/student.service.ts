@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Student } from '../_models/student';
 
+const API_URL = "http://127.0.0.1:8000/api/";
+
 @Injectable({
   providedIn: 'root'
 })

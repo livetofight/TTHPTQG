@@ -65,6 +65,6 @@ export class StudentComponent implements OnInit {
   }
 
   getListStudent(){
-    this.studentService.getAllStudent().subscribe(data=>(this.listStudent=data)) 
+    this.studentService.getAllStudent().subscribe(data=>(this.listStudent==data)) 
   }
 }

@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
                 'fullname' => 'FUll_000_' . $us,
                 'email' => 'Email_'.$us,
                 'email_verified_at' => now(),
-                'password' => 'PW_'.$us,
+                'password' => 'PW'.$us,
                 'created_at' => now(),
                 'updated_at' => now()
             ]);

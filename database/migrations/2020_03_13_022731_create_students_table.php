@@ -17,7 +17,7 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->integer('cmnd');
             $table->string('fullname');
-            $table->binary('gender');
+            $table->boolean('gender');
             $table->integer('isActive');
             $table->string('subject_list');
             $table->date('date_of_birth');

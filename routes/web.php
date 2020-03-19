@@ -24,7 +24,7 @@ Auth::routes();
 
 Route::get('/', 'API\Client\HomeController@index');
 //admin route
-Route::get('/admin', 'Auth\LoginController@index');
+Route::get('/ad', 'Auth\LoginController@index');
 
 Route::get('/admin/login', 'Auth\LoginController@getLogin');
 

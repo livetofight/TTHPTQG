@@ -44,11 +44,12 @@ class LoginController extends Controller
     }
 
     public function index(Request $request){
-        // if($request->session()->has('user')){
-        //     return redirect('admin/home');
-        // }
-        // else return redirect('auth/login');
-        return "aaaa";
+        if(Auth::check()){
+            return redirect('admin/home');
+        }
+        else
+            return redirect('admin/login');
+        // return "aaaa";
     }
 
     public function getLogin(Request $request) {
@@ -56,7 +57,7 @@ class LoginController extends Controller
         // $data['user']= User::all();
         // var_dump($data);
         //var_dump($data = $request->session()->all());
-        return view('admin.auth.login',['title'=>'Login']);
+        return view('auth.login',['title'=>'Login']);
     }
     public function postLogin(Request $request) {
         echo "abc";

@@ -47,7 +47,7 @@ class LoginController extends Controller
         if($request->session()->has('user')){
             return redirect('admin/home');
         }
-        else return redirect('admin/login');
+        else return redirect('auth/login');
     }
 
     public function getLogin(Request $request) {

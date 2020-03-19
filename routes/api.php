@@ -21,3 +21,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('admin/student','API\Admin\StudentController@index');
 
+
+//Question api
+Route::apiResource('admin/question', 'Api\Admin\QuestionController');

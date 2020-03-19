@@ -16,4 +16,4 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-// Route::get('/admin/student','API\Admin\StudentController@index');
+ Route::get('/admin/student/export','API\Admin\ExportExcelController@exportStudent');

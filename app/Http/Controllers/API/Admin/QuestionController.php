@@ -5,9 +5,16 @@ namespace App\Http\Controllers\API\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Question;
 use Illuminate\Http\Request;
-
+use App\Services\QuestionService;
+use Illuminate\Http\Resources\Json\JsonResource;
 class QuestionController extends Controller
 {
+    private $questionService;
+
+    public function __construct(QuestionService $questionService)
+    {
+        $this->questionService = $questionService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,11 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+        $data=$this->questionService->getListQuestion();
+        if($data==NULL){
+             return response()->json($data, 204);
+        }
+        return response()->json($data, 200);
     }
 
     /**
@@ -47,7 +58,7 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        //
+
     }
 
     /**

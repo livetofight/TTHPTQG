@@ -1,4 +1,5 @@
 @extends('admin.share.master')
+@section('title','Câu hỏi')
 @section('content')
     <section class="content-header">
         <h1>

@@ -1,4 +1,5 @@
 @extends('admin.share.master')
+@section('title','Học sinh')
 @section('content')
 <section class="content-header">
     <h1>
@@ -23,7 +24,7 @@
                     <h3 class="box-title">Danh sách học sinh</h3>
                     <div class="pull-right">
                         <div class="col-xs-9">
-                            <form  method="post" enctype="multipart/form-data" id="file_form"> {{ csrf_field() }}
+                            <form  method="post" enctype="multipart/form-data" id="file_form"> 
                                 <a class="btn btn-app ">
                                     <input type="file" id="inputFile" name="inputFile">
                                 </a>

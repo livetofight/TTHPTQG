@@ -1,4 +1,5 @@
 @extends('admin.share.master')
+@section('title','Đề Thi')
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">

@@ -17,4 +17,8 @@ class StudentService
     {
         return $this->studentRepository->getAll();
     }
+
+    public boolean delete (int id){
+
+    }
 }

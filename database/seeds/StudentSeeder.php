@@ -18,14 +18,14 @@ class StudentSeeder extends Seeder
 
         for ($stu = 0; $stu < $so_stu; $stu++) {
             $student = Student::create([
-                'cmnd' => rand(0,9),
+                'username' => 'Stu_'.$stu,
+                'password' =>'Pass_'.rand(0,9),
                 'fullname' => 'FUll_000_' . $stu,
+                'cmnd' => rand(0,9),
+                'date_of_birth' => now(),
                 'gender' => rand(0,1),
                 'isActive' => '0',
                 'subject_list' => $mon_hoc[rand(0,7)],
-                'date_of_birth' => now(),
-                'username' => 'Stu_'.$stu,
-                'password' =>'Pass_'.rand(0,9),
                 'created_at' => now(),
                 'updated_at' => now()
             ]);

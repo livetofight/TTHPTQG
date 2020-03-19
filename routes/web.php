@@ -48,7 +48,7 @@ Route::get('/admin/subject', 'API\Admin\SubjectController@index');
 
 Route::get('/admin/student', 'API\Admin\StudentController@index');
 
-Route::post('/admin/student/importfile', 'API\Admin\StudentController@importfile');
+Route::post('/admin/student/import', 'API\Admin\StudentController@import');
 
 Route::get('/admin/student/addstu', 'API\Admin\StudentController@add');
 

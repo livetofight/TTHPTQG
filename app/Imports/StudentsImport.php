@@ -4,6 +4,7 @@ namespace App\Imports;
 
 use App\Student;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Illuminate\Support\Str;
 
 class StudentsImport implements ToModel
 {
@@ -15,24 +16,18 @@ class StudentsImport implements ToModel
     */
     public function model(array $row)
     {
-        $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         return new Student([
             'id'     => $row[1],
             'username'    => $row[2], 
-            'password' => generate_string($permitted_chars,5),
-            
+            'password' => Str::random(),
+            'fullname'=>$row[3],
+            'cmnd'=>$row[4],
+            'date_of_birth'=>$row[5],
+            'gender'=>$row[6],
+            'created_at'=>now()
+
         ]);
     }
 
 
-    function generate_string($input, $strength) {
-        $input_length = strlen($input);
-        $random_string = '';
-        for($i = 0; $i < $strength; $i++) {
-            $random_character = $input[mt_rand(0, $input_length - 1)];
-            $random_string .= $random_character;
-        }
-    
-        return $random_string;
-    }
 }

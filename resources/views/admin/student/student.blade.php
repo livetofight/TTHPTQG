@@ -42,9 +42,9 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Tên</th>
+                                <th>CMND</th>
                                 <th>Ngày sinh</th>
                                 <th>Giới tính</th>
-                                <th>CMND</th>
                                 <th>Môn Thi</th>
                                 <th>Công cụ</th>
                             </tr>
@@ -54,20 +54,15 @@
                                 <tr>
                                     <td>{{ $item->id}}</td>
                                     <td>{{ $item->fullname}}</td>
-                                    <td>{{ $item->namsinh}}</td>
-                                    <td>
-                                        @if ($item['gender']==1) Nam
-                                        @else Nữ
-                                        @endif
-
-                                    </td>
                                     <td>{{ $item->cmnd}}</td>
-                                    <td>{{ $item->list_subject}} </td>
+                                    <td>{{ $item->date_of_birth}}</td>
+                                    <td>{{ $item->gender}}</td>
+                                    <td>{{ $item->subject_list}} </td>
                                     <td>
                                         <i title="Sửa" class="fa fa-pencil-square-o" style="margin-right: 5px;margin-left: 5px;"></i>
 
-                                        @if ($item['isActive']==1) <i title=" Hiện " class="fa fa-eye"> </i>
-                                        @else <i title=" Ẩn " class="fa fa-eye-slash"> </i>
+                                        @if ($item['isActive']==1) <i title="Đã Thi" class="fa fa-eye"> </i>
+                                        @else <i title="Chưa Thi" class="fa fa-eye-slash"> </i>
                                         @endif
 
                                         <i title=" Xóa " class="fa fa-trash-o " style="color: darkred; "></i>

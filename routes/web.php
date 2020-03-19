@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 // Route::get('/admin/student','API\Admin\StudentController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

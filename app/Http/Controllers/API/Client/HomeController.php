@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Client;
+namespace App\Http\Controllers\API\Client;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -12,6 +12,6 @@ class HomeController extends Controller
     {
         $a= Hash::make('1234');
         return view('client.home.index',[ 'title' => 'Thi trung học phổ thông'],['a'=>$a]);
-        
+
     }
 }

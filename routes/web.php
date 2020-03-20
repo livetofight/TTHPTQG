@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
- Route::get('/admin/student/export','API\Admin\ExportExcelController@exportStudent');
+ Route::get('/admin/student/export','API\Admin\ExportExcelController@exportQuestion');
 // Route::get('/admin/student','API\Admin\StudentController@index');
 
 Auth::routes();

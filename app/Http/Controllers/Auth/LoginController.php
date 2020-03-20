@@ -44,10 +44,11 @@ class LoginController extends Controller
     }
 
     public function index(Request $request){
-        if($request->session()->has('user')){
-            return redirect('admin/home');
-        }
-        else return redirect('admin/login');
+        // if($request->session()->has('user')){
+        //     return redirect('admin/home');
+        // }
+        // else return redirect('admin/login');
+        return "cccccccccccccccccc";
     }
 
     public function getLogin(Request $request) {

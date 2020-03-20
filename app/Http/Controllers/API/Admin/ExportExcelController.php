@@ -5,11 +5,14 @@ namespace App\Http\Controllers\API\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Excel;
+use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 class ExportExcelController extends Controller
 {
     public function exportStudent(){
         $modelName= 'Student';
-        $filltable=['STT',
+        $table_heading=[
+        'STT',
         'Username',
         'Password',
         'Họ tên',
@@ -19,13 +22,28 @@ class ExportExcelController extends Controller
         'Loại',
         'DS môn thi',
         'Tạo ngày',];
-        return Excel::download(new DataExport($modelName,$filltable),$modelName.'.xlsx');
+        return Excel::download(new DataExport($modelName,$table_heading),$modelName.'.xlsx');
+    }
+
+    public function exportQuestion(){
+        $modelName= 'Question';
+        $table_heading=[
+        'id',
+        'Nội dung câu hỏi',
+        'Đáp án 1',
+        'Đáp án 2',
+        'Đáp án 3',
+        'Đáp án 4',
+        'Đáp án đúng',
+        'id môn học',
+        'Ngày tạo',
+        'Chỉnh sửa',];
+        return Excel::download(new DataExport($modelName,$table_heading),$modelName.'.xlsx');
     }
 }
 
-use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\WithHeadings;
 
+//class export
 class DataExport implements FromCollection,WithHeadings
 {
     private $modelName;
@@ -37,7 +55,6 @@ class DataExport implements FromCollection,WithHeadings
     }
     function collection(){
         $yourModel ="App\Models\\$this->modelName";
-
         $data=$yourModel::all();
         return $data;
     }

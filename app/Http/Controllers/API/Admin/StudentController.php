@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Services\StudentService;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports;
 
 class StudentController extends Controller
 {
@@ -93,6 +95,13 @@ class StudentController extends Controller
      */
     public function destroy(Student $Student)
     {
-        //
+        
+    }
+
+    public function import(Request $request) 
+    {
+        Excel::import(new StudentsImport,$request->file('file'));
+           
+        return response()->json(200);
     }
 }

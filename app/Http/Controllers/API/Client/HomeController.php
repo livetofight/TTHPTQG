@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $a= Hash::make('1234');
+        $a= Hash::make('PW_0');
         return view('client.home.index',[ 'title' => 'Thi trung học phổ thông'],['a'=>$a]);
 
     }

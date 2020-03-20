@@ -22,11 +22,8 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $data=$this->questionService->getListQuestion();
-        if($data==NULL){
-             return response()->json($data, 204);
-        }
-        return response()->json($data, 200);
+        $data['question']=$this->questionService->getListQuestion();
+        return view('admin.question.question',[ 'title' => 'Câu Hỏi'],$data);
     }
 
     /**

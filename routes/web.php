@@ -17,14 +17,14 @@ use Illuminate\Support\Facades\Auth;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
- Route::get('/admin/student/export','API\Admin\ExportExcelController@exportQuestion');
+ Route::get('/admin/question/export','API\Admin\ExportExcelController@exportQuestion')->name('exportQuestion');
 // Route::get('/admin/student','API\Admin\StudentController@index');
 
 Auth::routes();
 
 Route::get('/', 'API\Client\HomeController@index');
 //admin route
-Route::get('/admin', 'Auth\LoginController@index');
+Route::get('/ad', 'Auth\LoginController@index');
 
 Route::get('/admin/login', 'Auth\LoginController@getLogin');
 
@@ -48,7 +48,7 @@ Route::get('/admin/subject', 'API\Admin\SubjectController@index');
 
 Route::get('/admin/student', 'API\Admin\StudentController@index');
 
-Route::post('/admin/student/importfile', 'API\Admin\StudentController@importfile');
+Route::post('/admin/student/import', 'API\Admin\StudentController@import');
 
 Route::get('/admin/student/addstu', 'API\Admin\StudentController@add');
 

@@ -15,16 +15,13 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_subject');
+            $table->string('question_content');
             $table->string('ans_1');
             $table->string('ans_2');
             $table->string('ans_3');
             $table->string('ans_4');
             $table->string('ans_correct');
-            $table->integer('id_subject');
-            $table->string('question_content');
-
-
-
             $table->timestamps();
         });
     }

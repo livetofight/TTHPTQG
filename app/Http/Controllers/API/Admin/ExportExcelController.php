@@ -29,13 +29,13 @@ class ExportExcelController extends Controller
         $modelName= 'Question';
         $table_heading=[
         'id',
+        'id môn học',
         'Nội dung câu hỏi',
         'Đáp án 1',
         'Đáp án 2',
         'Đáp án 3',
         'Đáp án 4',
         'Đáp án đúng',
-        'id môn học',
         'Ngày tạo',
         'Chỉnh sửa',];
         return Excel::download(new DataExport($modelName,$table_heading),$modelName.'.xlsx');

@@ -40,11 +40,7 @@ Route::get('/admin/exam', 'API\Admin\ExamController@index');
 
 Route::get('/admin/listexam', 'API\Admin\ExamController@listexam');
 
-Route::get('/admin/subject', 'API\Admin\SubjectController@index');
-
 Route::get('/admin/subject/addsub', 'API\Admin\SubjectController@add');
-
-Route::get('/admin/subject', 'API\Admin\SubjectController@index');
 
 Route::get('/admin/student', 'API\Admin\StudentController@index');
 
@@ -57,3 +53,6 @@ Route::get('/admin/question', 'API\Admin\QuestionController@index');
 Route::get('/admin/question/addque', 'API\Admin\QuestionController@add');
 
 Route::post('/admin/subject','API\Admin\SubjectController@doUpLoad');
+
+//subject
+Route::resource('admin/subject' , 'API\Admin\SubjectController');

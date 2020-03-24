@@ -55,7 +55,7 @@
                     </form>
 
                     <div class="box-body">
-                        <table id="example1" class="table table-bordered table-hover">
+                        <table id="subject_table" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>STT</th>
@@ -66,7 +66,7 @@
 
                                 </tr>
                             </thead>
-                            <tbody>
+                            {{-- <tbody>
                                 @foreach ($subject as $item )
                                 <tr>
                                     <td>{{ $item->id}}</td>
@@ -85,7 +85,7 @@
                                 </tr>
                             
                                 @endforeach
-                            </tbody>
+                            </tbody> --}}
                         </table>
                     </div>
                     <!-- /.box-body -->

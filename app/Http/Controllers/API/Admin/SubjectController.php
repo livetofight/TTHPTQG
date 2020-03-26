@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\API\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Subject;
 use App\Services\SubjectService;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -37,72 +36,20 @@ class SubjectController extends Controller
                     ->make(true);
                     
         }
-        return view('admin.subject.subject', ['title' => 'Môn học']);
+        return view('admin.subject.subject', ['title' => 'Môn học'], ['custom_js' => 'admin/dist/js/subject.js']);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function doInsert(Request $request){
+        
+        $this->subjectService->addSub($request->all());
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function doDelete($id){
+        $this->subjectService->deleteSub($id);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Subject  $Subject
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Subject $Subject)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Subject  $Subject
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Subject $Subject)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Subject  $Subject
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Subject $Subject)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Subject  $Subject
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Subject $Subject)
-    {
-        //
+    public function doUpdate(Request $request){
+        $this->subjectService->updateSub($request->id, $request->all());
     }
 }

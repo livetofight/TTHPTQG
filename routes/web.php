@@ -56,3 +56,9 @@ Route::post('/admin/subject','API\Admin\SubjectController@doUpLoad');
 
 //subject
 Route::resource('admin/subject' , 'API\Admin\SubjectController');
+
+Route::post('/admin/subject/insert','API\Admin\SubjectController@doInsert');
+
+Route::get('/admin/subject/delete/{id}', 'API\Admin\SubjectController@doDelete');
+
+Route::post('/admin/subject/update','API\Admin\SubjectController@doUpdate');

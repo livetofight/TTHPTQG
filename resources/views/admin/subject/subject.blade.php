@@ -53,6 +53,7 @@
                             </div>
                         </div>
                     </form>
+                    <button class="btn btn-app" id="add">Add</button>
 
                     <div class="box-body">
                         <table id="subject_table" class="table table-bordered table-hover">
@@ -87,6 +88,10 @@
                                 @endforeach
                             </tbody> --}}
                         </table>
+
+                        
+
+
                     </div>
                     <!-- /.box-body -->
                 </div>

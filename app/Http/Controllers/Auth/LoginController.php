@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Contracts\Validation\Validator as ValidationValidator;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
@@ -31,7 +32,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -44,7 +45,7 @@ class LoginController extends Controller
     }
 
     public function index(Request $request){
-        if(Auth::check()){
+        if(Request::session()->has('user')){
             return redirect('admin/home');
         }
         else
@@ -60,7 +61,6 @@ class LoginController extends Controller
         return view('auth.login',['title'=>'Login']);
     }
     public function postLogin(Request $request) {
-        echo "abc";
         // Kiểm tra dữ liệu nhập vào
         $rules = [
             'username' =>'required',
@@ -70,45 +70,55 @@ class LoginController extends Controller
             'username.required' => 'Username là trường bắt buộc',
             'password.required' => 'Mật khẩu là trường bắt buộc',
         ];
-        $validator = Validator::make($request->all(), $rules, $messages);
+        $validator = Validator::make(request()->all(), $rules, $messages);
 
 
         if ($validator->fails()) {
             // Điều kiện dữ liệu không hợp lệ sẽ chuyển về trang đăng nhập và thông báo lỗi
-            return redirect('admin')->withErrors($validator)->withInput();
+            return redirect('ad')->withErrors($validator)->withInput();
         } else {
             // Nếu dữ liệu hợp lệ sẽ kiểm tra trong csdl
             // $username = Request::get('username');
             // $password = Request::get('password');
-            $username = $request->input('username');
-            $password = $request->input('password');
+            // $username = request()->input('username');
+            // $password = request()->input('password');
             // $credentials = [
             //     'username' => $request['username'],
             //     'password' => $request['password'],
             // ];
 
+            $username = Request::get('username');
+            $password = Request::get('password');
+
             if( Auth::attempt((array('username' => $username, 'password' => $password))))
             {
+                $result['status']=1;
                 // if(Auth::check())
                 // {
                 //     return "aaaaaaaa";
                     // return Auth::user()->type;
                 // }
 
-                if(Auth::user()->type==1){
-                    // Kiểm tra đúng email và mật khẩu sẽ chuyển trang
-                    return redirect('admin/home');
-                }
-                else
-                {
-                    //return "permission";
-                    return redirect('/');
-                }
+
+
+                // if(Auth::user()->type==1){
+                //     // Kiểm tra đúng email và mật khẩu sẽ chuyển trang
+                //     return redirect('admin/home');
+                // }
+                // else
+                // {
+                //     //return "permission";
+                //     return redirect('/');
+                // }
             } else {
+                $result['status']=0;
+                $result['uesrname']=$username;
+                $result['password']=$password;
                 // Kiểm tra không đúng sẽ hiển thị thông báo lỗi
-                Session::flash('error', 'Tên đăng nhập hoặc mật khẩu không đúng!');
-                return redirect('admin');
+                // Session::flash('error', 'Tên đăng nhập hoặc mật khẩu không đúng!');
+                // return redirect('admin');
             }
+            return json_encode($result);
         }
     }
 }

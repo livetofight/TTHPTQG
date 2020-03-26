@@ -62,3 +62,7 @@ Route::post('/admin/subject/insert','API\Admin\SubjectController@doInsert');
 Route::get('/admin/subject/delete/{id}', 'API\Admin\SubjectController@doDelete');
 
 Route::post('/admin/subject/update','API\Admin\SubjectController@doUpdate');
+
+//client
+Route::get('/client/task','API\Client\ExamController@index');
+Route::get('/client/result','API\Client\TaskController@index');

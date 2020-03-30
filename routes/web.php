@@ -22,7 +22,15 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::get('/', 'API\Client\HomeController@index');
+//client route
+Route::get('/', 'API\Client\LoginController@index');
+
+Route::get('/login', 'API\Client\LoginController@getLogin');
+
+Route::post('/login', 'API\Client\LoginController@postLogin');
+
+Route::get('/home', 'API\Client\HomeController@index');
+
 //admin route
 Route::get('/ad', 'Auth\LoginController@index');
 

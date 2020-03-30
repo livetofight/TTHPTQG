@@ -45,7 +45,7 @@ class LoginController extends Controller
     }
 
     public function index(Request $request){
-        if(Request::session()->has('user')){
+        if(Auth::check()){
             return redirect('admin/home');
         }
         else

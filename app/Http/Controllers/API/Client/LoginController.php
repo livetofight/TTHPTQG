@@ -76,18 +76,18 @@ class LoginController extends Controller
             $password = Request::get('password');
             if( Student::where('username','=',$username)->where('password','=', $password)->count()==1)
             {
-                $student= Student::where('username','=',$username)->where('password','=', $password);
-                if($student->isActive==1){
-                    // var_dump($student->isActive);
-                    $a='ánbcd';
-                    var_dump($a);
-                    Session::flash('error', 'Tài khoản đang đăng nhập trên thiết bị khác!');
-                    $result['status']=-1;
-                }
-                else{
-                    $student->isActive=1;
+                // $student= Student::where('username','=',$username)->where('password','=', $password);
+                // if($student->isActive==1){
+                //     // var_dump($student->isActive);
+                //     $a='ánbcd';
+                //     var_dump($a);
+                //     Session::flash('error', 'Tài khoản đang đăng nhập trên thiết bị khác!');
+                //     $result['status']=-1;
+                // }
+                // else{
+                //     $student->isActive=1;
                     $result['status']=1;
-                }
+                // }
             }
              else {
                 $result['status']=0;

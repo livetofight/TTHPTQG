@@ -326,7 +326,7 @@
     })
 </script>
 
-<script src="{{ asset ($custom_js) }}"></script>
+<script src="{{ asset ($custom_js ?? '') }}"></script>
 
 </body>
 </html>

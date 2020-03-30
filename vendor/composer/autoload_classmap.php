@@ -29,6 +29,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
+    'App\\Http\\Controllers\\Auth\\LogoutController' => $baseDir . '/app/Http/Controllers/Auth/LogoutController.php',
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
@@ -64,12 +65,18 @@ return array(
     'App\\Repositories\\ScheduleRepository' => $baseDir . '/app/Repositories/ScheduleRepository.php',
     'App\\Repositories\\StudentRepository' => $baseDir . '/app/Repositories/StudentRepository.php',
     'App\\Repositories\\SubjectRepository' => $baseDir . '/app/Repositories/SubjectRepository.php',
+<<<<<<< HEAD
     'App\\Repositories\\TaskRepository' => $baseDir . '/app/Repositories/TaskRepository.php',
+=======
+>>>>>>> 3f494181c2b3501a180a29022aeec49e2f22d293
     'App\\Repositories\\UserRepository' => $baseDir . '/app/Repositories/UserRepository.php',
     'App\\Services\\QuestionService' => $baseDir . '/app/Services/QuestionService.php',
     'App\\Services\\StudentService' => $baseDir . '/app/Services/StudentService.php',
     'App\\Services\\SubjectService' => $baseDir . '/app/Services/SubjectService.php',
+<<<<<<< HEAD
     'App\\Services\\TaskService' => $baseDir . '/app/Services/TaskService.php',
+=======
+>>>>>>> 3f494181c2b3501a180a29022aeec49e2f22d293
     'App\\Services\\UserService' => $baseDir . '/app/Services/UserService.php',
     'App\\User' => $baseDir . '/app/User.php',
     'Asm89\\Stack\\Cors' => $vendorDir . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',

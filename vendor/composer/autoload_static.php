@@ -575,6 +575,7 @@ class ComposerStaticInit62df45cbd1942dc4f2ab1672b7005714
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
+        'App\\Http\\Controllers\\Auth\\LogoutController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LogoutController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
@@ -610,12 +611,18 @@ class ComposerStaticInit62df45cbd1942dc4f2ab1672b7005714
         'App\\Repositories\\ScheduleRepository' => __DIR__ . '/../..' . '/app/Repositories/ScheduleRepository.php',
         'App\\Repositories\\StudentRepository' => __DIR__ . '/../..' . '/app/Repositories/StudentRepository.php',
         'App\\Repositories\\SubjectRepository' => __DIR__ . '/../..' . '/app/Repositories/SubjectRepository.php',
+<<<<<<< HEAD
         'App\\Repositories\\TaskRepository' => __DIR__ . '/../..' . '/app/Repositories/TaskRepository.php',
+=======
+>>>>>>> 3f494181c2b3501a180a29022aeec49e2f22d293
         'App\\Repositories\\UserRepository' => __DIR__ . '/../..' . '/app/Repositories/UserRepository.php',
         'App\\Services\\QuestionService' => __DIR__ . '/../..' . '/app/Services/QuestionService.php',
         'App\\Services\\StudentService' => __DIR__ . '/../..' . '/app/Services/StudentService.php',
         'App\\Services\\SubjectService' => __DIR__ . '/../..' . '/app/Services/SubjectService.php',
+<<<<<<< HEAD
         'App\\Services\\TaskService' => __DIR__ . '/../..' . '/app/Services/TaskService.php',
+=======
+>>>>>>> 3f494181c2b3501a180a29022aeec49e2f22d293
         'App\\Services\\UserService' => __DIR__ . '/../..' . '/app/Services/UserService.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',

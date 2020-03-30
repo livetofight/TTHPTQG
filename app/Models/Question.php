@@ -18,4 +18,12 @@ class Question extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function questionList() {
+        return $this->hasMany('App\Models\Question_list');
+    }
+
+    
+
+
 }

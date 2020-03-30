@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Schedule extends Model
 {
-    //
+    protected $fillable=[
+        'id',
+        'id_subject',
+        'test_date',
+        'created_at',
+        'updated_at'
+    ];
 }

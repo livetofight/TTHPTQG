@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Question;
+use Illuminate\Database\Eloquent\Model;
 
 class QuestionRepository  extends EloquentRepository
 {
@@ -14,4 +15,7 @@ class QuestionRepository  extends EloquentRepository
     {
         return \App\Models\Question::class;
     }
+
+
+    
 }

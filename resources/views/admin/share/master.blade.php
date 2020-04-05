@@ -326,7 +326,7 @@
     })
 </script>
 
-<script src="{{ asset ($custom_js ?? '') }}"></script>
-
+@if(!empty($custom_js)) <script src="{{ asset ($custom_js) }}"></script>
+@endif
 </body>
 </html>

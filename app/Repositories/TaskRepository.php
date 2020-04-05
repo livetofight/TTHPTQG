@@ -2,9 +2,9 @@
 
 namespace App\Repositories;
 
-use App\Models\Subject;
+use App\Models\Task;
 
-class SubjectRepository  extends EloquentRepository 
+class TaskRepository  extends EloquentRepository 
 {
     /**
      * get model
@@ -12,7 +12,7 @@ class SubjectRepository  extends EloquentRepository
      */
     public function getModel()
     {
-        return Subject::class;
+        return Task::class;
     }
 
     

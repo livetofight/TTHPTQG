@@ -27,9 +27,11 @@ Route::get('/', 'API\Client\LoginController@index');
 
 Route::get('/login', 'API\Client\LoginController@getLogin');
 
+Route::get('/logout', 'API\Client\LoginController@getLogout');
+
 Route::post('/login', 'API\Client\LoginController@postLogin');
 
-Route::get('/home', 'API\Client\HomeController@index');
+Route::get('/userhome', 'API\Client\HomeController@index');
 
 //admin route
 Route::get('/ad', 'Auth\LoginController@index');

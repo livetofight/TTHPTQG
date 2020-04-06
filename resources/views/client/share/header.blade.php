@@ -23,7 +23,7 @@
                     </a>
                 </div>
                 <div class="col-md-6 text-right" style="margin-bottom:10px">
-                    <a href="/login/" id="login-btn" class="btn btn-primary"> Đăng nhập</a>
+                    <a href="/logout" class="btn btn-default btn-flat">Sign out</a>
                 </div>
             </div>
         </div>

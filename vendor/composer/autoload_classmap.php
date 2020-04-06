@@ -24,6 +24,7 @@ return array(
     'App\\Http\\Controllers\\API\\Admin\\UserController' => $baseDir . '/app/Http/Controllers/API/Admin/UserController.php',
     'App\\Http\\Controllers\\API\\Client\\ExamController' => $baseDir . '/app/Http/Controllers/API/Client/ExamController.php',
     'App\\Http\\Controllers\\API\\Client\\HomeController' => $baseDir . '/app/Http/Controllers/API/Client/HomeController.php',
+    'App\\Http\\Controllers\\API\\Client\\LoginController' => $baseDir . '/app/Http/Controllers/API/Client/LoginController.php',
     'App\\Http\\Controllers\\API\\Client\\TaskController' => $baseDir . '/app/Http/Controllers/API/Client/TaskController.php',
     'App\\Http\\Controllers\\API\\HomeController' => $baseDir . '/app/Http/Controllers/API/HomeController.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -60,23 +61,18 @@ return array(
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Repositories\\EloquentRepository' => $baseDir . '/app/Repositories/EloquentRepository.php',
+    'App\\Repositories\\QuestionListRepository' => $baseDir . '/app/Repositories/QuestionListRepository.php',
     'App\\Repositories\\QuestionRepository' => $baseDir . '/app/Repositories/QuestionRepository.php',
     'App\\Repositories\\RepositoryInterface' => $baseDir . '/app/Repositories/RepositoryInterface.php',
     'App\\Repositories\\ScheduleRepository' => $baseDir . '/app/Repositories/ScheduleRepository.php',
     'App\\Repositories\\StudentRepository' => $baseDir . '/app/Repositories/StudentRepository.php',
     'App\\Repositories\\SubjectRepository' => $baseDir . '/app/Repositories/SubjectRepository.php',
-<<<<<<< HEAD
     'App\\Repositories\\TaskRepository' => $baseDir . '/app/Repositories/TaskRepository.php',
-=======
->>>>>>> 3f494181c2b3501a180a29022aeec49e2f22d293
     'App\\Repositories\\UserRepository' => $baseDir . '/app/Repositories/UserRepository.php',
     'App\\Services\\QuestionService' => $baseDir . '/app/Services/QuestionService.php',
     'App\\Services\\StudentService' => $baseDir . '/app/Services/StudentService.php',
     'App\\Services\\SubjectService' => $baseDir . '/app/Services/SubjectService.php',
-<<<<<<< HEAD
     'App\\Services\\TaskService' => $baseDir . '/app/Services/TaskService.php',
-=======
->>>>>>> 3f494181c2b3501a180a29022aeec49e2f22d293
     'App\\Services\\UserService' => $baseDir . '/app/Services/UserService.php',
     'App\\User' => $baseDir . '/app/User.php',
     'Asm89\\Stack\\Cors' => $vendorDir . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',

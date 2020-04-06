@@ -17,6 +17,8 @@ class StudentService
     {
         return $this->studentRepository->getAll();
     }
+    public function setIsA($id, $param){
+        $this->studentRepository->setIsA($id,$param);
+    }
 
-    
 }

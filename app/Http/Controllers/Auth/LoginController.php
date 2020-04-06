@@ -50,14 +50,10 @@ class LoginController extends Controller
         }
         else
             return redirect('admin/login');
-        // return "aaaa";
     }
 
     public function getLogin(Request $request) {
 
-        // $data['user']= User::all();
-        // var_dump($data);
-        //var_dump($data = $request->session()->all());
         return view('auth.login',['title'=>'Login']);
     }
     public function postLogin(Request $request) {

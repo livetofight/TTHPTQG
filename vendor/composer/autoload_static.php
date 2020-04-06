@@ -570,6 +570,7 @@ class ComposerStaticInit62df45cbd1942dc4f2ab1672b7005714
         'App\\Http\\Controllers\\API\\Admin\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/Admin/UserController.php',
         'App\\Http\\Controllers\\API\\Client\\ExamController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/Client/ExamController.php',
         'App\\Http\\Controllers\\API\\Client\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/Client/HomeController.php',
+        'App\\Http\\Controllers\\API\\Client\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/Client/LoginController.php',
         'App\\Http\\Controllers\\API\\Client\\TaskController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/Client/TaskController.php',
         'App\\Http\\Controllers\\API\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/HomeController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -606,23 +607,18 @@ class ComposerStaticInit62df45cbd1942dc4f2ab1672b7005714
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Repositories\\EloquentRepository' => __DIR__ . '/../..' . '/app/Repositories/EloquentRepository.php',
+        'App\\Repositories\\QuestionListRepository' => __DIR__ . '/../..' . '/app/Repositories/QuestionListRepository.php',
         'App\\Repositories\\QuestionRepository' => __DIR__ . '/../..' . '/app/Repositories/QuestionRepository.php',
         'App\\Repositories\\RepositoryInterface' => __DIR__ . '/../..' . '/app/Repositories/RepositoryInterface.php',
         'App\\Repositories\\ScheduleRepository' => __DIR__ . '/../..' . '/app/Repositories/ScheduleRepository.php',
         'App\\Repositories\\StudentRepository' => __DIR__ . '/../..' . '/app/Repositories/StudentRepository.php',
         'App\\Repositories\\SubjectRepository' => __DIR__ . '/../..' . '/app/Repositories/SubjectRepository.php',
-<<<<<<< HEAD
         'App\\Repositories\\TaskRepository' => __DIR__ . '/../..' . '/app/Repositories/TaskRepository.php',
-=======
->>>>>>> 3f494181c2b3501a180a29022aeec49e2f22d293
         'App\\Repositories\\UserRepository' => __DIR__ . '/../..' . '/app/Repositories/UserRepository.php',
         'App\\Services\\QuestionService' => __DIR__ . '/../..' . '/app/Services/QuestionService.php',
         'App\\Services\\StudentService' => __DIR__ . '/../..' . '/app/Services/StudentService.php',
         'App\\Services\\SubjectService' => __DIR__ . '/../..' . '/app/Services/SubjectService.php',
-<<<<<<< HEAD
         'App\\Services\\TaskService' => __DIR__ . '/../..' . '/app/Services/TaskService.php',
-=======
->>>>>>> 3f494181c2b3501a180a29022aeec49e2f22d293
         'App\\Services\\UserService' => __DIR__ . '/../..' . '/app/Services/UserService.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',

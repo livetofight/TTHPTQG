@@ -65,6 +65,7 @@ Route::post('/admin/subject/update','API\Admin\SubjectController@doUpdate');
 
 //client
 Route::get('/task','API\Client\TaskController@index');
-Route::get('/task/question/{id_exam}','API\Client\TaskController@getQuestion');
+Route::get('/task/question','API\Client\TaskController@getQuestion');
+Route::get('/task/time','API\Client\TaskController@getTime');
 
 Route::get('/client/result','API\Client\ExamController@index');

@@ -27,11 +27,21 @@ dd {
 
 .notification {
     z-index: 2;
-    margin-top: -65px;
+    margin-top: -120px;
     margin-left: -70px;
     margin-right: -70px;
 }
 
 .show {
     visibility: visible;
+}
+
+.active_page {
+    background: #337ab7 !important;
+    color: white !important;
+}
+
+.actived_page {
+    background: #eee!important;
+    color: #337ab7 !important;
 }

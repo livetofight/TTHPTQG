@@ -13,6 +13,8 @@ use function GuzzleHttp\Promise\task;
 class TaskController extends Controller
 {
     private $taskService;
+    var $data=array();
+    var $page_size=2;
 
     public function __construct(TaskService $taskService){
         $this->taskService = $taskService;
@@ -25,10 +27,21 @@ class TaskController extends Controller
         } else return view('client.task');
     }
 
-    public function getQuestion($id_exam){
-        $question=$this->taskService->getQuestion($id_exam);
-        var_dump($question) ;
+    public function getQuestion(){
+        $today = Carbon::today();
+        $subject=$this->taskService->getSubject($today);
+        $id_exam=10;
+        $data=$this->taskService->getQuestion($id_exam);
+        $data['total_record']=count($data);
+        $data['page_size']=$this->page_size;
+        $data['time_start']= $this->taskService->getTimeSubject($subject);
+        echo json_encode($data);
     }
+
+
+
+
+
 
 
 

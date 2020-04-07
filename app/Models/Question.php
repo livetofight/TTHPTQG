@@ -20,7 +20,7 @@ class Question extends Model
     ];
 
     public function questionList() {
-        return $this->hasMany('App\Models\Question_list');
+        return $this->hasMany('App\Models\Question_list','id_question');
     }
 
     

@@ -15,19 +15,19 @@ class Subject extends Model
     ];
 
     public function question() {
-        return $this->hasMany('App\Models\Question');
+        return $this->hasMany('App\Models\Question','id_subject');
     }
 
     public function result() {
-        return $this->hasMany('App\Models\Result');
+        return $this->hasMany('App\Models\Result','id_subject');
     }
 
     public function examList() {
-        return $this->hasMany('App\Models\Exam_list');
+        return $this->hasMany('App\Models\Exam_list','id_subject');
     }
 
     public function Exam() {
-        return $this->hasMany('App\Models\Exam', 'foreign_key');
+        return $this->hasMany('App\Models\Exam','id_subject');
     }
     
 }

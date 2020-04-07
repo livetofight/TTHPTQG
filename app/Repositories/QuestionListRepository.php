@@ -20,10 +20,23 @@ class QuestionListRepository  extends EloquentRepository
 
     public function getListQuestion($id_exam)
     {
-        return Question_list::where('id_exam',$id_exam)
-                        ->get(['id_question'])
-                        ->Question
+        $question=Question_list::where('id_exam',$id_exam)
+                        ->select('id_question')
+                        ->get()
                         ->toArray();
+        return Question::whereIn('id',$question)
+                        ->select('id','question_content','ans_1','ans_2','ans_3','ans_4')
+                        ->get();
+    }
+
+    public function countQuestion($id_exam)
+    {
+        $question=Question_list::where('id_exam',$id_exam)
+                        ->select('id_question')
+                        ->get()
+                        ->toArray();
+        return count(Question::whereIn('id',$question)
+                        ->get());
     }
 
 

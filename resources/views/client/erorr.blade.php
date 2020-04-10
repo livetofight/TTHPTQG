@@ -1,7 +1,26 @@
 @extends('client.share.master')
+@section('title','Chưa đến ngày thi')
 @section('content')
-<div style=" text-align: center; padding-top: 10%">
-    <h1 style="color: brown;"> CHƯA ĐẾN NGÀY THI, VÔ CHI SỚM VẬY, CÚT </h1>
-    <a href="/" >Quay lại</a>
+
+<div class="box " style=" text-align: center; margin-top: 10%">
+    <!-- /.box-header -->
+    <div class="box-body">
+      <div class="callout callout-danger">
+        <h4>Chưa đến ngày thi !</h4>
+        <p>Vui lòng quay trở lại trong thời gian thi.</p>
+      </div>
+    </div>
+    <!-- /.box-body -->
 </div>
+<div class="box box-solid" style="text-align: center">
+    <div class="box-header with-border">
+        <div class="box-body">
+            <div class="box-body no-padding">
+                <button type="button" class="btn bg-olive margin" onclick="location.href='{{ url('home') }}'">Quay Lại</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @endsection()

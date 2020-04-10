@@ -7,7 +7,8 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Services\StudentService;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Imports;
+use App\Imports\StudentsImport;
+use Carbon\Carbon;
 
 class StudentController extends Controller
 {
@@ -24,46 +25,26 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $data=$this->studentService->getListStudent();
-        if($data==NULL){
-             return response()->json($data, 204);
+        $today = Carbon::today();
+        $data['student']=$this->studentService->getListStudent($today);
+        return view('admin.student.student', $data);
+    }
+
+
+    public function import(Request $request) 
+    {  
+        if($request->file('inputFile')){
+            $file=$request->file('inputFile');
+            Excel::import(new StudentsImport, $file); 
+            $result['status_value']=" Nhập File thành công";
+            $result['status']=1;
+        } else{
+            $result['status_value']=" Lỗi nhập File";
+            $result['status']=0;
         }
-        return response()->json($data, 200);
-    }
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Student  $Student
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Student $Student)
-    {
-        //
-    }
-
+        
+        return json_encode($result);
+    } 
     /**
      * Show the form for editing the specified resource.
      *
@@ -98,10 +79,5 @@ class StudentController extends Controller
         
     }
 
-    public function import(Request $request) 
-    {
-        Excel::import(new StudentsImport,$request->file('file'));
-           
-        return response()->json(200);
-    }
+
 }

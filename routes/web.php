@@ -22,7 +22,15 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::get('/', 'API\Client\HomeController@index');
+//client route
+Route::get('/', 'API\Client\LoginController@index');
+
+Route::get('/login', 'API\Client\LoginController@getLogin');
+
+Route::post('/login', 'API\Client\LoginController@postLogin');
+
+Route::get('/home', 'API\Client\HomeController@index');
+
 //admin route
 Route::get('/ad', 'Auth\LoginController@index');
 
@@ -43,9 +51,7 @@ Route::get('/admin/listexam', 'API\Admin\ExamController@listexam');
 Route::get('/admin/subject/addsub', 'API\Admin\SubjectController@add');
 
 Route::get('/admin/student', 'API\Admin\StudentController@index');
-
 Route::post('/admin/student/import', 'API\Admin\StudentController@import');
-
 Route::get('/admin/student/addstu', 'API\Admin\StudentController@add');
 
 Route::get('/admin/question', 'API\Admin\QuestionController@index');
@@ -68,4 +74,4 @@ Route::get('/task','API\Client\TaskController@index');
 Route::get('/task/question','API\Client\TaskController@getQuestion');
 Route::get('/task/time','API\Client\TaskController@getTime');
 
-Route::get('/client/result','API\Client\ExamController@index');
+Route::get('/result','API\Client\ExamController@index');

@@ -1,32 +1,25 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<title>{{$title}}</title>
-    <link rel="stylesheet" href="{{ asset ('client/lib/bootstrap/dist/css/bootstrap.min.css')}}" />
-    <link rel="stylesheet" href="{{ asset ('client/lib/fontawesome/css/all.css')}}">
-    <link rel="stylesheet" href="{{ asset ('client/css/site.css')}}" />
-
-</head>
-<body>
-    <header>
-    <div style="min-height:67px; background-image:linear-gradient(to top, #dbdbdb, #ffffff);">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <a href="/" style="text-decoration:none">
-                        <img src="{{ asset ('client/img/logo.png')}}" alt="Logo" id="logo-img" />
-                        <p style="margin:0; color:#920009; font-size:13px; line-height:1.38; text-transform:uppercase; margin-top:14px; margin-bottom:3px">Sở gD&ĐT tỉnh Bình Định - Trường ĐH Quy Nhơn</p>
-                        <h4 class="top-header-caption">Hệ thống thi trắc nghiệm trực tuyến</h4>
-                    </a>
-                </div>
-                <div class="col-md-6 text-right" style="margin-bottom:10px">
-                    <a href="/login/" id="login-btn" class="btn btn-primary"> Đăng nhập</a>
-                </div>
+<header class="main-header">
+    <nav class="navbar navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <div class="box box-widget widget-user-2 box-blue">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header ">
+              <div class="widget-user-image">
+                <img class="img-circle" src="{{ asset ('client/img/logo.png')}}" alt="User Avatar">
+              </div>
+              <!-- /.widget-user-image -->
+              <h3 class="widget-user-username">Sở GD&ĐT tỉnh Bình Định - Trường ĐH Quy Nhơn</h3>
+              <h5 class="widget-user-desc">Hệ thống thi trắc nghiệm trực tuyến</h5>
             </div>
+          </div>
         </div>
-    </div>
-
-</header>
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+            <button type="button" class="btn btn-block btn-danger btn-lg" onclick="location.href='{{ url('logout') }}'">Đăng xuất</button>
+        </div>
+        <!-- /.navbar-custom-menu -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+  </header>

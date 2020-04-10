@@ -140,6 +140,4 @@
 <!-- FastClick -->
 <script src="{{ asset ('admin/bower_components/fastclick/lib/fastclick.js') }}"></script>
 <!-- AdminLTE for demo purposes --> 
-<script src="{{ asset ('client/js/pagination.js') }}"></script>
-<script src="{{ asset ('client/js/pagination.min.js') }}"></script>
 <script src="{{ asset ('client/js/task.js') }}"></script>

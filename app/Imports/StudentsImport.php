@@ -2,13 +2,20 @@
 
 namespace App\Imports;
 
-use App\Student;
+use App\Models\Student;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Illuminate\Support\Str;
-
-class StudentsImport implements ToModel
+use App\Services\StudentService;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\StudentsImport;
+use Carbon\Carbon;
+class StudentsImport implements ToModel, WithHeadingRow
 {
-    
+    public function headingRow() : int
+    {
+        return 6;
+    }
     /**
     * @param array $row
     *
@@ -17,16 +24,25 @@ class StudentsImport implements ToModel
     public function model(array $row)
     {
         return new Student([
-            'id'     => $row[1],
-            'username'    => $row[2], 
+            'id'    => $row['stt'], 
+            'username'    => $row['mssv'], 
             'password' => Str::random(),
-            'fullname'=>$row[3],
-            'cmnd'=>$row[4],
-            'date_of_birth'=>$row[5],
-            'gender'=>$row[6],
-            'created_at'=>now()
-
+            'fullname'=>$row['ho_ten'],
+            'date_of_birth'=> \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['ngay_sinh'])->format('y-m-d'),
+            'cmnd'=>$row['cmnd'] ,
+            'gender'=>$row['gioi_tinh'] ,
+            'nation'=>$row['dan_toc'] ,
+            'id_school'=>$row['ma_truong'],
+            'address'=>$row['dia_chi'] ,
+            'subject_list'=>$row['mon_thi'],
+            'isActive'=>'0',
+            'created_at'=>now(),
+            'updated_at'=>'null'
         ]);
+    }
+    public function chunkSize(): int
+    {
+        return 1000;
     }
 
 

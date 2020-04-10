@@ -13,9 +13,9 @@ class StudentService
         $this->studentRepository = $studentRepository;
     }
 
-    public function getListStudent()
+    public function getListStudent($today)
     {
-        return $this->studentRepository->getAll();
+        return $this->studentRepository->getAllYear($today);
     }
 
     

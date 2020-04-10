@@ -37,11 +37,11 @@ dd {
 }
 
 .active_page {
-    background: #337ab7 !important;
+    background: #3c8dbc !important;
     color: white !important;
 }
 
 .actived_page {
     background: #eee!important;
-    color: #337ab7 !important;
+    color: #3c8dbc !important;
 }

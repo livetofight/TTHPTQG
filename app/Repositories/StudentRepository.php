@@ -14,4 +14,9 @@ class StudentRepository  extends EloquentRepository
     {
         return \App\Models\Student::class;
     }
+
+    public function getAllYear($today){
+        return Student::whereYear('created_at','=',$today)
+                        ->get();
+    }
 }

@@ -2,9 +2,8 @@ $(function() {
     get_list_questions();
 });
 async function get_list_questions(data) {
-    base_url = 'http://127.0.0.1:8000'
     let result;
-    let url = base_url + '/task/question';
+    let url = url('task/question');
     let success = function(responce) {
         let json_data = $.parseJSON(responce);
         show_lists_questions(json_data);
@@ -203,9 +202,10 @@ function go_to_page(page_num) {
     start_from = page_num * show_item_page;
     end_on = start_from + show_item_page;
     $('#list_question').children().css('display', 'none').slice(start_from, end_on).css('display', 'block');
-    //siblings tìm pt nào có class .active_page
+    if (page_num != current_page) {
+        $('.page_link[longdesc=' + current_page + ']').removeClass('active_page').addClass('actived_page');
+    }
     $('.page_link[longdesc=' + page_num + ']').addClass('active_page');
-    $('.page_link[longdesc=' + current_page + ']').removeClass('active_page').addClass('actived_page');
     $('#current_page').val(page_num);
 }
 

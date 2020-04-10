@@ -61,15 +61,22 @@ return array(
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Repositories\\EloquentRepository' => $baseDir . '/app/Repositories/EloquentRepository.php',
+<<<<<<< HEAD
     'App\\Repositories\\QuestionListRepository' => $baseDir . '/app/Repositories/QuestionListRepository.php',
+=======
+    'App\\Repositories\\Exam_listRepository' => $baseDir . '/app/Repositories/Exam_listRepository.php',
+>>>>>>> e03106aac823d8d93e9195278c4e2a1404b4a4f8
     'App\\Repositories\\QuestionRepository' => $baseDir . '/app/Repositories/QuestionRepository.php',
+    'App\\Repositories\\Question_listRepository' => $baseDir . '/app/Repositories/Question_listRepository.php',
     'App\\Repositories\\RepositoryInterface' => $baseDir . '/app/Repositories/RepositoryInterface.php',
     'App\\Repositories\\ScheduleRepository' => $baseDir . '/app/Repositories/ScheduleRepository.php',
     'App\\Repositories\\StudentRepository' => $baseDir . '/app/Repositories/StudentRepository.php',
     'App\\Repositories\\SubjectRepository' => $baseDir . '/app/Repositories/SubjectRepository.php',
     'App\\Repositories\\TaskRepository' => $baseDir . '/app/Repositories/TaskRepository.php',
     'App\\Repositories\\UserRepository' => $baseDir . '/app/Repositories/UserRepository.php',
+    'App\\Services\\Exam_listService' => $baseDir . '/app/Services/Exam_listService.php',
     'App\\Services\\QuestionService' => $baseDir . '/app/Services/QuestionService.php',
+    'App\\Services\\Question_listService' => $baseDir . '/app/Services/Question_listService.php',
     'App\\Services\\StudentService' => $baseDir . '/app/Services/StudentService.php',
     'App\\Services\\SubjectService' => $baseDir . '/app/Services/SubjectService.php',
     'App\\Services\\TaskService' => $baseDir . '/app/Services/TaskService.php',

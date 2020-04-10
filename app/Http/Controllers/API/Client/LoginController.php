@@ -80,6 +80,9 @@ class LoginController extends Controller
                 }
                 else{
                     $id=$student->first()->id;
+                    Request::session()->put('login', true);
+                    Request::session()->put('id', $id);
+                    Request::session()->put('fullname', $student->first()->fullname);
                     $this->studentService->setIsA($id,1);
                     $result['status']=1;
                 }
@@ -94,9 +97,11 @@ class LoginController extends Controller
     }
     public function getLogout()
     {
-        Session::flush();
-        $id = Student::current()->id;
-        $this->studentService->setIsA($id,0);
-		return redirect('/');
+        if(Session::has('login') && Session::get('login') == true){
+            $id=Session::get('id');
+            $this->studentService->setIsA($id,0);
+            Request::session()->flush();
+            return redirect('/');
+        }
     }
 }

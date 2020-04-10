@@ -10,9 +10,10 @@
         Hệ thống thi trắc nghiệm trực tuyến phiên bản chạy thử nghiệm
     </div>
 </footer>
-<script src="{{ asset ('public/client/lib/jquery/jquery.min.js')}}"></script>
-<script src="{{ asset ('public/client/lib/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{ asset ('client/lib/jquery/jquery.min.js')}}"></script>
+<script src="{{ asset ('client/lib/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-<script src="{{ asset ('public/client/js/site.js')}}"></script>
+<script src="{{ asset ('client/js/site.js')}}"></script>
+<script src="{{ asset ('client/js/countdown.js')}}"></script>
 </body>
 </html>

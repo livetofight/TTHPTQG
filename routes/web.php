@@ -31,9 +31,12 @@ Route::get('/logout', 'API\Client\LoginController@getLogout');
 
 Route::post('/login', 'API\Client\LoginController@postLogin');
 
-Route::get('/userhome', 'API\Client\HomeController@index');
+Route::get('/home', 'API\Client\HomeController@index');
 
 //admin route
+Route::group(['middleware'=>['prevent-back-history','auth']], function(){
+    Route::get('/admin/home', 'API\Admin\HomeController@index');
+});
 Route::get('/ad', 'Auth\LoginController@index');
 
 Route::get('/admin/login', 'Auth\LoginController@getLogin');

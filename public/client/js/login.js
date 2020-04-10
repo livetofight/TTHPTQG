@@ -20,7 +20,7 @@ $(document).ready(function(){
                 success: function(result) {
                     var json_data = $.parseJSON(result);
                     if (json_data.status == 1) {
-                        window.location.replace("../userhome");
+                        window.location.replace("../home");
                     } else if(json_data.status == 0){
                         $('#error_message').html('<p class="login-box-msg" style="color:red">Tên đăng nhập hoặc mật khẩu không đúng!'  +
                             '</p>');

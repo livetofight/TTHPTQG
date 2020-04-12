@@ -88,24 +88,9 @@ class LoginController extends Controller
 
             if( Auth::attempt((array('username' => $username, 'password' => $password))))
             {
+                Request::session()->put('login', true);
                 $result['status']=1;
-                // if(Auth::check())
-                // {
-                //     return "aaaaaaaa";
-                    // return Auth::user()->type;
-                // }
 
-
-
-                // if(Auth::user()->type==1){
-                //     // Kiểm tra đúng email và mật khẩu sẽ chuyển trang
-                //     return redirect('admin/home');
-                // }
-                // else
-                // {
-                //     //return "permission";
-                //     return redirect('/');
-                // }
             } else {
                 $result['status']=0;
                 $result['uesrname']=$username;

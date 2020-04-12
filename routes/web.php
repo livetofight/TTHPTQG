@@ -45,7 +45,7 @@ Route::post('/admin/login', 'Auth\LoginController@postLogin');
 
 Route::get('/admin/logout', 'Auth\LogoutController@getLogout');
 
-Route::get('/admin/home', 'API\Admin\HomeController@index');
+// Route::get('/admin/home', 'API\Admin\HomeController@index');
 
 Route::get('/admin/question', 'API\Admin\ExamController@index');
 

@@ -1,4 +1,5 @@
 @extends('admin.share.master')
+@section('title','Danh sách học sinh')
 @section('content')
 <section class="content-header">
     <h1>
@@ -7,7 +8,7 @@
     </h1>
     <ol class="breadcrumb">
         <li><a ><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a >Học Sinh</a></li>
+        <li><a>Học Sinh</a></li>
         <li class="active">Danh sách học sinh</li>
     </ol>
 </section>
@@ -35,11 +36,24 @@
                             </form>
                         </div>
                         <div class="col-xs-3">
-                            <a href="{{url('export_excel')}}" class="btn btn-app "><i class="glyphicon glyphicon-export"></i>Export</a>
+                            <div class="btn-group">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <a class="btn btn-app" data-toggle="dropdown" aria-expanded="true">
+                                            <i class="glyphicon glyphicon-export"></i>
+                                            <span class="badge bg-blue">3</span>Export
+                                        </a>
+                                        <ul class="daterangepicker opensright dropdown-menu " >
+                                            <li><a href="{{url('admin/student/export')}}">DSHS</a></li>
+                                            <li><a href="{{url('export_excel')}}">Theo trường</a></li>
+                                            <li><a href="{{url('export_excel')}}">Theo môn </a></li>
+                                        </ul>
+                                    </div>
+                                  </div>
+                              </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-hover">
                         <thead>
@@ -69,8 +83,7 @@
                                     <td>{{ $item->address}}</td>
                                     <td>{{ $item->subject_list}} </td>
                                     <td>
-                                        <i title="Sửa" class="fa fa-pencil-square-o" style="margin-right: 5px;margin-left: 5px;"></i>
-
+                                    <a href="{{url('admin/student/' .$item->id )}}" data-id={{ $item->id}}><i title="Sửa" class="fa fa-pencil-square-o" style="margin-right: 5px;margin-left: 5px; color: darkred;"></i></a>
                                         @if ($item['isActive']==1) <i title="Đã Thi" class="fa fa-eye"> </i>
                                         @else <i title="Chưa Thi" class="fa fa-eye-slash"> </i>
                                         @endif

@@ -6,23 +6,37 @@ use App\Http\Controllers\Controller;
 use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Services\Exam_listService;
+use App\Services\TaskService;
 use App\Services\Question_listService;
+use App\Services\StudentService;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
-    private $exam_listService;
-    private $question_listService;
-    public function __construct(Exam_listService $exam_listService,Question_listService $question_listService)
+    private $taskService;
+    private $studentService;
+    public function __construct(
+        StudentService $studentService,
+        TaskService $taskService      
+    )
     {
-        $this->exam_listService = $exam_listService;
-        $this->question_listService=$question_listService;
+        $this->studentService=$studentService;
+        $this->taskService = $taskService;
     }
     public function index()
     {
-        $data['exam_list']=$this->exam_listService->getExam_list();
-        $data['question']=$this->question_listService->getQuestion_listById_exam(1);
-        return view('client.home.index',[ 'title' => 'Thi trung học phổ thông'],$data);
+        $today = today();
+        $id = \Session::get('id');
+        $id_subject=$this->taskService->getSubject($today);
+        if($id==null){
+            return redirect('/');
+        }
+        if($id_subject->isEmpty()){
+            return view('client.error');
+        }
+        $data['student']=$this->studentService->findStudent($id);
+        $data['name_subject']=$this->taskService->getNameSubject($id_subject);
+        return view('client.home.index',$data);
 
     }
 }

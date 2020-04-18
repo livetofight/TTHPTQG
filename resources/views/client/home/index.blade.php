@@ -42,8 +42,8 @@
                 <div class="box-header with-border">
                     <div class="user-block">
                         <img class="img-circle" src="{{ asset ('client/upload/student-icon.png')}}"  alt="User Image">
-                        <span class="username"><a href="#">HUY TRẦN</a></span>
-                        <span class="description">Môn Thi: Hóa Học</span>
+                    <span class="username"><a href="#">{{$student->fullname}}</a></span>
+                        <span class="description">Môn Thi: {{$name_subject->first()->name}}</span>
                     </div>
                     <div class="box-tools">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
@@ -56,19 +56,19 @@
                             <tbody>
                                 <tr>
                                     <td>CMND</td>
-                                    <td>231164100</td>
+                                    <td>{{$student->cmnd}}</td>
                                 </tr>
                                 <tr>
                                     <td>Ngày Sinh:</td>
-                                    <td>11/11/1111</td>
+                                    <td>{{$student->date_of_birth->format('d/m/Y')}}</td>
                                 </tr>
                                 <tr>
                                     <td>Giới tính:</td>
-                                    <td>Nam</td>
+                                    <td>{{$student->gender}}</td>
                                 </tr>
                                 <tr>
                                     <td>Danh sách môn thi:</td>
-                                    <td>Toán, Lý Hóa</td>
+                                    <td>{{$student->subject_list}}</td>
                                 </tr>
                             </tbody>
                         </table>

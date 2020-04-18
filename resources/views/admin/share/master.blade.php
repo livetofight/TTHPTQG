@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="{{ asset ('admin/bower_components/Ionicons/css/ionicons.min.css ') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset ('admin/dist/css/AdminLTE.min.css ') }}">
+  <link rel="stylesheet" href="{{ asset ('admin/dist/css/admin.css ') }}">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{ asset ('admin/dist/css/skins/_all-skins.min.css ') }}">
@@ -323,11 +324,6 @@
         radioClass: 'iradio_square-blue',
         increaseArea: '20%' /* optional */
       });
-
-      // $('#date').datetimepicker({
-      //   format: 'DD/MM/YYYY',
-      //   locale: 'en'
-      // });
     })
 </script>
 

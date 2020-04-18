@@ -13,10 +13,18 @@ class StudentService
         $this->studentRepository = $studentRepository;
     }
 
-    public function getListStudent($today)
+    public function getListStudent()
     {
-        return $this->studentRepository->getAllYear($today);
+        return $this->studentRepository->getAllYear();
     }
 
-    
+    public function setIsA($id, $param){
+        $this->studentRepository->setIsA($id,$param);
+    }
+
+    public function findStudent($id){
+        return $this->studentRepository->find($id);
+         
+    }
+
 }

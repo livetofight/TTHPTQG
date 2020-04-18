@@ -12,6 +12,15 @@ use App\Imports\StudentsImport;
 use Carbon\Carbon;
 class StudentsImport implements ToModel, WithHeadingRow
 {
+    
+    protected function formatDateExcel($date){ 
+        if (gettype($date) === 'double') { 
+            $birthday = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($date); 
+            return $birthday->format('Y-m-d'); 
+        } 
+        return $date; 
+    }
+
     public function headingRow() : int
     {
         return 6;
@@ -28,7 +37,7 @@ class StudentsImport implements ToModel, WithHeadingRow
             'username'    => $row['mssv'], 
             'password' => Str::random(),
             'fullname'=>$row['ho_ten'],
-            'date_of_birth'=> \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['ngay_sinh'])->format('y-m-d'),
+            'date_of_birth'=> $this->formatDateExcel($row['ngay_sinh']),
             'cmnd'=>$row['cmnd'] ,
             'gender'=>$row['gioi_tinh'] ,
             'nation'=>$row['dan_toc'] ,
@@ -36,10 +45,10 @@ class StudentsImport implements ToModel, WithHeadingRow
             'address'=>$row['dia_chi'] ,
             'subject_list'=>$row['mon_thi'],
             'isActive'=>'0',
-            'created_at'=>now(),
-            'updated_at'=>'null'
+            
         ]);
     }
+
     public function chunkSize(): int
     {
         return 1000;

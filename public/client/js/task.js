@@ -3,7 +3,7 @@ $(function() {
 });
 async function get_list_questions(data) {
     let result;
-    let url = url('task/question');
+    let url = '../task/question';
     let success = function(responce) {
         let json_data = $.parseJSON(responce);
         show_lists_questions(json_data);
@@ -21,6 +21,7 @@ function show_lists_questions(data) {
     //DANH SÁCH CÂU HỎI
     let list = $('#list_question');
     list.empty();
+    let j = 0;
     if (data['total_record'] == 0) {
         list.appdend('<div class="callout callout-danger">' +
             '<h4>Lỗi!</h4>' +
@@ -35,16 +36,16 @@ function show_lists_questions(data) {
             let dl = $('<dl class="dl-horizontal id="ques_' + i + '"></dl>');
             box_header.append('<i class="fa fa-question"></i>');
             box_header.append('<h3 class="box-title"><strong>Câu ' + number_question + ':</strong> </h3>');
-            box_header.append('<span style="font-size: 16px">' + data[i].question_content + '</span>');
+            box_header.append('<span style="font-size: 16px">' + data[i].question.question_content + '</span>');
             box.append(box_header);
             dl.append('<dt><input type="radio" name="question_' + i + '" class="minimal" onclick="change_css(' + i + ')" >A.</dt>' +
-                '<dd>' + data[i].ans_1 + '.</dd>');
+                '<dd>' + data[i].question.ans_1 + '.</dd>');
             dl.append('<dt><input type="radio" name="question_' + i + '" class="minimal" onclick="change_css(' + i + ')" >B.</dt>' +
-                '<dd>' + data[i].ans_2 + '.</dd>');
+                '<dd>' + data[i].question.ans_2 + '.</dd>');
             dl.append('<dt><input type="radio" name="question_' + i + '" class="minimal" onclick="change_css(' + i + ')" >C.</dt>' +
-                '<dd>' + data[i].ans_3 + '.</dd>');
+                '<dd>' + data[i].question.ans_3 + '.</dd>');
             dl.append('<dt><input type="radio" name="question_' + i + '" class="minimal" onclick="change_css(' + i + ')" >D.</dt>' +
-                '<dd>' + data[i].ans_4 + '.</dd>');
+                '<dd>' + data[i].question.ans_4 + '.</dd>');
             box_body.append(dl);
             box.append(box_body);
             list.append(box);
@@ -52,11 +53,46 @@ function show_lists_questions(data) {
         }
     }
 
+    //STUDENT
+
+    let student = $('#student');
+    let timestudent = $('#timestudent');
+    student.empty();
+    timestudent.empty();
+    timestudent.append('<div class="box-header with-border">' +
+        '<h3 class="box-title">' +
+        '<i class="fa fa-clock-o"></i> THỜI GIAN' +
+        '</h3>' +
+        '<p class="text-red" id="time">2:00</p>' +
+        '</div>');
+    let box_body = $('<div class="box-body"></div>')
+    let box_solid = $('<div class="box box-solid"></div>');
+    let no_padding = $('<div class="box-body no-padding"></div>');
+    let table_stu = $('<table class="table table-striped"></table>');
+    let tbodystu = $('<tbody></tbody>');
+
+    tbodystu.append('<tr>' +
+        '<th>Tên: </th>' +
+        '<th>' + data['student'].fullname + '</th>' +
+        '</tr>');
+    tbodystu.append('<tr>' +
+        '<td>SBD: </td>' +
+        '<td>' + data['student'].username + '</td>' +
+        '</tr>');
+    tbodystu.append('<tr>' +
+        '<td>CMND: </td>' +
+        '<td>' + data['student'].cmnd + '</td>' +
+        '</tr>');
+    table_stu.append(tbodystu);
+    no_padding.append(table_stu);
+    box_solid.append(no_padding);
+    box_body.append(box_solid);
+    student.append(box_body);
+
     //SỐ CÂU HỎI
     let number_question = $('#list_number');
     number_question.empty();
-    let box = $('<div class="box"></div>');
-    let box_body = $('<div class="box-body no-padding"></div>');
+    let box = $('<div class="box box-solid"></div>')
     let table = $('<table class="table table-condensed"></table>');
     let tbody = $('<tbody></tbody>');
     let n = 0;
@@ -65,7 +101,7 @@ function show_lists_questions(data) {
         let tr = $('<tr></tr>');
         for (let i = 0; i < data['total_record']; i++) {
             n += 1;
-            tr.append('<td><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 2) + ')">' + n + '</span></td>');
+            tr.append('<th><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 2) + ')">' + n + '</span></th>');
         }
         tbody.append(tr);
     } else {
@@ -77,9 +113,9 @@ function show_lists_questions(data) {
             for (let j = 0; j < 10; j++) {
                 n += 1;
                 if (n < 10) {
-                    tr.append('<td><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 2) + ')">0' + n + '</span></td>');
+                    tr.append('<th><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 2) + ')">0' + n + '</span></th>');
                 } else {
-                    tr.append('<td><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 2) + ')">' + n + '</span></td>');
+                    tr.append('<th><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 2) + ')">' + n + '</span></th>');
                 }
             }
             tbody.append(tr);
@@ -88,17 +124,15 @@ function show_lists_questions(data) {
                 let tr2 = $('<tr></tr>');
                 for (let h = 0; h < m; h++) {
                     n += 1;
-                    tr2.append('<td><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 2) + ')">' + n + '</span></td>');
+                    tr2.append('<th><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 2) + ')">' + n + '</span></th>');
                 }
                 tbody.append(tr2);
             }
         }
     }
     table.append(tbody);
-    box_body.append(table);
-    box.append(box_body);
+    box.append(table);
     number_question.append(box);
-
 
     //THỜI GIAN
     //1 phút = 60000 ms
@@ -149,12 +183,14 @@ function show_lists_questions(data) {
         }
     }, 1000);
 
+
     //PHÂN TRANG
     var show_item_page = data['page_size'];
     var number_of_items = data['total_record'];
     var number_of_pages = Math.ceil(number_of_items / show_item_page);
     $('#current_page').val(0);
     $('#show_item_page').val(show_item_page);
+    $('#number_of_pages').val(number_of_pages);
     let page_navigation = $('#page_navigation');
     page_navigation.empty();
     let ul = $('<ul class="pagination pagination-sm no-margin"></ul>')
@@ -164,12 +200,14 @@ function show_lists_questions(data) {
         ul.append('<li><a class="page_link" href="javascript:go_to_page(' + current_link + ')" longdesc="' + current_link + '">' + (current_link + 1) + '</a></li>');
         current_link++;
     }
-    ul.append('<li><a class="next_link" href="javascript:next(' + number_of_pages + ');">&raquo;</a></li>');
+    ul.append('<li><a class="next_link" href="javascript:next();">&raquo;</a></li>');
 
     page_navigation.append(ul);
 
     //css active trang đang được chọn 
     $('#page_navigation .page_link:first').addClass('active_page');
+
+    $('.previous_link').addClass('disabled');
 
     //ẩn phần tử trong list_question
     $('#list_question').children().css('display', 'none');
@@ -181,32 +219,40 @@ function show_lists_questions(data) {
 function previous() {
     new_page = parseInt($('#current_page').val()) - 1;
     if (new_page >= 0) {
-        if ($('.active_page').parent().next().find('.page_link').length) {
-            go_to_page(new_page);
-        }
+        go_to_page(new_page);
     }
+
 }
 
-function next(total_page) {
+function next() {
     new_page = parseInt($('#current_page').val()) + 1;
+    total_page = parseInt($('#number_of_pages').val())
     if (new_page != total_page) {
-        if ($('.active_page').parent().next().find('.page_link').length) {
-            go_to_page(new_page);
-        }
+        go_to_page(new_page);
     }
 }
 
 function go_to_page(page_num) {
     var current_page = parseInt($('#current_page').val());
     var show_item_page = parseInt($('#show_item_page').val());
+    total_page = parseInt($('#number_of_pages').val())
     start_from = page_num * show_item_page;
     end_on = start_from + show_item_page;
     $('#list_question').children().css('display', 'none').slice(start_from, end_on).css('display', 'block');
     if (page_num != current_page) {
         $('.page_link[longdesc=' + current_page + ']').removeClass('active_page').addClass('actived_page');
     }
-    $('.page_link[longdesc=' + page_num + ']').addClass('active_page');
+    $('.page_link[longdesc=' + page_num + ']').removeClass('actived_page').addClass('active_page');
     $('#current_page').val(page_num);
+
+    if (page_num == 0) {
+        $('.previous_link').addClass('disabled');
+    } else $('.previous_link').removeClass('disabled');
+
+    if (page_num == (total_page - 1)) {
+        $('.next_link').addClass('disabled');
+    } else $('.next_link').removeClass('disabled');
+
 }
 
 function change_css(number_ques) {

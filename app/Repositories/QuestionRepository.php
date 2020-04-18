@@ -16,6 +16,14 @@ class QuestionRepository  extends EloquentRepository
         return \App\Models\Question::class;
     }
 
+    
+
+    
+
+    
+
+
+
 
     
 }

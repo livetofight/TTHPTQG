@@ -12,15 +12,15 @@
     </div>
     <!-- /.box-body -->
 </div>
-<div class="box box-solid" style="text-align: center">
+{{-- <div class="box box-solid" style="text-align: center">
     <div class="box-header with-border">
         <div class="box-body">
             <div class="box-body no-padding">
-                <button type="button" class="btn bg-olive margin" onclick="location.href='{{ url('home') }}'">Quay Lại</button>
+                <button type="button" class="btn bg-olive margin" onclick="location.href='{{ url('/home') }}'">Quay Lại</button>
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 
 @endsection()

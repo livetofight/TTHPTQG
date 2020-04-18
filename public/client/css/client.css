@@ -45,3 +45,10 @@ dd {
     background: #eee!important;
     color: #3c8dbc !important;
 }
+
+.disabled {
+    color: #777;
+    cursor: not-allowed;
+    background-color: #777;
+    border-color: #ddd;
+}

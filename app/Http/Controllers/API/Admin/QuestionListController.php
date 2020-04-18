@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\API\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Question_list;
+use App\Models\QuestionList;
 use Illuminate\Http\Request;
 
-class Question_listController extends Controller
+class QuestionListController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,7 +42,7 @@ class Question_listController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Question_list  $question_list
+     * @param  \App\Models\QuestionList  $questionList
      * @return \Illuminate\Http\Response
      */
     public function show(Question_list $question_list)
@@ -53,10 +53,10 @@ class Question_listController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Question_list  $question_list
+     * @param  \App\Models\QuestionList  $questionList
      * @return \Illuminate\Http\Response
      */
-    public function edit(Question_list $question_list)
+    public function edit(QuestionList $questionList)
     {
         //
     }
@@ -65,10 +65,10 @@ class Question_listController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Question_list  $question_list
+     * @param  \App\Models\QuestionList  $questionList
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Question_list $question_list)
+    public function update(Request $request, QuestionList $questionList)
     {
         //
     }
@@ -76,10 +76,10 @@ class Question_listController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Question_list  $question_list
+     * @param  \App\Models\QuestionList  $questionList
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Question_list $question_list)
+    public function destroy(QuestionList $questionList)
     {
         //
     }

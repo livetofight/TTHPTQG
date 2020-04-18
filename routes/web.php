@@ -14,64 +14,72 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
- Route::get('/admin/question/export','API\Admin\ExportExcelController@exportQuestion')->name('exportQuestion');
-// Route::get('/admin/student','API\Admin\StudentController@index');
-
 Auth::routes();
 
-//client route
-Route::get('/', 'API\Client\LoginController@index');
-
-Route::get('/login', 'API\Client\LoginController@getLogin');
-
-Route::post('/login', 'API\Client\LoginController@postLogin');
-
-Route::get('/home', 'API\Client\HomeController@index');
-
 //admin route
-Route::get('/ad', 'Auth\LoginController@index');
+Route::group(['prefix'=>'/admin'], function(){
+    Route::group([
+        'middleware'=>['prevent-back-history','auth'],
+        'namespace'=>'API\Admin',
+    ], function(){
 
-Route::get('/admin/login', 'Auth\LoginController@getLogin');
+        Route::get('/home', 'HomeController@index');
 
-Route::post('/admin/login', 'Auth\LoginController@postLogin');
+        Route::get('/question', 'ExamController@index');
+        Route::get('/question/export','ExportExcelController@exportQuestion')->name('exportQuestion');
 
-Route::get('/admin/logout', 'Auth\LogoutController@getLogout');
+        Route::get('/exam', 'ExamController@index');
 
-Route::get('/admin/home', 'API\Admin\HomeController@index');
+        Route::get('/listexam', 'ExamController@listexam');
 
-Route::get('/admin/question', 'API\Admin\ExamController@index');
+        Route::get('/student', 'StudentController@index');
+        Route::post('/student/import', 'StudentController@import');
+        Route::get('/student/export', 'StudentController@export');
+        Route::get('/student/{id}', 'StudentController@detail');
 
-Route::get('/admin/exam', 'API\Admin\ExamController@index');
+        Route::get('/question', 'QuestionController@index');
+        Route::get('/question/addque', 'QuestionController@add');
 
-Route::get('/admin/listexam', 'API\Admin\ExamController@listexam');
+        Route::resource('/subject' , 'SubjectController');
+        Route::post('/subject','SubjectController@doUpLoad');
+        Route::post('/subject/insert','SubjectController@doInsert');
+        Route::get('/subject/delete/{id}', 'SubjectController@doDelete');
+        Route::post('/subject/update','SubjectController@doUpdate');
+    });
+    
+    Route::group([
+        'namespace'=>'Auth',
+    ], function(){
 
-Route::get('/admin/subject/addsub', 'API\Admin\SubjectController@add');
+        Route::get('/', 'LoginController@index');
 
-Route::get('/admin/student', 'API\Admin\StudentController@index');
-Route::post('/admin/student/import', 'API\Admin\StudentController@import');
-Route::get('/admin/student/addstu', 'API\Admin\StudentController@add');
+        Route::get('/login', 'LoginController@getLogin');
 
-Route::get('/admin/question', 'API\Admin\QuestionController@index');
+        Route::post('/login', 'LoginController@postLogin');
 
-Route::get('/admin/question/addque', 'API\Admin\QuestionController@add');
-
-Route::post('/admin/subject','API\Admin\SubjectController@doUpLoad');
-
-//subject
-Route::resource('admin/subject' , 'API\Admin\SubjectController');
-
-Route::post('/admin/subject/insert','API\Admin\SubjectController@doInsert');
-
-Route::get('/admin/subject/delete/{id}', 'API\Admin\SubjectController@doDelete');
-
-Route::post('/admin/subject/update','API\Admin\SubjectController@doUpdate');
+        Route::get('/logout', 'LogoutController@getLogout');
+    });
+});
 
 //client
-Route::get('/task','API\Client\TaskController@index');
-Route::get('/task/question','API\Client\TaskController@getQuestion');
-Route::get('/task/time','API\Client\TaskController@getTime');
+Route::group(['namespace'=>'API\Client',],function(){
 
-Route::get('/result','API\Client\ExamController@index');
+    Route::get('/task','TaskController@index');
+    Route::get('/task/question','TaskController@getQuestion');
+    Route::get('/task/time','TaskController@getTime');
+
+    Route::get('/result','ExamController@index');
+    
+    Route::get('/', 'LoginController@index');
+
+    Route::get('/login', 'LoginController@getLogin');
+
+    Route::get('/logout', 'LoginController@getLogout');
+
+    Route::post('/login', 'LoginController@postLogin');
+
+    Route::get('/home', 'HomeController@index');
+});
+
+
+

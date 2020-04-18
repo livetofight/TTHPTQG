@@ -3,8 +3,9 @@
 namespace App\Repositories;
 
 use App\Models\Student;
+use Maatwebsite\Excel\Concerns\ToArray;
 
-class StudentRepository  extends EloquentRepository 
+class StudentRepository  extends EloquentRepository
 {
     /**
      * get model
@@ -15,8 +16,14 @@ class StudentRepository  extends EloquentRepository
         return \App\Models\Student::class;
     }
 
-    public function getAllYear($today){
-        return Student::whereYear('created_at','=',$today)
+    public function getAllYear(){
+        return Student::whereYear('created_at',date('Y'))
                         ->get();
+    }
+
+    public function setIsA($id, $param){
+        $student=Student::find($id);
+        $student->isActive=$param;
+        $student->save();
     }
 }

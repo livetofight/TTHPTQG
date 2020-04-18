@@ -1,8 +1,8 @@
-<header class="main-header">
+<header class="main-header" >
     <nav class="navbar navbar-static-top">
       <div class="container">
         <div class="navbar-header">
-          <div class="box box-widget widget-user-2 box-blue">
+          <div class="box box-widget widget-user-2 box-blue ">
             <!-- Add the bg color to the header using any of the bg-* classes -->
             <div class="widget-user-header ">
               <div class="widget-user-image">

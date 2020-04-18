@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Student;
+use App\Services\StudentService;
 use Illuminate\Contracts\Validation\Validator as ValidationValidator;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
@@ -35,9 +36,12 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    private $studentService;
+
+    public function __construct(StudentService $studentService)
     {
         $this->middleware('guest')->except('logout');
+        $this->studentService = $studentService;
     }
 
     public function index() {
@@ -46,9 +50,6 @@ class LoginController extends Controller
 
     public function getLogin(Request $request) {
 
-        // $data['user']= User::all();
-        // var_dump($data);
-        //var_dump($data = $request->session()->all());
         return view('client.home.login',['title'=>'Login']);
     }
     public function postLogin(Request $request) {
@@ -68,42 +69,39 @@ class LoginController extends Controller
             // Điều kiện dữ liệu không hợp lệ sẽ chuyển về trang đăng nhập và thông báo lỗi
             return redirect('/')->withErrors($validator)->withInput();
         } else {
-            // $arr=[
-            // 'username' => $request->username,
-            // 'password' => $request->password
-            // ];
+
             $username = Request::get('username');
             $password = Request::get('password');
             if( Student::where('username','=',$username)->where('password','=', $password)->count()==1)
             {
-                // $student= Student::where('username','=',$username)->where('password','=', $password);
-                // if($student->isActive==1){
-                //     // var_dump($student->isActive);
-                //     $a='ánbcd';
-                //     var_dump($a);
-                //     Session::flash('error', 'Tài khoản đang đăng nhập trên thiết bị khác!');
-                //     $result['status']=-1;
-                // }
-                // else{
-                //     $student->isActive=1;
+                $student= Student::where('username','=',$username)->where('password','=', $password)->get();
+                if($student->first()->isActive==1){
+                    $result['status']=2;
+                }
+                else{
+                    $id=$student->first()->id;
+                    Request::session()->put('login', true);
+                    Request::session()->put('id', $id);
+                    Request::session()->put('fullname', $student->first()->fullname);
+                    $this->studentService->setIsA($id,1);
                     $result['status']=1;
-                // }
+                }
             }
              else {
                 $result['status']=0;
-                $result['uesrname']=$username;
+                $result['userrname']=$username;
                 $result['password']=$password;
             }
             return json_encode($result);
-            // if(Student::where('username','=',$username)->where('isActive','=',1)){
-            //     $result['status']=-1;
-            // }
-            // elseif(Student::where('username','=',$username)->where('password','=',$password)->count()==1){
-            //     $result['status']=1;
-            // } else{
-            //     $result['status']=0;
-            // }
-            // return json_encode($result);
+        }
+    }
+    public function getLogout()
+    {
+        if(Session::has('login') && Session::get('login') == true){
+            $id=Session::get('id');
+            $this->studentService->setIsA($id,0);
+            Request::session()->flush();
+            return redirect('/');
         }
     }
 }

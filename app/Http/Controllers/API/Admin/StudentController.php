@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Services\StudentService;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\StudentsImport;
+use App\Exports\StudentsExport;
 use Carbon\Carbon;
 
 class StudentController extends Controller
@@ -25,8 +26,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $today = Carbon::today();
-        $data['student']=$this->studentService->getListStudent($today);
+        $data['student']=$this->studentService->getListStudent();
         return view('admin.student.student', $data);
     }
 
@@ -42,9 +42,16 @@ class StudentController extends Controller
             $result['status_value']=" Lỗi nhập File";
             $result['status']=0;
         }
-        
         return json_encode($result);
-    } 
+    }
+
+    public function export(){
+        return Excel::download(new StudentsExport, 'students.xlsx');
+    }
+    
+    public function detail($id){
+        return view('admin.student.student-detail');
+    }
     /**
      * Show the form for editing the specified resource.
      *

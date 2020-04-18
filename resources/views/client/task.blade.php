@@ -48,13 +48,13 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     </head>
     <body class="skin-blue sidebar-mini">
-        <div class="blurred-background"></div>
         <div class="wrapper" style="background: #ecf0f5">   
             <section class="content">
                 <div class="row">
                     <div class="col-xs-8 col-md-8">
                         <input type='hidden' id='current_page' />
                         <input type='hidden' id='show_item_page' />
+                        <input type='hidden' id='number_of_pages' />
                         <div id="list_question">
                         </div>
                         <div class="box-footer clearfix">
@@ -65,64 +65,45 @@
                     </div>
                     <div class="col-xs-4 col-md-4">
                         <div class="box box-default color-palette-box">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">
-                                    <i class="fa fa-clock-o"></i> THỜI GIAN 
-                                </h3> 
-                                <p class="text-red" id="time"></p>
+                            <div id="timestudent">
+                                
                             </div>
-                            <div class="box-body">
-                                <div class="box box-solid">
-                                    <div class="box-body no-padding">
-                                        <table class="table table-striped">
-                                          <tr>
-                                            <th>Tên: </th>
-                                            <th>Huy Trần</th>
-                                          </tr>
-                                          <tr>
-                                            <td>SBD: </td>
-                                            <td>3951050015</td>
-                                          </tr>
-                                          <tr>
-                                            <td>CMND: </td>
-                                            <td>231164100</td>
-                                          </tr>
-                                        </table>
-                                      </div>
+                            <div id="student">
+
+                            </div>
+                        </div>
+
+                        <div id="list_number">
+
+                        </div>
+
+                        <div class="box box-solid">
+                            <button type="button" class="btn btn-block btn-primary">Nộp bài</button>
+                        </div>
+                        <div class="row notification">
+                            <div class="col-md-10">
+                                <div class="box box-danger direct-chat direct-chat-danger">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Thông báo</h3>
+                                        <div class="box-tools pull-right">
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </div>
                                     </div>
-                                    
-                                  </div>
-                                </div>
-                                <div id="list_number">
-                                </div>
-                                <div class="box box-solid">
-                                    <button type="button" class="btn btn-block btn-primary">Nộp bài</button>
-                                </div>
-                                <div class="row notification">
-                                    <div class="col-md-10">
-                                        <div class="box box-danger direct-chat direct-chat-danger">
-                                            <div class="box-header with-border">
-                                                <h3 class="box-title">Thông báo</h3>
-                                                <div class="box-tools pull-right">
-                                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                                                </div>
-                                            </div>
-                                            <div class="box-body">
-                                                <div class="direct-chat-messages">
-                                                    <div class="direct-chat-msg">                    
-                                                        <div class="direct-chat-msg right">
-                                                            <img class="direct-chat-img" src="../client/upload/logo.png" alt="Message User Image"><!-- /.direct-chat-img -->
-                                                            <div class="direct-chat-text">
-                                                                Hãy kiểm tra lại bài, bạn còn 1 phút để nộp bài !
-                                                            </div>
-                                                        </div>
+                                    <div class="box-body">
+                                        <div class="direct-chat-messages">
+                                            <div class="direct-chat-msg">
+                                                <div class="direct-chat-msg right">
+                                                    <img class="direct-chat-img" src="../client/upload/logo.png" alt="Message User Image"><!-- /.direct-chat-img -->
+                                                    <div class="direct-chat-text">
+                                                        Hãy kiểm tra lại bài, bạn còn 1 phút để nộp bài !
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>    
-                        </div>
+                            </div>
+                        </div>    
                     </div>
                 </div>
             </section>

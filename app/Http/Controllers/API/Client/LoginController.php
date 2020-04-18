@@ -45,7 +45,11 @@ class LoginController extends Controller
     }
 
     public function index() {
-        return redirect('/login');
+        if(Session::has('login')&&Session::get('login')==true){
+            return redirect('/home');
+        }else{
+            return redirect('/login');
+        }
     }
 
     public function getLogin(Request $request) {

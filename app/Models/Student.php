@@ -8,7 +8,7 @@ class Student extends Model
 {
     const UPDATED_AT = null;
     protected $fillable = [
-        'username', 'fullname', 'password', 'isActive','cmnd','date_of_birth','gender','nation','id_school','address','subject_list'
+        'username', 'fullname', 'password','cmnd','date_of_birth','gender','nation','id_school','address','subject_list','created_at'
     ];
     
     protected $dates = [
@@ -16,6 +16,10 @@ class Student extends Model
         'created_at'
     ];
 
+    protected $casts = [
+        'date_of_birth'  => 'date:d/m/Y',
+        'created_at' => 'datetime:d/m/Y H:00',
+    ];
 
     public function examList() {
         return $this->hasMany('App\Models\Exam_list', 'id_student','id');

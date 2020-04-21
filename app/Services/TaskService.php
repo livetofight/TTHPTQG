@@ -38,8 +38,12 @@ class TaskService
         return $this->scheduleRepository->getSubject($date);
     }
 
-    public function getNameSubject($id_subject){
-        return $this->subjectRepository->find($id_subject);
+    public function getIdExamArray($id_subject){
+        return $this->examRepository->getIdExamArray($id_subject);
+    }
+
+    public function getIdExam($id_student, $id_exam_array){
+        return $this->examListRepository->getIdExam($id_student, $id_exam_array);
     }
 
     public function getQuestion($id_exam){
@@ -49,18 +53,16 @@ class TaskService
     public function getCountListQuestion($id_exam){
         return $this->questionListRepository->getCountListQuestion($id_exam);
     }
-
-    public function getIdExam($id_student,$id_subject){
-        return $this->examListRepository->getIdExam($id_student,$id_subject);
-    }
     
     public function getTimeSubject($id_subject){
         return $this->examRepository->getTimeSubject($id_subject);
     }
 
+    
     public function findStudent($id){
         return $this->studentRepository->find($id);
     }
+
 
 
     

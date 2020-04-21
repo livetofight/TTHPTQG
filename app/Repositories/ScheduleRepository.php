@@ -17,8 +17,17 @@ class ScheduleRepository  extends EloquentRepository
 
     public function getSubject($date)
     {
-        return Schedule::whereTest_date($date)
-                        ->get('id_subject');
+        $date->format('Y-m-d');
+        return Schedule::whereDate('test_date',$date)
+                        ->get('id_subject')
+                        ->toArray();
+    }
+
+    public function getTest($date)
+    {
+        $date->format('Y-m-d');
+        return Schedule::whereDate('test_date',$date)
+                        ->get();
     }
 
 

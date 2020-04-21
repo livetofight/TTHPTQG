@@ -32,14 +32,10 @@ Route::group(['prefix'=>'/admin'], function(){
 
         Route::get('/listexam', 'ExamController@listexam');
 
-<<<<<<< HEAD
         Route::get('/student', 'StudentController@index');
         Route::post('/student/import', 'StudentController@import');
         Route::get('/student/export', 'StudentController@export');
         Route::get('/student/{id}', 'StudentController@detail');
-=======
-// Route::get('/admin/home', 'API\Admin\HomeController@index');
->>>>>>> 9621a26d95eb1bce3dfd9ec8e6a17b326113eeac
 
         Route::get('/question', 'QuestionController@index');
         Route::get('/question/addque', 'QuestionController@add');

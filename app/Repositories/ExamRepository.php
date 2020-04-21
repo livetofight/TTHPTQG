@@ -19,9 +19,24 @@ class ExamRepository  extends EloquentRepository
 
     public function getTimeSubject($id_subject)
     {
-        return Exam::whereIn('id_subject',$id_subject)
+        return Exam::whereId_subject($id_subject)
                         ->get(['time'])
+                        ->first()
                         ->toArray();
+    }
+
+    public function getIdExamArray($id_subject)
+    {
+        return Exam::whereId_subject($id_subject)
+                        ->get(['id'])
+                        ->toArray();
+    }
+
+    public function getNT($id_subject)
+    {
+        return Exam::whereId_subject($id_subject)
+                        ->get()
+                        ->first();
     }
 
 

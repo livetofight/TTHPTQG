@@ -37,7 +37,8 @@ class TaskController extends Controller
         $today = today();
         $id_student = \Session::get('id');
         $id_subject=$this->taskService->getSubject($today);
-        $id_exam=$this->taskService->getIdExam($id_student,$id_subject);
+        $id_exam_array=$this->taskService->getIdExamArray($id_subject);
+        $id_exam=$this->taskService->getIdExam($id_student,$id_exam_array);
         $data=$this->taskService->getQuestion($id_exam);
         $data['student']=$this->taskService->findStudent($id_student);
         $data['total_record']=$this->taskService->getCountListQuestion($id_exam);

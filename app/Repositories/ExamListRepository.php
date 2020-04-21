@@ -14,12 +14,11 @@ class ExamListRepository  extends EloquentRepository
         return \App\Models\ExamList::class;
     }
 
-    public function getIdExam($id_student, $id_subject){
-        $id_exam= ExamList::whereId_user($id_student)
-                        ->whereIn('id_subject',$id_subject)
+    public function getIdExam($id_student, $id_exam_array){
+        return ExamList::whereId_user($id_student)
+                        ->whereIn('id_exam',$id_exam_array)
                         ->get(['id_exam'])
                         ->toArray();
-        return $id_exam;
         
     }
 }

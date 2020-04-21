@@ -23,8 +23,7 @@ class StudentService
     }
 
     public function findStudent($id){
-        return $this->studentRepository->find($id);
-         
+        return $this->studentRepository->find($id);  
     }
 
 }

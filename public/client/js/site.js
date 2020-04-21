@@ -16,3 +16,8 @@ function RandomInt(min, max) {
     var random = Math.floor(Math.random() * (+max - +min)) + +min;
     return random;
 }
+
+$(document).ready(function() {
+    let timeexam = $('#timeexam').val();
+    console.log(timeexam);
+});

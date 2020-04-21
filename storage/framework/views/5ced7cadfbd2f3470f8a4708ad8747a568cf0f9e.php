@@ -8,7 +8,7 @@
             <div class="box-header with-border">
               <div class="user-block">
                 <img class="img-circle" src="<?php echo e(asset ('client/upload/chamthan.png')); ?>" alt="User Image">
-                <span class="username"><a href="#">QUY CHẾ THI</a></span>
+                <span class="username"><a href="#">QUY CHẾ THI </a></span>
                 <span class="description">Công bố  - 7:30  20/02/2020</span>
               </div>
               <!-- /.user-block -->
@@ -36,44 +36,97 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-6 col-md-6">
-          <!-- Box Comment -->
-            <div class="box box-widget">
-                <div class="box-header with-border">
-                    <div class="user-block">
-                        <img class="img-circle" src="<?php echo e(asset ('client/upload/student-icon.png')); ?>"  alt="User Image">
-                    <span class="username"><a href="#"><?php echo e($student->fullname); ?></a></span>
-                        <span class="description">Môn Thi: <?php echo e($name_subject->first()->name); ?></span>
-                    </div>
-                    <div class="box-tools">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            <div class="row">
+                <div class="col-xs-6 col-md-6">
+                    <div class="box box-widget">
+                        <div class="box-header with-border">
+                            <div class="user-block">
+                                <img class="img-circle" src="<?php echo e(asset ('client/upload/book.png')); ?>"  alt="User Image">
+                            <span class="username"><a href="#"><?php echo e($name_subject->first()->name); ?></a></span>
+                            <span class="description">Giờ Thi: <?php echo e($date->first()->test_date->format('H:i')); ?></span>
+                            </div>
+                            <div class="box-tools">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="box-body no-padding">
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td>Số câu hỏi</td>
+                                            <td>:</td>
+                                            <td><?php echo e($subject->number); ?> câu</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Thời gian</td>
+                                            <td>:</td>
+                                            <td><?php echo e($subject->time); ?> phút</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Hình thức thi</td>
+                                            <td>:</td>
+                                            <td>Trắc nghiệm</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Thang điểm</td>
+                                            <td>:</td>
+                                            <td>10 điểm</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="box-body">
-                    <div class="box-body no-padding">
-                        <table class="table table-striped">
-                            <tbody>
-                                <tr>
-                                    <td>CMND</td>
-                                    <td><?php echo e($student->cmnd); ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Ngày Sinh:</td>
-                                    <td><?php echo e($student->date_of_birth->format('d/m/Y')); ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Giới tính:</td>
-                                    <td><?php echo e($student->gender); ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Danh sách môn thi:</td>
-                                    <td><?php echo e($student->subject_list); ?></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <div class="col-xs-6 col-md-6">
+                    <div class="box box-widget">
+                        <div class="box-header with-border">
+                            <div class="user-block">
+                                <img class="img-circle" src="<?php echo e(asset ('client/upload/student-icon.png')); ?>"  alt="User Image">
+                            <span class="username"><a href="#"><?php echo e($student->fullname); ?></a></span>
+                                <span class="description" >Ngày thi :<?php echo e($date->first()->test_date->format('d/m/Y')); ?></span>
+                            </div>
+                            <div class="box-tools">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="box-body no-padding">
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td>CMND</td>
+                                            <td>:</td>
+                                            <td><?php echo e($student->cmnd); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ngày Sinh</td>
+                                            <td>:</td>
+                                            <td><?php echo e($student->date_of_birth->format('d/m/Y')); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Giới tính</td>
+                                            <td>:</td>
+                                            <td><?php echo e($student->gender); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Môn thi</td>
+                                            <td>:</td>
+                                            <td><?php echo e($student->subject_list); ?></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+
             <!-- /.box-header -->
             <div class="box box-solid">
                 <div class="box-header with-border">

@@ -136,7 +136,7 @@ function show_lists_questions(data) {
 
     //THỜI GIAN
     //1 phút = 60000 ms
-    var time = data['time_start'][0]['time'];
+    var time = data['time_start'].time;
     document.getElementById("time").innerHTML = "Bắt đầu";
     var timetask = time * 60000;
     var today = new Date();

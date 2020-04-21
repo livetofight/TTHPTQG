@@ -308,9 +308,11 @@
         "language":{
           "lengthMenu":     "Hiển thị _MENU_ kết quả",
           "emptyTable":     "Vui lòng thêm dữ liệu !",
+          "zeroRecords":    "Không có kết quả tìm thấy !",
           "info":           "Hiển thị _START_ từ _END_ của _TOTAL_ kết quả",
           "infoEmpty":      "Hiển thị 0 đến 0 của 0 kết quả",
           "search":         "Tìm kiếm:",
+          "infoFiltered":   "(Lọc từ _MAX_ kết quả)",
           "paginate": {
               "first":      "Đầu",
               "last":       "Cuối",

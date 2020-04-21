@@ -6,37 +6,34 @@ use App\Http\Controllers\Controller;
 use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Services\TaskService;
-use App\Services\Question_listService;
+use App\Services\HomeService;
 use App\Services\StudentService;
 use Carbon\Carbon;
 
 class HomeController extends Controller
 {
-    private $taskService;
-    private $studentService;
-    public function __construct(
-        StudentService $studentService,
-        TaskService $taskService      
-    )
+    private $homeService;
+    public function __construct(HomeService $homeService)
     {
-        $this->studentService=$studentService;
-        $this->taskService = $taskService;
+        $this->homeService=$homeService;
     }
     public function index()
     {
         $today = today();
         $id = \Session::get('id');
-        $id_subject=$this->taskService->getSubject($today);
+        $id_subject=$this->homeService->getSubject($today);
         if($id==null){
             return redirect('/');
         }
-        if($id_subject->isEmpty()){
-            return view('client.error');
+        if($id_subject != null){
+            $data['student']=$this->homeService->findStudent($id);
+            $data['name_subject']=$this->homeService->getNameSubject($id_subject);
+            $data['subject']=$this->homeService->getNT($id_subject);
+            $data['date']=$this->homeService->getTest($today);
+            //dd($data);
+            return view('client.home.index',$data);
         }
-        $data['student']=$this->studentService->findStudent($id);
-        $data['name_subject']=$this->taskService->getNameSubject($id_subject);
-        return view('client.home.index',$data);
+        return view('client.error');
 
     }
 }

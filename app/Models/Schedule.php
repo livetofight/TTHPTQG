@@ -13,4 +13,9 @@ class Schedule extends Model
         'created_at',
         'updated_at'
     ];
+
+    protected $dates = [
+        'test_date',
+    ];
+
 }

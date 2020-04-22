@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 
 //admin route
+Route::get('/ad', 'Auth\LoginController@index');
+
 Route::group(['prefix'=>'/admin'], function(){
     Route::group([
         'middleware'=>['prevent-back-history','auth'],
@@ -46,14 +48,12 @@ Route::group(['prefix'=>'/admin'], function(){
         Route::get('/subject/delete/{id}', 'SubjectController@doDelete');
         Route::post('/subject/update','SubjectController@doUpdate');
     });
-    
+
     Route::group([
         'namespace'=>'Auth',
     ], function(){
 
-        Route::get('/', 'LoginController@index');
-
-        Route::get('/login', 'LoginController@getLogin');
+        Route::get('/login', 'LoginController@getLogin')->name('login');
 
         Route::post('/login', 'LoginController@postLogin');
 
@@ -69,10 +69,10 @@ Route::group(['namespace'=>'API\Client',],function(){
     Route::get('/task/time','TaskController@getTime');
 
     Route::get('/result','ExamController@index');
-    
+
     Route::get('/', 'LoginController@index');
 
-    Route::get('/login', 'LoginController@getLogin');
+    Route::get('/login', 'LoginController@getLogin')->middleware('access');
 
     Route::get('/logout', 'LoginController@getLogout');
 
@@ -80,6 +80,3 @@ Route::group(['namespace'=>'API\Client',],function(){
 
     Route::get('/home', 'HomeController@index');
 });
-
-
-

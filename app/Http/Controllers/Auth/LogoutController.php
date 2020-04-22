@@ -92,6 +92,6 @@ class LogoutController extends Controller
 	public function getLogout() {
         Session::flush();
 		Auth::logout();
-		return redirect('admin');
+		return redirect('/ad');
 	}
 }

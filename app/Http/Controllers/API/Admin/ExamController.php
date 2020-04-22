@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Exam;
 use Illuminate\Http\Request;
+use App\Services\ExamService;
 
 class ExamController extends Controller
 {
@@ -13,9 +14,17 @@ class ExamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    private $examService;
+
+    public function __construct(ExamService $examService)
+    {
+        $this->examService = $examService;
+    }
     public function index()
     {
-        //
+        $data['exam']=$this->examService->getListExam();
+        return view('admin.exam.exam',[ 'title' => 'Exams'], $data);
     }
 
     /**

@@ -67,8 +67,6 @@ Route::group(['namespace'=>'API\Client',],function(){
     Route::get('/task','TaskController@index');
     Route::get('/task/question','TaskController@getQuestion');
     Route::get('/task/time','TaskController@getTime');
-
-    Route::get('/result','ExamController@index');
     
     Route::get('/', 'LoginController@index');
 
@@ -79,7 +77,14 @@ Route::group(['namespace'=>'API\Client',],function(){
     Route::post('/login', 'LoginController@postLogin');
 
     Route::get('/home', 'HomeController@index');
+
+
+
+    Route::get('/result','ExamController@index');
+    Route::post('/result','ExamController@postdata');
 });
+
+// Route::get('/result', 'ResultController@index');
 
 
 

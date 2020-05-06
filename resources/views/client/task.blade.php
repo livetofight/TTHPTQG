@@ -78,7 +78,7 @@
                         </div>
 
                         <div class="box box-solid">
-                            <button type="button" class="btn btn-block btn-primary">Nộp bài</button>
+                            <button type="button" id="btnsubmit" class="btn btn-block btn-primary">Nộp bài</button>
                         </div>
                         <div class="row notification">
                             <div class="col-md-10">

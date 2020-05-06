@@ -1,3 +1,4 @@
+<div id="contentbody">
 @extends('client.share.master')
 @section('title','Xem lại bài làm')
 @section('content')
@@ -58,6 +59,14 @@
                                 <td>CMND: </td>
                                 <td>231164100</td>
                               </tr>
+                              <tr>
+                                <td>Số câu đúng: </td>
+                                <td>5/10</td>
+                              </tr>
+                              <tr>
+                                <td>Điểm: </td>
+                                <td>6.75</td>
+                              </tr>
                             </tbody></table>
                           </div>
                         </div>
@@ -70,3 +79,4 @@
     </div>
 </section>
 @endsection()
+</div>

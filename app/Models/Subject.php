@@ -27,7 +27,7 @@ class Subject extends Model
     }
 
     public function Exam() {
-        return $this->hasMany('App\Models\Exam','id_subject','id');
+        return $this->hasMany(Exam::class,'id_subject','id');
     }
-    
+
 }

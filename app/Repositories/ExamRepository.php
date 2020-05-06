@@ -39,6 +39,10 @@ class ExamRepository  extends EloquentRepository
                         ->first();
     }
 
+    public function getListExam(){
+        return Exam::whereYear('created_at',date('Y'))
+                        ->with('subject')
+                        ->get();
+    }
 
-    
 }

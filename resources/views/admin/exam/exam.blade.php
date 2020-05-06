@@ -29,22 +29,23 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Rendering engine</th>
-                                    <th>Browser</th>
-                                    <th>Platform(s)</th>
-                                    <th>Engine version</th>
-                                    <th>CSS grade</th>
+                                    <th>STT</th>
+                                    <th>Tên môn học</th>
+                                    <th>Số lượng câu hỏi</th>
+                                    <th>Thời gian thi</th>
+                                    <th>Thời gian tạo</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Trident</td>
-                                    <td>Internet Explorer 4.0
-                                    </td>
-                                    <td>Win 95+</td>
-                                    <td> 4</td>
-                                    <td>X</td>
-                                </tr>
+                                @foreach ($exam as $item)
+                                   <tr>
+                                        <td>{{$item->id}}</td>
+                                        <td>{{$item->subject->name}}</td>
+                                        <td>{{$item->number}}</td>
+                                        <td>{{$item->time}}</td>
+                                        <td>{{$item->created_at}}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

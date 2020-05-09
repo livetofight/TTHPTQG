@@ -31,11 +31,11 @@ class StudentController extends Controller
     }
 
 
-    public function import(Request $request) 
-    {  
+    public function import(Request $request)
+    {
         if($request->file('inputFile')){
             $file=$request->file('inputFile');
-            Excel::import(new StudentsImport, $file); 
+            Excel::import(new StudentsImport, $file);
             $result['status_value']=" Nhập File thành công";
             $result['status']=1;
         } else{
@@ -49,7 +49,7 @@ class StudentController extends Controller
         return Excel::download(new StudentsExport, 'students'.date('dmY').'.xlsx');
     }
 
-    
+
     public function detail($id){
         return view('admin.student.student-detail');
     }
@@ -84,7 +84,7 @@ class StudentController extends Controller
      */
     public function destroy(Student $Student)
     {
-        
+
     }
 
 

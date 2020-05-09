@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Exam;
 use Illuminate\Http\Request;
 use App\Services\ExamService;
+use App\Services\SubjectService;
 
 class ExamController extends Controller
 {
@@ -16,14 +17,17 @@ class ExamController extends Controller
      */
 
     private $examService;
+    private $subjectService;
 
-    public function __construct(ExamService $examService)
+    public function __construct(ExamService $examService, SubjectService $subjectService)
     {
         $this->examService = $examService;
+        $this->subjectService = $subjectService;
     }
     public function index()
     {
         $data['exam']=$this->examService->getListExam();
+        $data['subject'] = $this->subjectService->getListSubject();
         return view('admin.exam.exam',[ 'title' => 'Exams'], $data);
     }
 
@@ -34,7 +38,7 @@ class ExamController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -45,7 +49,17 @@ class ExamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id_subject = $request->input('subject_id');
+        $number = $request->input('number');
+        $time = $request->input('time');
+        // if($this->examService->createExam($id_subject, $number, $time)){
+        //     $result['status']=1;
+        // }
+        // else {
+        //     $result['status']=0;
+        // }
+        // echo json_encode($result);
+        $this->examService->createExam($id_subject, $number, $time);
     }
 
     /**
@@ -77,9 +91,25 @@ class ExamController extends Controller
      * @param  \App\Models\Exam  $Exam
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Exam $Exam)
+    public function update(Request $request)
     {
-        //
+        // $id_exam = $request->get('id_exam');
+        // $time = $request->get('time');
+        // if($this->examService->updateExam($id_exam, $time)){
+        //     $result['status']=1;
+        //     $result['id_exam']=$id_exam;
+        // }else{
+        //     $result['status']=0;
+        // }
+        // return json_encode($result);
+        if($this->examService->updateExam($request->id, $request->all())){
+            $result['status']=1;
+        //     $result['id_exam']=$id_exam;
+        }
+        else{
+            $result['status']=0;
+        }
+        return json_encode($result);
     }
 
     /**
@@ -88,8 +118,17 @@ class ExamController extends Controller
      * @param  \App\Models\Exam  $Exam
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Exam $Exam)
+    public function delete($id)
     {
-        //
+        //dd($this->examService->delete($id));
+        if($this->examService->delete($id)){
+            $result['status']=1;
+        }else{
+            $result['status']=0;
+        }
+        return json_encode($result);
+        // $exam = Exam::find($id);
+        // $exam->delete();
+        // return $exam;
     }
 }

@@ -15,15 +15,20 @@ class QuestionRepository  extends EloquentRepository
     {
         return \App\Models\Question::class;
     }
-
-    
-
-    
-
-    
-
+    public function getListID($id_subject){
+        return Question::where('id_subject', $id_subject)
+                                ->get('id')
+                                ->toArray();
+    }
 
 
 
-    
+
+
+
+
+
+
+
+
 }

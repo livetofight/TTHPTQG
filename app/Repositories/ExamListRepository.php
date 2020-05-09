@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\ExamList;
+use App\Models\Student;
 
 class ExamListRepository  extends EloquentRepository
 {
@@ -19,6 +20,10 @@ class ExamListRepository  extends EloquentRepository
                         ->whereIn('id_exam',$id_exam_array)
                         ->get(['id_exam'])
                         ->toArray();
-        
+
+    }
+    public function getStudent(){
+        return ExamList::with('student')
+                        ->get();
     }
 }

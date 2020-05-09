@@ -29,22 +29,21 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Rendering engine</th>
-                                    <th>Browser</th>
-                                    <th>Platform(s)</th>
-                                    <th>Engine version</th>
-                                    <th>CSS grade</th>
+                                    <th>STT</th>
+                                    <th>Mã đề thi</th>
+                                    <th>Tên học sinh</th>
+                                    <th>Công cụ</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Trident</td>
-                                    <td>Internet Explorer 4.0
-                                    </td>
-                                    <td>Win 95+</td>
-                                    <td> 4</td>
-                                    <td>X</td>
-                                </tr>
+                                @foreach ($examlist as $item)
+                                    <tr>
+                                        <td>{{$item->id}}</td>
+                                        <td>{{$item->id_exam}}</td>
+                                        <td>{{$item->student->fullname}}</td>
+                                        <td> 4</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

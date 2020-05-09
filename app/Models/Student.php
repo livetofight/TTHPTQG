@@ -10,7 +10,7 @@ class Student extends Model
     protected $fillable = [
         'username', 'fullname', 'password','cmnd','date_of_birth','gender','nation','id_school','address','subject_list','created_at'
     ];
-    
+
     protected $dates = [
         'date_of_birth',
         'created_at'

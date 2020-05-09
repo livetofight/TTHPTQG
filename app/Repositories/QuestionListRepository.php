@@ -18,7 +18,7 @@ class QuestionListRepository  extends EloquentRepository
         return \App\Models\QuestionList::class;
     }
 
-    
+
     public function findById_exam($id)
     {
         $results = $this->_model->all();
@@ -37,6 +37,13 @@ class QuestionListRepository  extends EloquentRepository
     {
        return QuestionList::whereIn('id_exam',$id_exam)
                                     ->with('question')
-                                    ->count();   
-    }  
+                                    ->count();
+    }
+
+    public function createExamDetail($id_exam, $id_question){
+        $questionList = new QuestionList();
+        $questionList->id_exam=$id_exam;
+        $questionList->id_question=$id_question;
+        $questionList->save();
+    }
 }

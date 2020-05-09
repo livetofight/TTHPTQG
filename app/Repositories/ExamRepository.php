@@ -40,9 +40,26 @@ class ExamRepository  extends EloquentRepository
     }
 
     public function getListExam(){
-        return Exam::whereYear('created_at',date('Y'))
-                        ->with('subject')
+        return Exam::with('subject')
                         ->get();
+    }
+
+    public function updateExam($id_exam, $time){
+        $exam=Exam::find($id_exam);
+        $exam->time=$time;
+        $exam->save();
+    }
+
+    public function getLastID(){
+        return Exam::orderBy('created_at', 'desc')->first()->id;
+    }
+
+    public function createExam($id_subject, $number, $time){
+        $exam = new Exam();
+        $exam->id_subject = $id_subject;
+        $exam->number = $number;
+        $exam->time = $time;
+        $exam->save();
     }
 
 }

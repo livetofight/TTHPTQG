@@ -91,7 +91,7 @@ $(document).ready(function(){
 
 
 function update(id){
-    baseUrl = window.location;
+    baseUrl = window.location.origin;
     var time = $("#"+id).html();
     console.log(time);
     if(time==''){

@@ -76,7 +76,7 @@
                                     <h3 class="box-title">
                                         <i class="fa fa-clock-o"></i> THỜI GIAN
                                     </h3>
-                                            <div countdown="" data-date="{{$over_time}}">
+                                            <div countdown="" data-date="{{$over_time}}" style="text-align: center">
                                                 <span data-hours="" class="text-red">00</span>
                                                 <span class="text-red">:</span>
                                                 <span data-minutes="" class="text-red">00</span>

@@ -304,6 +304,7 @@
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
 <script src="<?php echo e(asset ('admin/dist/js/student.js ')); ?>"></script>
+<script src="<?php echo e(asset ('admin/dist/js/exam.js')); ?>"></script>
 <script>
     //Date picker
     $('#datepicker').datepicker({

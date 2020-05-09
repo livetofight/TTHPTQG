@@ -177,9 +177,3 @@ $(document).ready(function() {
         }
     });
 });
-// timesup(time); {
-//     var timeup = time * 1000;
-//     var today = new Date();
-//     var gettime = today.getTime();
-//     timesetup = gettime + timetask;
-// }

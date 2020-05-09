@@ -16,7 +16,7 @@ class TaskController extends Controller
     private $taskService;
     private $examService;
     var $data=array();
-    var $page_size=2;
+    var $page_size=3;
     protected $url;
 
     public function __construct(TaskService $taskService,ExamService $examService){
@@ -26,9 +26,6 @@ class TaskController extends Controller
     }
     public function index(){
         $id = \Session::get('id');
-        if($id==null){
-            return redirect('/');
-        }
         $today = today();
         $subject=$this->taskService->getidSubject($today);
         $subjectTime=$this->examService->getExamTime($subject);

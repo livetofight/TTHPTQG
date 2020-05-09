@@ -26,26 +26,40 @@ class HomeService
         $this->examRepository = $examRepository;
     }
 
-    public function getSubject($date){
-        return $this->scheduleRepository->getSubject($date);
+
+
+    //client
+    
+    // public function getIdSubject(){
+    //     return $this->scheduleRepository->getSubject();
+    // }
+
+    public function getIdSubject(){
+        return $this->scheduleRepository->getIdSubject();
     }
 
     public function findStudent($id){
         return $this->studentRepository->find($id);  
     }
 
-    public function getNameSubject($id_subject){
-        return $this->subjectRepository->find($id_subject);
+    public function getSubject($id){
+        return $this->subjectRepository->find($id);
     }
 
-    public function getNT($id_subject){
-        return $this->examRepository->getNT($id_subject);
+    //lay ra ma mon thi
+    public function findStudentSubject($id){
+        return $this->studentRepository->findStudentSubject($id);
     }
 
-    public function getTest($date){
-        return $this->scheduleRepository->getTest($date);
+    //kiem tra xem hoc sinh co thi mon nay k
+    public function checksubject($id_subject, $id_array){
+        return $this->studentRepository->checksubject($id_subject, $id_array);
     }
-
+    
+    //tat ca mon thi hien ten cua hs
+    public function findArraySubject($id){
+        return $this->subjectRepository->findArraySubject($id);
+    }
     
 
 }

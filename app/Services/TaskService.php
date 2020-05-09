@@ -34,8 +34,8 @@ class TaskService
         $this->studentRepository=$studentRepository;
     }
 
-    public function getSubject($date){
-        return $this->scheduleRepository->getSubject($date);
+    public function getIdSubject(){
+        return $this->scheduleRepository->getIdSubject();
     }
 
     public function getIdExamArray($id_subject){

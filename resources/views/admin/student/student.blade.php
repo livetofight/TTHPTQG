@@ -64,9 +64,9 @@
                                 <th>CMND</th>
                                 <th>Giới tính</th>
                                 <th>Dân tộc</th>
-                                <th>Mã trường</th>
+                                {{-- <th>Mã trường</th> --}}
                                 <th>Địa chỉ</th>
-                                <th>Môn Thi</th>
+                                {{-- <th>Môn Thi</th> --}}
                                 <th>Công cụ</th>
                             </tr>
                         </thead>
@@ -79,13 +79,14 @@
                                     <td>{{ $item->cmnd}}</td>
                                     <td>{{ $item->gender}}</td>
                                     <td>{{ $item->nation}}</td>
-                                    <td>{{ $item->id_school}}</td>
+                                    {{-- <td>{{ $item->id_school}}</td> --}}
                                     <td>{{ $item->address}}</td>
-                                    <td>{{ $item->subject_list}} </td>
+                                    {{-- <td>{{ $item->subject_list}} </td> --}}
                                     <td>
-                                    <a href="{{url('admin/student/' .$item->id )}}" data-id={{ $item->id}}><i title="Sửa" class="fa fa-pencil-square-o" style="margin-right: 5px;margin-left: 5px; color: darkred;"></i></a>
-                                        @if ($item['isActive']==1) <i title="Đã Thi" class="fa fa-eye"> </i>
-                                        @else <i title="Chưa Thi" class="fa fa-eye-slash"> </i>
+                                    <a href="{{url('admin/student/' .$item->id )}}"><i title="Sửa" class="fa fa-pencil-square-o" style="margin-right: 5px;margin-left: 5px; color: darkred;"></i></a>
+                                        @if ($item['isActive']==1) 
+                                        <i title="Đã Thi" class="btn-isActive fa fa-eye "data-id={{ $item->id}} > </i>
+                                        @else <i title="Chưa Thi" class="btn-isActive fa fa-eye-slash" data-id={{ $item->id}} > </i>
                                         @endif
                                     </td>
                                 </tr>

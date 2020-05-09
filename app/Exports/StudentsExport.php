@@ -15,8 +15,6 @@ class StudentsExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
 {
 
     use Exportable;
-
-    protected $id_school;
     
     // public function __construct(string $id_school)
     // {
@@ -31,8 +29,7 @@ class StudentsExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
         foreach (Student::whereYear('created_at',date('Y'))
                         ->get(['username','password','fullname',
                         'cmnd','date_of_birth','gender','nation',
-                        'id_school','address','subject_list',
-                        'created_at']) as $row => $value) {
+                        'address','created_at']) as $row => $value) {
             $student[] = array(
                 '0' => $row + 1,
                 '1' => $value->username,
@@ -42,9 +39,9 @@ class StudentsExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
                 '5' => $value->date_of_birth->format('d/m/Y'),
                 '6' => $value->gender,
                 '7' => $value->nation,
-                '8' => $value->id_school,
+                //'8' => $value->id_school,
                 '9' => $value->address,
-                '10' => $value->subject_list,
+                //'10' => $value->subject_list,
                 '11' => $value->created_at->format('d/m/Y H:m:s'),
             );
         }
@@ -73,12 +70,7 @@ class StudentsExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
 
         return [
             BeforeSheet::class  => function(BeforeSheet $event)  use($normal_style) {
-                $event->sheet->setCellValue('A1','SỞ GIÁO DỤC VÀ ĐÀO TẠO TỈNH BÌNH ĐỊNH');
-                $event->sheet->setCellValue('A2','TRƯỜNG THPT LƯƠNG THẾ VINH');
-                $event->sheet->setCellValue('G1','CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM');
-                $event->sheet->setCellValue('G2','Độc lập - Tự do - Hạnh phúc');
-                $event->sheet->setCellValue('E4','DANH SÁCH THI THPT QUỐC GIA');
-                $event->sheet->setCellValue('A5','');
+                
             },
 
             AfterSheet::class    => function(AfterSheet $event) use($normal_style) {
@@ -101,6 +93,38 @@ class StudentsExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
                         ),
                     ),
                 );
+                
+                $event->sheet->getDelegate()->mergeCells('A1:L1');
+
+                $event->sheet->getDelegate()->row(1, function ($row) {
+                    $row->setFontFamily('Comic Sans MS');
+                    $row->setFontSize(30);
+                });
+
+                $event->sheet->getDelegate()->row(1, array('Some big header here'));
+
+                // second row styling and writing content
+                $event->sheet->getDelegate()->row(2, function ($row) {
+
+                    // call cell manipulation methods
+                    $row->getDelegate()->setFontFamily('Comic Sans MS');
+                    $row->getDelegate()->setFontSize(15);
+                    $row->getDelegate()->setFontWeight('bold');
+
+                });
+
+                 $event->$sheet->row(2, array('Something else here'));
+
+        // // getting data to display - in my case only one record
+        // $event->$users = User::get()->toArray();
+
+        // // setting column names for data - you can of course set it manually
+        // $sheet->appendRow(array_keys($users[0])); // column names
+
+        // // getting last row number (the one we already filled and setting it to bold
+        // $sheet->row($sheet->getHighestRow(), function ($row) {
+        //     $row->setFontWeight('bold');
+        // });
                 //$worksheet->getParent()->getDefaultStyle()->applyFromArray($styleArray);
                 //$event->sheet->applyFromArray($styleArray);
             },

@@ -21,11 +21,10 @@ function show_lists_questions(data) {
     //DANH SÁCH CÂU HỎI
     let list = $('#list_question');
     list.empty();
-    let j = 0;
     if (data['total_record'] == 0) {
-        list.appdend('<div class="callout callout-danger">' +
-            '<h4>Lỗi!</h4>' +
-            '<p>Chưa có dữ liệu !</p>' +
+        $('#error_message').append('<div class="callout callout-danger">' +
+            '<h4>Chưa có đề thi!</h4>' +
+            '<p>Vui lòng liên hệ với cán bộ coi thi !</p>' +
             '</div>');
     } else {
         for (let i = 0; i < data['total_record']; i++) {
@@ -51,169 +50,199 @@ function show_lists_questions(data) {
             list.append(box);
 
         }
-    }
 
-    //STUDENT
 
-    let student = $('#student');
-    let timestudent = $('#timestudent');
-    student.empty();
-    timestudent.empty();
-    timestudent.append('<div class="box-header with-border">' +
-        '<h3 class="box-title">' +
-        '<i class="fa fa-clock-o"></i> THỜI GIAN' +
-        '</h3>' +
-        '<p class="text-red" id="time">2:00</p>' +
-        '</div>');
-    let box_body = $('<div class="box-body"></div>')
-    let box_solid = $('<div class="box box-solid"></div>');
-    let no_padding = $('<div class="box-body no-padding"></div>');
-    let table_stu = $('<table class="table table-striped"></table>');
-    let tbodystu = $('<tbody></tbody>');
+        //STUDENT
+        let student = $('#student');
+        let box_student = $('<div class="box box-default color-palette-box">')
+            //let student = $('#student');
+            //let timestudent = $('#timestudent');
+        student.empty();
+        //timestudent.empty();
+        box_student.append('<div class="box-header with-border">' +
+            '<h3 class="box-title">' +
+            '<i class="fa fa-clock-o"></i> THỜI GIAN' +
+            '</h3>' +
+            '<p class="text-red" id="time">2:00</p>' +
+            '</div>');
+        let box_body = $('<div class="box-body"></div>')
+        let box_solid = $('<div class="box box-solid"></div>');
+        let no_padding = $('<div class="box-body no-padding"></div>');
+        let table_stu = $('<table class="table table-striped"></table>');
+        let tbodystu = $('<tbody></tbody>');
 
-    tbodystu.append('<tr>' +
-        '<th>Tên: </th>' +
-        '<th>' + data['student'].fullname + '</th>' +
-        '</tr>');
-    tbodystu.append('<tr>' +
-        '<td>SBD: </td>' +
-        '<td>' + data['student'].username + '</td>' +
-        '</tr>');
-    tbodystu.append('<tr>' +
-        '<td>CMND: </td>' +
-        '<td>' + data['student'].cmnd + '</td>' +
-        '</tr>');
-    table_stu.append(tbodystu);
-    no_padding.append(table_stu);
-    box_solid.append(no_padding);
-    box_body.append(box_solid);
-    student.append(box_body);
+        tbodystu.append('<tr>' +
+            '<th>Tên: </th>' +
+            '<th>' + data['student'].fullname + '</th>' +
+            '</tr>');
+        tbodystu.append('<tr>' +
+            '<td>SBD: </td>' +
+            '<td>' + data['student'].username + '</td>' +
+            '</tr>');
+        tbodystu.append('<tr>' +
+            '<td>CMND: </td>' +
+            '<td>' + data['student'].cmnd + '</td>' +
+            '</tr>');
+        table_stu.append(tbodystu);
+        no_padding.append(table_stu);
+        box_solid.append(no_padding);
+        box_body.append(box_solid);
+        box_student.append(box_body);
+        student.append(box_student);
 
-    //SỐ CÂU HỎI
-    let number_question = $('#list_number');
-    number_question.empty();
-    let box = $('<div class="box box-solid"></div>')
-    let table = $('<table class="table table-condensed"></table>');
-    let tbody = $('<tbody></tbody>');
-    let n = 0;
-    let m = 0;
-    if (data['total_record'] < 10) {
-        let tr = $('<tr></tr>');
-        for (let i = 0; i < data['total_record']; i++) {
-            n += 1;
-            tr.append('<th><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 2) + ')">' + n + '</span></th>');
-        }
-        tbody.append(tr);
-    } else {
-        for (let i = 0; i < data['total_record']; i += 10) {
+        //SỐ CÂU HỎI
+        let number_question = $('#list_number');
+        number_question.empty();
+        let box = $('<div class="box box-solid"></div>')
+        let table = $('<table class="table table-condensed"></table>');
+        let tbody = $('<tbody></tbody>');
+        let n = 0;
+        let m = 0;
+        if (data['total_record'] < 10) {
             let tr = $('<tr></tr>');
-            if (n == data['total_record']) {
-                break;
-            };
-            for (let j = 0; j < 10; j++) {
+            for (let i = 0; i < data['total_record']; i++) {
                 n += 1;
-                if (n < 10) {
-                    tr.append('<th><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 2) + ')">0' + n + '</span></th>');
-                } else {
-                    tr.append('<th><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 2) + ')">' + n + '</span></th>');
-                }
+                tr.append('<th><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 2) + ')">' + n + '</span></th>');
             }
             tbody.append(tr);
-            m = data['total_record'] - n;
-            if (m - 10 < 0) {
-                let tr2 = $('<tr></tr>');
-                for (let h = 0; h < m; h++) {
+        } else {
+            for (let i = 0; i < data['total_record']; i += 10) {
+                let tr = $('<tr></tr>');
+                if (n == data['total_record']) {
+                    break;
+                };
+                for (let j = 0; j < 10; j++) {
                     n += 1;
-                    tr2.append('<th><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 2) + ')">' + n + '</span></th>');
+                    if (n < 10) {
+                        tr.append('<th><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 2) + ')">0' + n + '</span></th>');
+                    } else {
+                        tr.append('<th><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 2) + ')">' + n + '</span></th>');
+                    }
                 }
-                tbody.append(tr2);
+                tbody.append(tr);
+                m = data['total_record'] - n;
+                if (m - 10 < 0) {
+                    let tr2 = $('<tr></tr>');
+                    for (let h = 0; h < m; h++) {
+                        n += 1;
+                        tr2.append('<th><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 2) + ')">' + n + '</span></th>');
+                    }
+                    tbody.append(tr2);
+                }
             }
         }
+        table.append(tbody);
+        box.append(table);
+        number_question.append(box);
+        number_question.append('<div class="box box-solid">' +
+            '<button type="button" class="btn btn-block btn-primary">Nộp bài</button>' +
+            '</div>')
+
+        //THỜI GIAN
+        //1 phút = 60000 ms
+        var time = data['time_start'].time;
+        document.getElementById("time").innerHTML = "Bắt đầu";
+        var timetask = time * 60000;
+        var today = new Date();
+        var gettime = today.getTime();
+
+        timesetup = gettime + timetask;
+
+        // cập nhập thời gian sau mỗi 1 giây
+        var x = setInterval(function() {
+
+            var now = new Date().getTime();
+            // Lấy số thời gian chênh lệch
+            var distance = timesetup - now;
+
+            // Tính toán số  giờ, phút, giây từ thời gian chênh lệch
+            var hours = Math.floor(distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (hours < 10) {
+                hours = "0" + hours;
+            }
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+            if (seconds < 10) {
+                seconds = "0" + seconds;
+            }
+            // HIển thị chuỗi thời gian trong thẻ p
+            document.getElementById("time").innerHTML = hours + ":" + minutes + ":" + seconds;
+
+            // Nếu thời gian kết thúc, hiển thị chuỗi thông báo
+            if (distance <= 60000) {
+                $('#notification').append('<div class="row notification">' +
+                    '<div class="col-md-10">' +
+                    '<div class="box box-danger direct-chat direct-chat-danger">' +
+                    '<div class="box-header with-border">' +
+                    '<h3 class="box-title">Thông báo</h3>' +
+                    '<div class="box-tools pull-right">' +
+                    '<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="box-body">' +
+                    '<div class="direct-chat-messages">' +
+                    '<div class="direct-chat-msg">' +
+                    '<div class="direct-chat-msg right">' +
+                    '<img class="direct-chat-img" src="../client/upload/logo.png" alt="Message User Image"><!-- /.direct-chat-img -->' +
+                    '<div class="direct-chat-text">' +
+                    ' Hãy kiểm tra lại bài, bạn còn 1 phút để nộp bài !' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>')
+
+            }
+            if (distance <= 30000) {
+                $('.notification').addClass('hidden');
+            }
+            if (distance <= 1) {
+                clearInterval(x);
+                alert("Hết giờ ");
+                document.getElementById("time").innerHTML = "Hết giờ";
+            }
+        }, 1000);
+
+
+        //PHÂN TRANG
+        var show_item_page = data['page_size'];
+        var number_of_items = data['total_record'];
+        var number_of_pages = Math.ceil(number_of_items / show_item_page);
+        $('#current_page').val(0);
+        $('#show_item_page').val(show_item_page);
+        $('#number_of_pages').val(number_of_pages);
+        let page_navigation = $('#page_navigation');
+        let box_footer = $('<div class="box-footer clearfix"></div>')
+        page_navigation.empty();
+        let ul = $('<ul class="pagination pagination-sm no-margin"></ul>')
+        ul.append('<li><a class="previous_link" href="javascript:previous();">&laquo;</a></li>');
+        var current_link = 0;
+        while (number_of_pages > current_link) {
+            ul.append('<li><a class="page_link" href="javascript:go_to_page(' + current_link + ')" longdesc="' + current_link + '">' + (current_link + 1) + '</a></li>');
+            current_link++;
+        }
+        ul.append('<li><a class="next_link" href="javascript:next();">&raquo;</a></li>');
+        box_footer.append(ul);
+        page_navigation.append(box_footer);
+
+        //css active trang đang được chọn 
+        $('#page_navigation .page_link:first').addClass('active_page');
+
+        $('.previous_link').addClass('disabled');
+
+        //ẩn phần tử trong list_question
+        $('#list_question').children().css('display', 'none');
+
+        //hiển thị các phần tử từ 0 đến show_item_page không bao gồm show_item_page (slice)
+        $('#list_question').children().slice(0, show_item_page).css('display', 'block');
     }
-    table.append(tbody);
-    box.append(table);
-    number_question.append(box);
-
-    //THỜI GIAN
-    //1 phút = 60000 ms
-    var time = data['time_start'].time;
-    document.getElementById("time").innerHTML = "Bắt đầu";
-    var timetask = time * 60000;
-    var today = new Date();
-    var gettime = today.getTime();
-
-    timesetup = gettime + timetask;
-
-    // cập nhập thời gian sau mỗi 1 giây
-    var x = setInterval(function() {
-
-        var now = new Date().getTime();
-        // Lấy số thời gian chênh lệch
-        var distance = timesetup - now;
-
-        // Tính toán số  giờ, phút, giây từ thời gian chênh lệch
-        var hours = Math.floor(distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        if (hours < 10) {
-            hours = "0" + hours;
-        }
-        if (minutes < 10) {
-            minutes = "0" + minutes;
-        }
-        if (seconds < 10) {
-            seconds = "0" + seconds;
-        }
-        // HIển thị chuỗi thời gian trong thẻ p
-        document.getElementById("time").innerHTML = hours + ":" + minutes + ":" + seconds;
-
-        // Nếu thời gian kết thúc, hiển thị chuỗi thông báo
-        if (distance <= 60000) {
-            $('.notification').addClass('show');
-            $('.blurred-background').addClass('show')
-        }
-        if (distance <= 30000) {
-            $('.notification').addClass('hidden');
-        }
-        if (distance <= 1) {
-            clearInterval(x);
-            alert("Hết giờ ");
-            document.getElementById("time").innerHTML = "Hết giờ";
-        }
-    }, 1000);
-
-
-    //PHÂN TRANG
-    var show_item_page = data['page_size'];
-    var number_of_items = data['total_record'];
-    var number_of_pages = Math.ceil(number_of_items / show_item_page);
-    $('#current_page').val(0);
-    $('#show_item_page').val(show_item_page);
-    $('#number_of_pages').val(number_of_pages);
-    let page_navigation = $('#page_navigation');
-    page_navigation.empty();
-    let ul = $('<ul class="pagination pagination-sm no-margin"></ul>')
-    ul.append('<li><a class="previous_link" href="javascript:previous();">&laquo;</a></li>');
-    var current_link = 0;
-    while (number_of_pages > current_link) {
-        ul.append('<li><a class="page_link" href="javascript:go_to_page(' + current_link + ')" longdesc="' + current_link + '">' + (current_link + 1) + '</a></li>');
-        current_link++;
-    }
-    ul.append('<li><a class="next_link" href="javascript:next();">&raquo;</a></li>');
-
-    page_navigation.append(ul);
-
-    //css active trang đang được chọn 
-    $('#page_navigation .page_link:first').addClass('active_page');
-
-    $('.previous_link').addClass('disabled');
-
-    //ẩn phần tử trong list_question
-    $('#list_question').children().css('display', 'none');
-
-    //hiển thị các phần tử từ 0 đến show_item_page không bao gồm show_item_page (slice)
-    $('#list_question').children().slice(0, show_item_page).css('display', 'block');
 }
 //Pagination JS
 function previous() {

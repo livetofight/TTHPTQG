@@ -14,8 +14,6 @@
   <link rel="stylesheet" href="{{ asset ('admin/bower_components/font-awesome/css/font-awesome.min.css ') }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{ asset ('admin/bower_components/Ionicons/css/ionicons.min.css ') }}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset ('admin/dist/css/AdminLTE.min.css ') }}">
   <link rel="stylesheet" href="{{ asset ('admin/dist/css/admin.css ') }}">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
@@ -30,9 +28,12 @@
   <link rel="stylesheet" href="{{ asset ('admin/bower_components/bootstrap-daterangepicker/daterangepicker.css ') }}">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{ asset ('admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css ') }}">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="{{ asset ('admin/plugins/iCheck/square/blue.css')}}">
-
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{{ asset ('admin/plugins/iCheck/square/blue.css')}}">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="{{ asset ('admin/bower_components/select2/dist/css/select2.min.css')}}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ asset ('admin/dist/css/AdminLTE.min.css ') }}">
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -295,6 +296,8 @@
 <script src="{{ asset ('admin/dist/js/demo.js') }}"></script>
 <!-- iCheck -->
 <script src="{{ asset ('admin/plugins/iCheck/icheck.min.js')}}"></script>
+<!-- Select2 -->
+<script src="{{ asset ('admin/bower_components/select2/dist/js/select2.full.min.js')}}"></script>
 <!-- page script -->
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
@@ -302,6 +305,11 @@
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
 <script src="{{ asset ('admin/dist/js/student.js ') }}"></script>
 <script>
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true,
+      format: 'dd/mm/yyyy'
+    })
     $(function() {
       $('#example2').DataTable()
       $('#example1').DataTable({
@@ -326,6 +334,8 @@
         radioClass: 'iradio_square-blue',
         increaseArea: '20%' /* optional */
       });
+      //Initialize Select2 Elements
+    $('.select2').select2()
     })
 </script>
 

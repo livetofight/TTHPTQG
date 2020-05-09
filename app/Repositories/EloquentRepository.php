@@ -76,6 +76,7 @@ abstract class EloquentRepository implements RepositoryInterface
     {
         $result = $this->find($id);
         if ($result) {
+            $result->updated_at=now();
             $result->update($attributes);
             return $result;
         }

@@ -14,21 +14,13 @@ class ScheduleRepository  extends EloquentRepository
     {
         return Schedule::class;
     }
-
-    public function getSubject($date)
+    
+    public function getIdSubject()
     {
-        $date->format('Y-m-d');
-        return Schedule::whereDate('test_date',$date)
-                        ->get('id_subject')
-                        ->toArray();
+        $schedule = Schedule::whereDate('test_date',now());
+        //dd($schedule);
+        if(now()>'12:00') $sign='>';
+        else $sign='<';
+        return $schedule->where('test_date',$sign,\Carbon\Carbon::parse('12:00'))->value('id_subject');
     }
-
-    public function getTest($date)
-    {
-        $date->format('Y-m-d');
-        return Schedule::whereDate('test_date',$date)
-                        ->get();
-    }
-
-
 }

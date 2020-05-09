@@ -41,6 +41,8 @@ Route::group(['prefix'=>'/admin'], function(){
         Route::post('/student/import', 'StudentController@import');
         Route::get('/student/export', 'StudentController@export');
         Route::get('/student/{id}', 'StudentController@detail');
+        Route::post('/student/changeactive', 'StudentController@changeActive');
+        Route::post('/student/update', 'StudentController@update');
 
         Route::get('/question', 'QuestionController@index');
         Route::get('/question/addque', 'QuestionController@add');
@@ -88,4 +90,14 @@ Route::group(['namespace'=>'API\Client',],function(){
     Route::post('/login', 'LoginController@postLogin');
 
     Route::get('/home', 'HomeController@index');
+
+
+
+    Route::get('/result','ExamController@index')->name('abc');
+    Route::post('/result','ExamController@postdata');
 });
+
+// Route::get('/result', 'ResultController@index');
+
+
+

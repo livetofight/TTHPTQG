@@ -26,17 +26,17 @@ class TaskController extends Controller
         if($id==null){
             return redirect('/');
         }
-        $today = today();
-        $subject=$this->taskService->getSubject($today);
-        if($subject==null){
-            return view('client.erorr',[ 'title' => 'Chưa đến ngày THI']);
+        $id_subject=$this->taskService->getIdSubject();
+        if($id_subject==null){
+            $notification['title']='Chưa đến ngày thi';
+            $notification['text']='Vui lòng quay trở lại trong thời gian thi.';
+            return view('client.error',[ 'title' => 'Chưa đến ngày thi'],$notification);
         } else return view('client.task');
     }
     
     public function getQuestion(){
-        $today = today();
         $id_student = \Session::get('id');
-        $id_subject=$this->taskService->getSubject($today);
+        $id_subject=$this->taskService->getIdSubject();
         $id_exam_array=$this->taskService->getIdExamArray($id_subject);
         $id_exam=$this->taskService->getIdExam($id_student,$id_exam_array);
         $data=$this->taskService->getQuestion($id_exam);
@@ -45,5 +45,6 @@ class TaskController extends Controller
         $data['page_size']=$this->page_size;
         $data['time_start']=$this->taskService->getTimeSubject($id_subject);
         echo json_encode($data);
+        
     }
 }

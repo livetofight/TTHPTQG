@@ -3,7 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Exam;
+use App\Models\Schedule;
 class Subject extends Model
 {
     public $timestamps = FALSE;
@@ -14,6 +15,10 @@ class Subject extends Model
         'id', 'name', 'created_at', 'updated_at',
     ];
 
+    /**
+     * Get the phone subject associated with the schedule.
+     */
+
     public function question() {
         return $this->hasMany('App\Models\Question','id_subject','id');
     }
@@ -23,11 +28,18 @@ class Subject extends Model
     }
 
     public function examList() {
-        return $this->hasMany('App\Models\Exam_list','id_subject','id');
+        return $this->hasMany('App\Models\ExamList','id_subject','id');
     }
 
-    public function Exam() {
-        return $this->hasMany(Exam::class,'id_subject','id');
+    //home
+
+    public function exam() {
+        return $this->hasMany(Exam::class,'id_subject');
+    }
+
+    public function schedule()
+    {
+        return $this->hasOne(Schedule::class,'id_subject');
     }
 
 }

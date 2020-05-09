@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Repositories;
-
 use App\Models\QuestionList;
 use App\Models\Question;
 use Illuminate\Database\Eloquent\Model;
@@ -45,5 +44,15 @@ class QuestionListRepository  extends EloquentRepository
         $questionList->id_exam=$id_exam;
         $questionList->id_question=$id_question;
         $questionList->save();
+    }
+
+
+    public function get_list_question($id_exam){
+        $arr= QuestionList::where('id_exam',$id_exam)->get();
+        $item = [];
+        foreach ($arr as $items){
+            $item[]= $items->question;
+        }
+        return $item;
     }
 }

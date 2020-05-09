@@ -76,7 +76,7 @@ abstract class EloquentRepository implements RepositoryInterface
     {
         $result = $this->find($id);
         if ($result) {
-            $student->updated_at=now();
+            $result->updated_at=now();
             $result->update($attributes);
             return $result;
         }
@@ -92,9 +92,12 @@ abstract class EloquentRepository implements RepositoryInterface
      */
     public function delete($id)
     {
+
         $result = $this->find($id);
+        //var_dump($id);
         if ($result) {
             $result->delete();
+            //var_dump($result);
             return true;
         }
 

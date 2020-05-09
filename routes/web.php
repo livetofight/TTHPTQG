@@ -31,8 +31,11 @@ Route::group(['prefix'=>'/admin'], function(){
         Route::get('/question/export','ExportExcelController@exportQuestion')->name('exportQuestion');
 
         Route::get('/exam', 'ExamController@index');
+        Route::post('/exam/createexam', 'ExamController@store');
+        Route::post('/exam/editexam', 'ExamController@update');
+        Route::get('/exam/deleteexam/{id}', 'ExamController@delete');
 
-        Route::get('/listexam', 'ExamController@listexam');
+        Route::get('/listexam', 'ExamListController@index');
 
         Route::get('/student', 'StudentController@index');
         Route::post('/student/import', 'StudentController@import');
@@ -60,6 +63,12 @@ Route::group(['prefix'=>'/admin'], function(){
         Route::post('/login', 'LoginController@postLogin');
 
         Route::get('/logout', 'LogoutController@getLogout');
+
+        Route::get('/profile', 'ProfileController@index');
+
+        Route::get('/password/reset/{token?}', 'ResetPasswordController@');
+
+        Route::post('/forgotpassword', 'ResetPasswordController@resetpassword');
     });
 });
 
@@ -86,9 +95,12 @@ Route::group([
 
     Route::get('/home', 'HomeController@index');
 
-
+    Route::get('/resetcd', 'TaskController@resetcd');
 
     Route::get('/result','ExamController@index');
+
+    Route::get('/result','ExamController@index')->name('abc');
+
     Route::post('/result','ExamController@postdata');
 });
 

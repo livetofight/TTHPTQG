@@ -159,7 +159,7 @@
         <div id="error_message">
 
         </div>
-    <form role="form" method="POST" >
+        <form role="form" method="POST" >
             <div class="form-group has-feedback">
                 {{-- <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> --}}
                 <input class="form-control" placeholder="Username" name="username" id="username" type="text" value="{{ old('username') }}" autofocus>
@@ -170,6 +170,9 @@
                 <input class="form-control" placeholder="Mật khẩu" name="password" id="password" type="password" value="">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
+            <div>
+                <a href="../admin/forgotpassword" class="btn btn-default btn-flat">ForgotPassword</a>
+            <div>
             <button class="btn btn-lg btn-primary btn-block" id="btn_login" >Đăng nhập</button>
             {!! csrf_field() !!}
         </form>

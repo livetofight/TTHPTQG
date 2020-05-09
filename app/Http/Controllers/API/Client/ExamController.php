@@ -31,26 +31,17 @@ class ExamController extends Controller
     }
 
     public function postdata(Request $request){
-
-
-
-        $id_exam=[135,1];
-        $data=$this->taskService->getQuestion($id_exam);
-
-
-        
-        // $today = today();
-        // $id_student = \Session::get('id');
-        // $id_subject=$this->taskService->getSubject($today);
-        // $id_exam_array=$this->taskService->getIdExamArray($id_subject);
-        // $id_exam=$this->taskService->getIdExam($id_student,$id_exam_array);
-        
-        // $data['student']=$this->taskService->findStudent($id_student);
-        //$data['total_record']=$this->taskService->getCountListQuestion($id_exam);
-
-
-        $ans_selected = $request->all();
-
-        return $data;
-    }
+        $numcorrect = 0;
+        $selected_ans= $request->arr_selected;
+        $id_exam=135;
+        $data=$this->taskService->getlistquestionbyidexam($id_exam);
+        for ($i=0; $i<count($selected_ans);$i++){
+            for ($j=0; $j<count($data);$j++){
+                if ($selected_ans[$i]['question']==$data[$j]['id'] && $selected_ans[$i]['selected']==$data[$j]['ans_correct']) $numcorrect++;
+            }   
+        }
+        //$returnHTML = view('client.result')->render();
+        return view('client.result')->render();
+        //return $numcorrect;
+    }   
 }

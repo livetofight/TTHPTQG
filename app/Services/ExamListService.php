@@ -13,9 +13,11 @@ class ExamListService
         $this->examListRepository = $examListRepository;
     }
 
-    
+    // public function getExamList(){
+    //     return $this->examListRepository->getAll();
+    // }
     public function getExamList()
     {
-        return $this->examListRepository->getAll();
+        return $this->examListRepository->getStudent();
     }
 }

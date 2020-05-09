@@ -1,3 +1,5 @@
+<div id="contentbody">
+
 <?php $__env->startSection('title','Xem lại bài làm'); ?>
 <?php $__env->startSection('content'); ?>
 <section class="content">
@@ -7,7 +9,7 @@
                     <div class="box-header with-border">
                         <i class="fa fa-question"></i>
                         <h3 class="box-title">
-                            <strong>Câu 1:</strong> 
+                            <strong>Câu 1:</strong>
                         </h3>
                         <span style="font-size: 16px">Content_2</span>
                     </div>
@@ -38,7 +40,7 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">
                         <i class="fa fa-clock-o"></i> THỜI GIAN HOÀN THÀNH
-                    </h3> 
+                    </h3>
                     <p class="text-red" id="time">01:52:12</p>
                 </div>
                 <div class="box-body">
@@ -57,16 +59,26 @@
                                 <td>CMND: </td>
                                 <td>231164100</td>
                               </tr>
+                              <tr>
+                                <td>Số câu đúng: </td>
+                                <td>5/10</td>
+                              </tr>
+                              <tr>
+                                <td>Điểm: </td>
+                                <td>6.75</td>
+                              </tr>
                             </tbody></table>
                           </div>
                         </div>
-                        
+
                       </div>
                     </div>
-                </div>    
+                </div>
             </div>
         </div>
     </div>
 </section>
 <?php $__env->stopSection(); ?>
+</div>
+
 <?php echo $__env->make('client.share.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\TTHPTQG\resources\views/client/result.blade.php ENDPATH**/ ?>

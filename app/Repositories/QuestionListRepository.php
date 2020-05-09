@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Repositories;
-
 use App\Models\QuestionList;
 use App\Models\Question;
 use Illuminate\Database\Eloquent\Model;
@@ -18,7 +17,7 @@ class QuestionListRepository  extends EloquentRepository
         return \App\Models\QuestionList::class;
     }
 
-    
+
     public function findById_exam($id)
     {
         $results = $this->_model->all();
@@ -37,6 +36,23 @@ class QuestionListRepository  extends EloquentRepository
     {
        return QuestionList::whereIn('id_exam',$id_exam)
                                     ->with('question')
-                                    ->count();   
-    }  
+                                    ->count();
+    }
+
+    public function createExamDetail($id_exam, $id_question){
+        $questionList = new QuestionList();
+        $questionList->id_exam=$id_exam;
+        $questionList->id_question=$id_question;
+        $questionList->save();
+    }
+
+
+    public function get_list_question($id_exam){
+        $arr= QuestionList::where('id_exam',$id_exam)->get();
+        $item = [];
+        foreach ($arr as $items){
+            $item[]= $items->question;
+        }
+        return $item;
+    }
 }

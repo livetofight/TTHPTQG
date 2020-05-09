@@ -30,7 +30,8 @@ class HomeController extends Controller
             $data['name_subject']=$this->homeService->getNameSubject($id_subject);
             $data['subject']=$this->homeService->getNT($id_subject);
             $data['date']=$this->homeService->getTest($today);
-            //dd($data);
+            //echo $data['subject'];
+            echo "anc";
             return view('client.home.index',$data);
         }
         return view('client.error');

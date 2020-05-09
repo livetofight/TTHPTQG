@@ -32,7 +32,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -88,7 +88,7 @@ class LoginController extends Controller
 
             if( Auth::attempt((array('username' => $username, 'password' => $password))))
             {
-                Request::session()->put('login', true);
+                //Request::session()->put('login', true);
                 $result['status']=1;
 
             } else {

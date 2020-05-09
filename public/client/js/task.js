@@ -1,5 +1,28 @@
 $(function() {
     get_list_questions();
+
+    $(document).on('click', '#btnsubmit', function(){
+        //window.location.href= "../result";
+        var arr_selected = JSON.parse(localStorage.getItem("allselected"));
+
+
+
+
+
+        //console.log(arr_selected);
+        
+        $.ajax({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "../result",
+            method: "POST",
+            data:{arr_selected:arr_selected},
+            success:function(data){
+               console.log(data);
+            }
+        });
+    });
 });
 async function get_list_questions(data) {
     let result;
@@ -16,20 +39,75 @@ async function get_list_questions(data) {
 
 }
 
-function show_lists_questions(data) {
 
+function check_selected(){
+    var num_selected = JSON.parse(localStorage.getItem("num_selected"));
+    if (num_selected !== null) {
+        for (let i=0;i<num_selected.length;i++){
+            if (num_selected[i]!==undefined){
+                $('.badge[longdesc=' + num_selected[i] + ']').removeClass('bg-light-blue').addClass('bg-yellow');
+            } 
+        }
+    }
+}
+
+
+function change_css(number_ques,asn_val,id_ques) {
+    var allselected = JSON.parse(localStorage.getItem("allselected")) || [];
+    var selected_ans= {question:id_ques , selected:asn_val};
+    for (let i=0 ; i<allselected.length ; i++){
+        if (allselected[i].question==id_ques) delete allselected[i];
+    }
+    allselected = allselected.filter(function(){return true;});
+
+    allselected.push(selected_ans);
+    localStorage.setItem("allselected",JSON.stringify(allselected));
+    //console.log(allselected);
+
+
+    var num_selected = JSON.parse(localStorage.getItem("num_selected")) || [];
+    for (let i=0 ; i<num_selected.length ; i++){
+        if (num_selected[i]==number_ques) delete num_selected[i];
+    }
+    num_selected = num_selected.filter(function(){return true;});
+    num_selected.push(number_ques);
+    localStorage.setItem("num_selected",JSON.stringify(num_selected));
+    console.log(num_selected);
+    $('.badge[longdesc=' + number_ques + ']').removeClass('bg-light-blue').addClass('bg-yellow');
+}
+
+function check_session(key,val){
+    var allselected = JSON.parse(localStorage.getItem("allselected"));
+    if (allselected !== null) {
+        for (let i=0;i<allselected.length;i++){
+            if (allselected[i].question==key && allselected[i].selected==val){
+                    return "checked";
+            } 
+        }
+    }
+    
+}
+
+
+function show_lists_questions(data) {
     //DANH SÁCH CÂU HỎI
     let list = $('#list_question');
     list.empty();
     if (data['total_record'] == 0) {
+<<<<<<< HEAD
         $('#error_message').append('<div class="callout callout-danger">' +
             '<h4>Chưa có đề thi!</h4>' +
             '<p>Vui lòng liên hệ với cán bộ coi thi !</p>' +
+=======
+        list.append('<div class="callout callout-danger">' +
+            '<h4>Lỗi!</h4>' +
+            '<p>Chưa có dữ liệu !</p>' +
+>>>>>>> 96521c663ed17912938078f5c90d9bf3aaba6ae1
             '</div>');
     } else {
         for (let i = 0; i < data['total_record']; i++) {
-            let number_question = i + 1
-            let box = $('<div class="box box-solid"></div>')
+            let number_question = i + 1;
+            let box = $('<div class="box box-solid"></div>');
             let box_header = $('<div class="box-header with-border"></div>');
             let box_body = $('<div class="box-body"></div>');
             let dl = $('<dl class="dl-horizontal id="ques_' + i + '"></dl>');
@@ -37,13 +115,13 @@ function show_lists_questions(data) {
             box_header.append('<h3 class="box-title"><strong>Câu ' + number_question + ':</strong> </h3>');
             box_header.append('<span style="font-size: 16px">' + data[i].question.question_content + '</span>');
             box.append(box_header);
-            dl.append('<dt><input type="radio" name="question_' + i + '" class="minimal" onclick="change_css(' + i + ')" >A.</dt>' +
+            dl.append('<dt><input type="radio" name="question_' + i + '" value="A" class="minimal" onclick="change_css(' + i + ',\'' +data[i].question.ans_1+ '\',\'' +data[i].question.id+ '\')" '+check_session(data[i].question.id,data[i].question.ans_1)+'>A.</dt>' +
                 '<dd>' + data[i].question.ans_1 + '.</dd>');
-            dl.append('<dt><input type="radio" name="question_' + i + '" class="minimal" onclick="change_css(' + i + ')" >B.</dt>' +
+            dl.append('<dt><input type="radio" name="question_' + i + '" value="B" class="minimal" onclick="change_css(' + i + ',\'' +data[i].question.ans_2+ '\',\'' +data[i].question.id+ '\')" '+check_session(data[i].question.id,data[i].question.ans_2)+'>B.</dt>' +
                 '<dd>' + data[i].question.ans_2 + '.</dd>');
-            dl.append('<dt><input type="radio" name="question_' + i + '" class="minimal" onclick="change_css(' + i + ')" >C.</dt>' +
+            dl.append('<dt><input type="radio" name="question_' + i + '" value="C" class="minimal" onclick="change_css(' + i + ',\'' +data[i].question.ans_3+ '\',\'' +data[i].question.id+ '\')" '+check_session(data[i].question.id,data[i].question.ans_3)+'>C.</dt>' +
                 '<dd>' + data[i].question.ans_3 + '.</dd>');
-            dl.append('<dt><input type="radio" name="question_' + i + '" class="minimal" onclick="change_css(' + i + ')" >D.</dt>' +
+            dl.append('<dt><input type="radio" name="question_' + i + '" value="D" class="minimal" onclick="change_css(' + i + ',\'' +data[i].question.ans_4+ '\',\'' +data[i].question.id+ '\')" '+check_session(data[i].question.id,data[i].question.ans_4)+'>D.</dt>' +
                 '<dd>' + data[i].question.ans_4 + '.</dd>');
             box_body.append(dl);
             box.append(box_body);
@@ -138,6 +216,7 @@ function show_lists_questions(data) {
             '<button type="button" class="btn btn-block btn-primary">Nộp bài</button>' +
             '</div>')
 
+<<<<<<< HEAD
         //THỜI GIAN
         //1 phút = 60000 ms
         var time = data['time_start'].time;
@@ -145,6 +224,17 @@ function show_lists_questions(data) {
         var timetask = time * 60000;
         var today = new Date();
         var gettime = today.getTime();
+=======
+    
+
+    //THỜI GIAN
+    //1 phút = 60000 ms
+    var time = data['time_start'].time;
+    document.getElementById("time").innerHTML = "Bắt đầu";
+    var timetask = time * 60000;
+    var today = new Date();
+    var gettime = today.getTime();
+>>>>>>> 96521c663ed17912938078f5c90d9bf3aaba6ae1
 
         timesetup = gettime + timetask;
 
@@ -240,9 +330,17 @@ function show_lists_questions(data) {
         //ẩn phần tử trong list_question
         $('#list_question').children().css('display', 'none');
 
+<<<<<<< HEAD
         //hiển thị các phần tử từ 0 đến show_item_page không bao gồm show_item_page (slice)
         $('#list_question').children().slice(0, show_item_page).css('display', 'block');
     }
+=======
+    //hiển thị các phần tử từ 0 đến show_item_page không bao gồm show_item_page (slice)
+    $('#list_question').children().slice(0, show_item_page).css('display', 'block');
+
+    //câu đã chọn
+    check_selected();
+>>>>>>> 96521c663ed17912938078f5c90d9bf3aaba6ae1
 }
 //Pagination JS
 function previous() {
@@ -284,6 +382,3 @@ function go_to_page(page_num) {
 
 }
 
-function change_css(number_ques) {
-    $('.badge[longdesc=' + number_ques + ']').removeClass('bg-light-blue').addClass('bg-yellow');
-}

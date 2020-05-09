@@ -32,7 +32,10 @@ class ExamService
     {
         return $this->examRepository->getAll();
     }
-
+    public function getExamTime($id_subject)
+    {
+        return $this->examRepository->getTimeSubject($id_subject);
+    }
     public function createExam( $id_subject, $number, $time){
         $this->examRepository->createExam($id_subject, $number, $time);
         $id_exam=$this->examRepository->getLastID();

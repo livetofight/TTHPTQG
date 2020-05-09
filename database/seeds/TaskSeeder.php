@@ -16,7 +16,7 @@ class TaskSeeder extends Seeder
         $answer = ['A', 'B', 'C', 'D'];
         for ($st = 0; $st < $so_task; $st++) {
             $task = Tasks::create([
-                'answer_seleted' => $answer[rand(0,3)],
+                'answer_selected' => $answer[rand(0,3)],
                 'id_exam' => $st+1,
                 'id_user' => $st+1,
                 'created_at' => now(),

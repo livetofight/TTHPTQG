@@ -24,7 +24,6 @@ class HomeController extends Controller
         if($id==null){
             return redirect('/');
         }
-<<<<<<< HEAD
         //lay mon thi
         $id_subject=$this->homeService->getIdSubject();
         if($id_subject == null){
@@ -44,16 +43,6 @@ class HomeController extends Controller
                 return view('client.error',$notification);
             }
             
-=======
-        if($id_subject != null){
-            $data['student']=$this->homeService->findStudent($id);
-            $data['name_subject']=$this->homeService->getNameSubject($id_subject);
-            $data['subject']=$this->homeService->getNT($id_subject);
-            $data['date']=$this->homeService->getTest($today);
-            //echo $data['subject'];
-            echo "anc";
-            return view('client.home.index',$data);
->>>>>>> 96521c663ed17912938078f5c90d9bf3aaba6ae1
         }
     }
 }

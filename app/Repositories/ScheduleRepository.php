@@ -14,7 +14,7 @@ class ScheduleRepository  extends EloquentRepository
     {
         return Schedule::class;
     }
-    
+
     public function getIdSubject()
     {
         $schedule = Schedule::whereDate('test_date',now());
@@ -23,11 +23,4 @@ class ScheduleRepository  extends EloquentRepository
         else $sign='<';
         return $schedule->where('test_date',$sign,\Carbon\Carbon::parse('12:00'))->value('id_subject');
     }
-<<<<<<< HEAD
-
-
-
 }
-=======
-}
->>>>>>> d404e190c18afacc62ced972e3a59006bb9e57f6

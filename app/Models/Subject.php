@@ -37,14 +37,9 @@ class Subject extends Model
         return $this->hasMany(Exam::class,'id_subject');
     }
 
-<<<<<<< HEAD
     public function schedule()
     {
         return $this->hasOne(Schedule::class,'id_subject');
-=======
-    public function Exam() {
-        return $this->hasMany(Exam::class,'id_subject','id');
->>>>>>> 96521c663ed17912938078f5c90d9bf3aaba6ae1
     }
 
 }

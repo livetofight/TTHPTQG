@@ -89,12 +89,7 @@
 
                         </div>
 
-<<<<<<< HEAD
                         <div id="notification">
-=======
-                        <div class="box box-solid">
-                            <button type="button" id="btnsubmit" class="btn btn-block btn-primary">Nộp bài</button>
->>>>>>> 96521c663ed17912938078f5c90d9bf3aaba6ae1
                         </div>
                         {{-- <div class="row notification">
                             <div class="col-md-10">

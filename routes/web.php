@@ -64,7 +64,11 @@ Route::group(['prefix'=>'/admin'], function(){
 });
 
 //client
-Route::group(['namespace'=>'API\Client',],function(){
+Route::group([
+    'middleware'=>['guest'],
+        'namespace'=>'API\Client',
+
+    ],function(){
 
     Route::get('/task','TaskController@index');
     Route::get('/task/question','TaskController@getQuestion');

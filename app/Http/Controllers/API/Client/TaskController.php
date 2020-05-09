@@ -23,9 +23,6 @@ class TaskController extends Controller
     }
     public function index(){
         $id = \Session::get('id');
-        if($id==null){
-            return redirect('/');
-        }
         $id_subject=$this->taskService->getIdSubject();
         if($id_subject==null){
             $notification['title']='Chưa đến ngày thi';

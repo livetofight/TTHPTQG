@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Schedule;
 
-class ScheduleRepository  extends EloquentRepository 
+class ScheduleRepository  extends EloquentRepository
 {
     /**
      * get model
@@ -29,6 +29,7 @@ class ScheduleRepository  extends EloquentRepository
         return Schedule::whereDate('test_date',$date)
                         ->get();
     }
+
 
 
 }

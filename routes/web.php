@@ -79,4 +79,6 @@ Route::group(['namespace'=>'API\Client',],function(){
     Route::post('/login', 'LoginController@postLogin');
 
     Route::get('/home', 'HomeController@index');
+
+    Route::get('/resetcd', 'TaskController@resetcd');
 });

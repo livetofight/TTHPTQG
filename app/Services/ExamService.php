@@ -23,4 +23,8 @@ class ExamService
     {
         return $this->examRepository->getAll();
     }
+    public function getExamTime($id_subject)
+    {
+        return $this->examRepository->getTimeSubject($id_subject);
+    }
 }

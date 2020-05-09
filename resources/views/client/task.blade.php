@@ -38,7 +38,10 @@
 
         <link rel="stylesheet" href="{{ asset ('client/css/client.css')}}">
 
-
+        <script src="{{ asset ('admin/bower_components/jquery/dist/jquery.min.js ') }}"></script>
+        <!-- jQuery UI 1.11.4 -->
+        <script src="{{ asset ('admin/bower_components/jquery-ui/jquery-ui.min.js ') }}"></script>
+  <script src="{{ asset ('client/js/countdown.js')}}"></script>
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -48,7 +51,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     </head>
     <body class="skin-blue sidebar-mini">
-        <div class="wrapper" style="background: #ecf0f5">   
+        <div class="wrapper" style="background: #ecf0f5">
             <section class="content">
                 <div class="row">
                     <div class="col-xs-8 col-md-8">
@@ -66,7 +69,13 @@
                     <div class="col-xs-4 col-md-4">
                         <div class="box box-default color-palette-box">
                             <div id="timestudent">
-                                
+                            <div countdown="" data-date="{{$over_time}}">
+                            Thời gian còn lại:
+                                        <span data-hours="">00</span> giờ
+                                        <span data-minutes="">00</span> phút
+                                        <span data-seconds="">00</span> giây
+                            </div>
+                            <a href="/resetcd"><button id= "clear">Xóa session</button></a>
                             </div>
                             <div id="student">
 
@@ -103,7 +112,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>    
+                        </div>
                     </div>
                 </div>
             </section>
@@ -120,5 +129,5 @@
 <script src="{{ asset ('admin/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <!-- FastClick -->
 <script src="{{ asset ('admin/bower_components/fastclick/lib/fastclick.js') }}"></script>
-<!-- AdminLTE for demo purposes --> 
+<!-- AdminLTE for demo purposes -->
 <script src="{{ asset ('client/js/task.js') }}"></script>

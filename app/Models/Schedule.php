@@ -18,4 +18,11 @@ class Schedule extends Model
         'test_date',
     ];
 
+    /**
+     * Get the Schedule that owns the subject.
+     */
+    public function subject()
+    {
+        return $this->belongsTo('App\Models\Subject','id_subject');
+    }
 }

@@ -32,10 +32,6 @@ dd {
     margin-right: -70px;
 }
 
-.show {
-    visibility: visible;
-}
-
 .active_page {
     background: #3c8dbc !important;
     color: white !important;

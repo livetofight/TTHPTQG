@@ -38,6 +38,8 @@ Route::group(['prefix'=>'/admin'], function(){
         Route::post('/student/import', 'StudentController@import');
         Route::get('/student/export', 'StudentController@export');
         Route::get('/student/{id}', 'StudentController@detail');
+        Route::post('/student/changeactive', 'StudentController@changeActive');
+        Route::post('/student/update', 'StudentController@update');
 
         Route::get('/question', 'QuestionController@index');
         Route::get('/question/addque', 'QuestionController@add');

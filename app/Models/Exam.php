@@ -1,15 +1,19 @@
-<?php
+<?php 
 
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Subject;
 
 class Exam extends Model
 {
-    public function examlist() {
-        return $this->hasMany('App\Models\Exam_list','id_exam','id');
-    }
+    // public function examlist() {
+    //     return $this->hasMany('App\Models\ExamList','id_exam','id');
+    // }
 
+    // public function questionlist() {
+    //     return $this->hasMany('App\Models\QuestionList','id_exam','id');
+    // } 
     public function questionlist() {
         return $this->hasMany('App\Models\Question_list','id_exam','id');
     }

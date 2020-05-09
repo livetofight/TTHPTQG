@@ -6,8 +6,8 @@
     <!-- /.box-header -->
     <div class="box-body">
       <div class="callout callout-danger">
-        <h4>Chưa đến ngày thi !</h4>
-        <p>Vui lòng quay trở lại trong thời gian thi.</p>
+        <h4>{{$title}}</h4>
+        <p>{{$text}}</p>
       </div>
     </div>
     <!-- /.box-body -->

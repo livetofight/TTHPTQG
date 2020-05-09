@@ -22,7 +22,7 @@ class Question extends Model
     protected $hidden = ['ans_correct'];
 
     public function questionList() {
-        return $this->hasMany('App\Models\Question_list','id_question','id');
+        return $this->hasMany('App\Models\QuestionList','id_question','id');
     }
 
     

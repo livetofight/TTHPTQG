@@ -19,22 +19,30 @@ class HomeController extends Controller
     }
     public function index()
     {
-        $today = today();
         $id = \Session::get('id');
-        $id_subject=$this->homeService->getSubject($today);
+        
         if($id==null){
             return redirect('/');
         }
-        if($id_subject != null){
-            $data['student']=$this->homeService->findStudent($id);
-            $data['name_subject']=$this->homeService->getNameSubject($id_subject);
-            $data['subject']=$this->homeService->getNT($id_subject);
-            $data['date']=$this->homeService->getTest($today);
-            //echo $data['subject'];
-            echo "anc";
-            return view('client.home.index',$data);
+        //lay mon thi
+        $id_subject=$this->homeService->getIdSubject();
+        if($id_subject == null){
+            $notification['title']='Chưa đến ngày thi';
+            $notification['text']='Vui lòng quay trở lại trong thời gian thi.';
+            return view('client.error',$notification);
+        } else{
+            $student_sub=$this->homeService->findStudentSubject($id);
+            if($this->homeService->checksubject($id_subject,$student_sub)){
+                $data['student']=$this->homeService->findStudent($id);
+                $data['subject']=$this->homeService->getSubject($id_subject);
+                $data['exam_subject']=$this->homeService->findArraySubject($student_sub);
+                return view('client.home.index',$data);
+            } else{
+                $notification['title']='Bạn chưa đăng ký thi môn này !';
+                $notification['text']='Vui lòng quay trở lại trong thời gian thi môn mà bạn đã đăng ký.';
+                return view('client.error',$notification);
+            }
+            
         }
-        return view('client.error');
-
     }
 }

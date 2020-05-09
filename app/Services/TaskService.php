@@ -64,6 +64,8 @@ class TaskService
     }
 
 
-
+    public function getlistquestionbyidexam($id_exam){
+        return $this->questionListRepository->get_list_question($id_exam);
+    }
     
 }

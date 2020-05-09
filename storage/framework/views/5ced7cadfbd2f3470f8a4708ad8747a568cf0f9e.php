@@ -2,7 +2,7 @@
 <?php $__env->startSection('content'); ?>
 <section class="content">
     <div class="row">
-        <div class="col-xs-6 col-md-6">
+        <div class="col-xs-5 col-md-5">
           <!-- Box Comment -->
           <div class="box box-widget">
             <div class="box-header with-border">
@@ -24,9 +24,9 @@
 
                 Để xét công nhận tốt nghiệp THPT, thí sinh THPT phải dự thi 4 bài thi, gồm 3 bài thi độc lập là Toán, Ngữ văn, Ngoại ngữ và một bài thi tự chọn trong số 2 bài thi tổ hợp. Thí sinh giáo dục thường xuyên dự thi 3 bài, gồm 2 bài thi độc lập là Toán, Ngữ văn và một bài thi do thí sinh tự chọn trong số 2 bài thi tổ hợp.
                 
-                Để tăng cơ hội xét tuyển sinh đại học, cao đẳng, thí sinh được chọn dự thi cả 2 bài thi tổ hợp. Điểm bài thi tổ hợp nào cao hơn sẽ được chọn để tính điểm xét công nhận tốt nghiệp THPT. Theo quy chế, kỳ thi THPT quốc gia được tổ chức hàng năm. Ngày thi, lịch thi, hình thức thi và thời gian làm bài thi được quy định trong hướng dẫn tổ chức thi THPT quốc gia hàng năm của Bộ Giáo dục và Đào tạo.
+                Để tăng cơ hội xét tuyển sinh đại học, cao đẳng, thí sinh được chọn dự thi cả 2 bài thi tổ hợp. Điểm bài thi tổ hợp nào cao hơn sẽ được chọn để tính điểm xét công nhận tốt nghiệp THPT. 
 
-                Như vậy thông tư không chỉ rõ ngày thi cũng như hình thức thi là gì. 
+               
                 
                 </p>
             </div>
@@ -35,15 +35,15 @@
           <!-- /.box -->
         </div>
         <!-- /.col -->
-        <div class="col-xs-6 col-md-6">
+        <div class="col-xs-7 col-md-7">
             <div class="row">
                 <div class="col-xs-6 col-md-6">
                     <div class="box box-widget">
                         <div class="box-header with-border">
                             <div class="user-block">
                                 <img class="img-circle" src="<?php echo e(asset ('client/upload/book.png')); ?>"  alt="User Image">
-                            <span class="username"><a href="#"><?php echo e($name_subject->first()->name); ?></a></span>
-                            <span class="description">Giờ Thi: <?php echo e($date->first()->test_date->format('H:i')); ?></span>
+                            <span class="username"><a href="#"><?php echo e($subject->first()->name); ?></a></span>
+                            <span class="description">Giờ Thi: <?php echo e($subject->first()->schedule->test_date->format('H:i')); ?></span>
                             </div>
                             <div class="box-tools">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
@@ -57,12 +57,12 @@
                                         <tr>
                                             <td>Số câu hỏi</td>
                                             <td>:</td>
-                                            <td><?php echo e($subject->number); ?> câu</td>
+                                            <td><?php echo e($subject->first()->exam->first()->number); ?> câu</td>
                                         </tr>
                                         <tr>
                                             <td>Thời gian</td>
                                             <td>:</td>
-                                            <td><?php echo e($subject->time); ?> phút</td>
+                                            <td><?php echo e($subject->first()->exam->first()->time); ?> phút</td>
                                         </tr>
 
                                         <tr>
@@ -87,7 +87,7 @@
                             <div class="user-block">
                                 <img class="img-circle" src="<?php echo e(asset ('client/upload/student-icon.png')); ?>"  alt="User Image">
                             <span class="username"><a href="#"><?php echo e($student->fullname); ?></a></span>
-                                <span class="description" >Ngày thi :<?php echo e($date->first()->test_date->format('d/m/Y')); ?></span>
+                                <span class="description" >Ngày thi : <?php echo e($subject->first()->schedule->test_date->format('d/m/Y')); ?></span>
                             </div>
                             <div class="box-tools">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
@@ -116,7 +116,15 @@
                                         <tr>
                                             <td>Môn thi</td>
                                             <td>:</td>
-                                            <td><?php echo e($student->subject_list); ?></td>
+                                            <td>    
+                                                <?php $__currentLoopData = $exam_subject; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item=>$value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>    
+                                                    <?php echo e($value->name); ?>
+
+                                                    <?php if($item != count($exam_subject)-1): ?> <?php echo e(","); ?>
+
+                                                    <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -137,7 +145,7 @@
                                     <button type="button" class="btn bg-purple margin" onclick="location.href='<?php echo e(url('result')); ?>'">Xem Lại Bài Thi</button>
                                 </div>
                                 <div class="col-xs-6 col-md-6">
-                                    <button type="button" class="btn bg-navy margin" onclick="location.href='<?php echo e(url('task')); ?>'">Vào Thi</button>
+                                    <button type="button" class="btn bg-navy margin" onclick="location.href='<?php echo e(url('task')); ?>'" >Vào Thi</button>
                                 </div>
                             </div>
                         </div>

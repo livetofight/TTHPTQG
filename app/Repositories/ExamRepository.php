@@ -17,6 +17,15 @@ class ExamRepository  extends EloquentRepository
         return \App\Models\Exam::class;
     }
 
+    //home
+    public function getInSubject($id)
+    {
+        return Exam::whereIn('id_subject',$id)
+                        ->with('subject')
+                        ->get()
+                        ->first();
+    }
+
     public function getTimeSubject($id_subject)
     {
         return Exam::whereId_subject($id_subject)
@@ -32,12 +41,8 @@ class ExamRepository  extends EloquentRepository
                         ->toArray();
     }
 
-    public function getNT($id_subject)
-    {
-        return Exam::whereId_subject($id_subject)
-                        ->get()
-                        ->first();
-    }
+
+    
 
     public function getListExam(){
         return Exam::whereYear('created_at',date('Y'))

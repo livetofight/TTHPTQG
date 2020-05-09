@@ -5,8 +5,8 @@
     <!-- /.box-header -->
     <div class="box-body">
       <div class="callout callout-danger">
-        <h4>Chưa đến ngày thi !</h4>
-        <p>Vui lòng quay trở lại trong thời gian thi.</p>
+        <h4><?php echo e($title); ?></h4>
+        <p><?php echo e($text); ?></p>
       </div>
     </div>
     <!-- /.box-body -->

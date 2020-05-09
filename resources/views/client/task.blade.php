@@ -53,6 +53,9 @@
     <body class="skin-blue sidebar-mini">
         <div class="wrapper" style="background: #ecf0f5">
             <section class="content">
+                <div id="error_message" style=" text-align: center;">
+
+                </div>
                 <div class="row">
                     <div class="col-xs-8 col-md-8">
                         <input type='hidden' id='current_page' />
@@ -60,14 +63,14 @@
                         <input type='hidden' id='number_of_pages' />
                         <div id="list_question">
                         </div>
-                        <div class="box-footer clearfix">
+                        {{-- <div class="box-footer clearfix"> --}}
                             <div id="page_navigation" style="text-align: center;">
 
                             </div>
-                        </div>
+                        {{-- //</div> --}}
                     </div>
                     <div class="col-xs-4 col-md-4">
-                        <div class="box box-default color-palette-box">
+                        {{-- <div class="box box-default color-palette-box">
                             <div id="timestudent">
                             <div countdown="" data-date="{{$over_time}}">
                             Thời gian còn lại:
@@ -80,16 +83,20 @@
                             <div id="student">
 
                             </div>
-                        </div>
+                        {{-- </div> --}}
 
                         <div id="list_number">
 
                         </div>
 
+<<<<<<< HEAD
+                        <div id="notification">
+=======
                         <div class="box box-solid">
                             <button type="button" id="btnsubmit" class="btn btn-block btn-primary">Nộp bài</button>
+>>>>>>> 96521c663ed17912938078f5c90d9bf3aaba6ae1
                         </div>
-                        <div class="row notification">
+                        {{-- <div class="row notification">
                             <div class="col-md-10">
                                 <div class="box box-danger direct-chat direct-chat-danger">
                                     <div class="box-header with-border">
@@ -112,7 +119,11 @@
                                     </div>
                                 </div>
                             </div>
+<<<<<<< HEAD
                         </div>
+=======
+                        </div>     --}}
+>>>>>>> d404e190c18afacc62ced972e3a59006bb9e57f6
                     </div>
                 </div>
             </section>

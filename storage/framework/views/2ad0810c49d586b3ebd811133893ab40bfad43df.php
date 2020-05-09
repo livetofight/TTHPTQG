@@ -50,6 +50,9 @@
     <body class="skin-blue sidebar-mini">
         <div class="wrapper" style="background: #ecf0f5">   
             <section class="content">
+                <div id="error_message" style=" text-align: center;">
+
+                </div>
                 <div class="row">
                     <div class="col-xs-8 col-md-8">
                         <input type='hidden' id='current_page' />
@@ -57,53 +60,26 @@
                         <input type='hidden' id='number_of_pages' />
                         <div id="list_question">
                         </div>
-                        <div class="box-footer clearfix">
+                        
                             <div id="page_navigation" style="text-align: center;">
 
                             </div>
-                        </div>
+                        
                     </div>
                     <div class="col-xs-4 col-md-4">
-                        <div class="box box-default color-palette-box">
-                            <div id="timestudent">
-                                
-                            </div>
+                        
                             <div id="student">
 
                             </div>
-                        </div>
+                        
 
                         <div id="list_number">
 
                         </div>
 
-                        <div class="box box-solid">
-                            <button type="button" class="btn btn-block btn-primary">Nộp bài</button>
+                        <div id="notification">
                         </div>
-                        <div class="row notification">
-                            <div class="col-md-10">
-                                <div class="box box-danger direct-chat direct-chat-danger">
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">Thông báo</h3>
-                                        <div class="box-tools pull-right">
-                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="box-body">
-                                        <div class="direct-chat-messages">
-                                            <div class="direct-chat-msg">
-                                                <div class="direct-chat-msg right">
-                                                    <img class="direct-chat-img" src="../client/upload/logo.png" alt="Message User Image"><!-- /.direct-chat-img -->
-                                                    <div class="direct-chat-text">
-                                                        Hãy kiểm tra lại bài, bạn còn 1 phút để nộp bài !
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>    
+                        
                     </div>
                 </div>
             </section>

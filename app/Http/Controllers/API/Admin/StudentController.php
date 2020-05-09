@@ -10,6 +10,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\StudentsImport;
 use App\Exports\StudentsExport;
 use Carbon\Carbon;
+use DateTime;
 
 class StudentController extends Controller
 {
@@ -50,19 +51,36 @@ class StudentController extends Controller
     }
 
     
-    public function detail($id){
-        return view('admin.student.student-detail');
+    public function changeActive(Request $request){
+        
+        try {
+            $result['status']=$this->studentService->changeExam($request->id);
+            $result['status_value']=" Đổi trạng thái thành công";
+            
+        } catch (ModelNotFoundException $exception) {
+            $result['status_value']=$exception->getMessage();
+            $result['status']=0;
+            //return back()->withError($exception->getMessage())->withInput();
+        }
+        return json_encode($result);    
     }
+
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Student  $Student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $Student)
-    {
-        //
+    public function detail($id){
+        $data['student']=$this->studentService->findStudent($id);
+        $data['id_school']=$this->studentService->findStudentSchool($id);
+        $data['school']=$this->studentService->getAllSchool();
+        $data['id_subject']=$this->studentService->findStudentSubject($id);
+        $data['subject']=$this->studentService->getAllSubject();
+        return view('admin.student.student-detail',$data);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -71,20 +89,12 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $Student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $Student)
+    public function update(Request $request)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Student  $Student
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Student $Student)
-    {
-        
+        $data = $request->all();
+        $data['date_of_birth']= new DateTime($request->date_of_birth);
+        $student = $this->studentService->update($request->id, $data);
+        return json_encode($student);
     }
 
 

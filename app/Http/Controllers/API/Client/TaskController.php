@@ -22,10 +22,10 @@ class TaskController extends Controller
         $this->taskService = $taskService;
     }
     public function index(){
-        $id = \Session::get('id');
-        if($id==null){
-            return redirect('/');
-        }
+        // $id = \Session::get('id');
+        // if($id==null){
+        //     return redirect('/');
+        // }
         $id_subject=$this->taskService->getIdSubject();
         if($id_subject==null){
             $notification['title']='Chưa đến ngày thi';
@@ -33,7 +33,7 @@ class TaskController extends Controller
             return view('client.error',[ 'title' => 'Chưa đến ngày thi'],$notification);
         } else return view('client.task');
     }
-    
+
     public function getQuestion(){
         $id_student = \Session::get('id');
         $id_subject=$this->taskService->getIdSubject();
@@ -45,6 +45,6 @@ class TaskController extends Controller
         $data['page_size']=$this->page_size;
         $data['time_start']=$this->taskService->getTimeSubject($id_subject);
         echo json_encode($data);
-        
+
     }
 }

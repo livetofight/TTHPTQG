@@ -32,11 +32,11 @@ class StudentController extends Controller
     }
 
 
-    public function import(Request $request) 
-    {  
+    public function import(Request $request)
+    {
         if($request->file('inputFile')){
             $file=$request->file('inputFile');
-            Excel::import(new StudentsImport, $file); 
+            Excel::import(new StudentsImport, $file);
             $result['status_value']=" Nhập File thành công";
             $result['status']=1;
         } else{
@@ -50,19 +50,19 @@ class StudentController extends Controller
         return Excel::download(new StudentsExport, 'students'.date('dmY').'.xlsx');
     }
 
-    
+
     public function changeActive(Request $request){
-        
+
         try {
             $result['status']=$this->studentService->changeExam($request->id);
             $result['status_value']=" Đổi trạng thái thành công";
-            
+
         } catch (ModelNotFoundException $exception) {
             $result['status_value']=$exception->getMessage();
             $result['status']=0;
             //return back()->withError($exception->getMessage())->withInput();
         }
-        return json_encode($result);    
+        return json_encode($result);
     }
 
 
@@ -89,8 +89,17 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $Student
      * @return \Illuminate\Http\Response
      */
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Student  $Student
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request)
     {
+
         $data = $request->all();
         $data['date_of_birth']= new DateTime($request->date_of_birth);
         $student = $this->studentService->update($request->id, $data);

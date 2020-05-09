@@ -30,9 +30,9 @@ class TaskController extends Controller
             return redirect('/');
         }
         $today = today();
-        $subject=$this->taskService->getSubject($today);
+        $subject=$this->taskService->getidSubject($today);
         $subjectTime=$this->examService->getExamTime($subject);
-    $over_time=now()->addHour(7)->addMinute($subjectTime['time']);
+    $over_time=now()->addMinute($subjectTime['time']);
         if (\Session::has('over_time')) {
             $data['over_time']= \Session::get('over_time');
         }
@@ -49,7 +49,7 @@ class TaskController extends Controller
     public function getQuestion(){
         $today = today();
         $id_student = \Session::get('id');
-        $id_subject=$this->taskService->getSubject($today);
+        $id_subject=$this->taskService->getidSubject($today);
         $id_exam_array=$this->taskService->getIdExamArray($id_subject);
         $id_exam=$this->taskService->getIdExam($id_student,$id_exam_array);
         $data=$this->taskService->getQuestion($id_exam);

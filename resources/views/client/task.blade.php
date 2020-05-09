@@ -70,55 +70,33 @@
                         {{-- //</div> --}}
                     </div>
                     <div class="col-xs-4 col-md-4">
-                        {{-- <div class="box box-default color-palette-box">
+                        <div class="box box-default color-palette-box">
                             <div id="timestudent">
-                            <div countdown="" data-date="{{$over_time}}">
-                            Thời gian còn lại:
-                                        <span data-hours="">00</span> giờ
-                                        <span data-minutes="">00</span> phút
-                                        <span data-seconds="">00</span> giây
-                            </div>
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">
+                                        <i class="fa fa-clock-o"></i> THỜI GIAN
+                                    </h3>
+                                            <div countdown="" data-date="{{$over_time}}">
+                                                <span data-hours="" class="text-red">00</span>
+                                                <span class="text-red">:</span>
+                                                <span data-minutes="" class="text-red">00</span>
+                                                <span class="text-red">:</span>
+                                                <span data-seconds="" class="text-red">00</span>
+                                            </div>
+                                    </div>
+
                             <a href="/resetcd"><button id= "clear">Xóa session</button></a>
                             </div>
                             <div id="student">
 
                             </div>
-                        {{-- </div> --}}
+                        </div>
 
                         <div id="list_number">
 
                         </div>
 
-                        <div id="notification">
-                        </div>
-                        {{-- <div class="row notification">
-                            <div class="col-md-10">
-                                <div class="box box-danger direct-chat direct-chat-danger">
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">Thông báo</h3>
-                                        <div class="box-tools pull-right">
-                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="box-body">
-                                        <div class="direct-chat-messages">
-                                            <div class="direct-chat-msg">
-                                                <div class="direct-chat-msg right">
-                                                    <img class="direct-chat-img" src="../client/upload/logo.png" alt="Message User Image"><!-- /.direct-chat-img -->
-                                                    <div class="direct-chat-text">
-                                                        Hãy kiểm tra lại bài, bạn còn 1 phút để nộp bài !
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-<<<<<<< HEAD
-                        </div>
-=======
-                        </div>     --}}
->>>>>>> d404e190c18afacc62ced972e3a59006bb9e57f6
+
                     </div>
                 </div>
             </section>

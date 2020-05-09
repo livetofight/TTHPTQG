@@ -177,8 +177,6 @@ $(document).ready(function() {
         }
     });
 });
-
-// funtion;
 // timesup(time); {
 //     var timeup = time * 1000;
 //     var today = new Date();

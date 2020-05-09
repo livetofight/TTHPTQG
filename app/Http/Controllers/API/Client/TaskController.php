@@ -32,7 +32,7 @@ class TaskController extends Controller
         $today = today();
         $subject=$this->taskService->getidSubject($today);
         $subjectTime=$this->examService->getExamTime($subject);
-    $over_time=now()->addMinute($subjectTime['time']);
+        $over_time=now()->addMinute($subjectTime['time']);
         if (\Session::has('over_time')) {
             $data['over_time']= \Session::get('over_time');
         }

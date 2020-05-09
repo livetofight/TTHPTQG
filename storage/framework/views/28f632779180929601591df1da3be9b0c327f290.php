@@ -87,7 +87,7 @@
         <div id="error_message">
 
         </div>
-    <form role="form" method="POST" >
+        <form role="form" method="POST" >
             <div class="form-group has-feedback">
                 
                 <input class="form-control" placeholder="Username" name="username" id="username" type="text" value="<?php echo e(old('username')); ?>" autofocus>
@@ -98,6 +98,9 @@
                 <input class="form-control" placeholder="Mật khẩu" name="password" id="password" type="password" value="">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
+            <div>
+                <a href="../admin/forgotpassword" class="btn btn-default btn-flat">ForgotPassword</a>
+            <div>
             <button class="btn btn-lg btn-primary btn-block" id="btn_login" >Đăng nhập</button>
             <?php echo csrf_field(); ?>
 

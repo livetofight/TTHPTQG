@@ -9,7 +9,7 @@
                     <div class="box-header with-border">
                         <i class="fa fa-question"></i>
                         <h3 class="box-title">
-                            <strong>Câu 1:</strong> 
+                            <strong>Câu 1:</strong>
                         </h3>
                         <span style="font-size: 16px">Content_2</span>
                     </div>
@@ -40,7 +40,7 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">
                         <i class="fa fa-clock-o"></i> THỜI GIAN HOÀN THÀNH
-                    </h3> 
+                    </h3>
                     <p class="text-red" id="time">01:52:12</p>
                 </div>
                 <div class="box-body">
@@ -70,10 +70,10 @@
                             </tbody></table>
                           </div>
                         </div>
-                        
+
                       </div>
                     </div>
-                </div>    
+                </div>
             </div>
         </div>
     </div>

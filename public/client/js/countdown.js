@@ -119,6 +119,8 @@
             if (this.active) {
                 this.active = false;
                 clearInterval(this.autoUpdate);
+                alert("Hết giờ ");
+                window.location.replace("/home");
             }
         },
 
@@ -136,6 +138,7 @@
             this.deciseconds = 0;
             this.reset();
             this.defaults.end();
+
         },
 
         destroy: function() {

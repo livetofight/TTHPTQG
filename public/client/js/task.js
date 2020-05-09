@@ -133,9 +133,7 @@ function show_lists_questions(data) {
         //timestudent.empty();
         box_student.append('<div class="box-header with-border">' +
             '<h3 class="box-title">' +
-            '<i class="fa fa-clock-o"></i> THỜI GIAN' +
             '</h3>' +
-            '<p class="text-red" id="time">2:00</p>' +
             '</div>');
         let box_body = $('<div class="box-body"></div>')
         let box_solid = $('<div class="box box-solid"></div>');
@@ -212,75 +210,75 @@ function show_lists_questions(data) {
 
         //THỜI GIAN
         //1 phút = 60000 ms
-        var time = data['time_start'].time;
-        document.getElementById("time").innerHTML = "Bắt đầu";
-        var timetask = time * 60000;
-        var today = new Date();
-        var gettime = today.getTime();
+        // var time = data['time_start'].time;
+        // document.getElementById("time").innerHTML = "Bắt đầu";
+        // var timetask = time * 60000;
+        // var today = new Date();
+        // var gettime = today.getTime();
 
-        timesetup = gettime + timetask;
+        // timesetup = gettime + timetask;
 
-        // cập nhập thời gian sau mỗi 1 giây
-        var x = setInterval(function() {
+        // // cập nhập thời gian sau mỗi 1 giây
+        // var x = setInterval(function() {
 
-            var now = new Date().getTime();
-            // Lấy số thời gian chênh lệch
-            var distance = timesetup - now;
+        //     var now = new Date().getTime();
+        //     // Lấy số thời gian chênh lệch
+        //     var distance = timesetup - now;
 
-            // Tính toán số  giờ, phút, giây từ thời gian chênh lệch
-            var hours = Math.floor(distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        //     // Tính toán số  giờ, phút, giây từ thời gian chênh lệch
+        //     var hours = Math.floor(distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+        //     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        //     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            if (hours < 10) {
-                hours = "0" + hours;
-            }
-            if (minutes < 10) {
-                minutes = "0" + minutes;
-            }
-            if (seconds < 10) {
-                seconds = "0" + seconds;
-            }
-            // HIển thị chuỗi thời gian trong thẻ p
-            document.getElementById("time").innerHTML = hours + ":" + minutes + ":" + seconds;
+        //     if (hours < 10) {
+        //         hours = "0" + hours;
+        //     }
+        //     if (minutes < 10) {
+        //         minutes = "0" + minutes;
+        //     }
+        //     if (seconds < 10) {
+        //         seconds = "0" + seconds;
+        //     }
+        //     // HIển thị chuỗi thời gian trong thẻ p
+        //     document.getElementById("time").innerHTML = hours + ":" + minutes + ":" + seconds;
 
-            // Nếu thời gian kết thúc, hiển thị chuỗi thông báo
-            if (distance <= 60000) {
-                $('#notification').append('<div class="row notification">' +
-                    '<div class="col-md-10">' +
-                    '<div class="box box-danger direct-chat direct-chat-danger">' +
-                    '<div class="box-header with-border">' +
-                    '<h3 class="box-title">Thông báo</h3>' +
-                    '<div class="box-tools pull-right">' +
-                    '<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>' +
-                    '</div>' +
-                    '</div>' +
-                    '<div class="box-body">' +
-                    '<div class="direct-chat-messages">' +
-                    '<div class="direct-chat-msg">' +
-                    '<div class="direct-chat-msg right">' +
-                    '<img class="direct-chat-img" src="../client/upload/logo.png" alt="Message User Image"><!-- /.direct-chat-img -->' +
-                    '<div class="direct-chat-text">' +
-                    ' Hãy kiểm tra lại bài, bạn còn 1 phút để nộp bài !' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>')
+        //     // Nếu thời gian kết thúc, hiển thị chuỗi thông báo
+        //     if (distance <= 60000) {
+        //         $('#notification').append('<div class="row notification">' +
+        //             '<div class="col-md-10">' +
+        //             '<div class="box box-danger direct-chat direct-chat-danger">' +
+        //             '<div class="box-header with-border">' +
+        //             '<h3 class="box-title">Thông báo</h3>' +
+        //             '<div class="box-tools pull-right">' +
+        //             '<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>' +
+        //             '</div>' +
+        //             '</div>' +
+        //             '<div class="box-body">' +
+        //             '<div class="direct-chat-messages">' +
+        //             '<div class="direct-chat-msg">' +
+        //             '<div class="direct-chat-msg right">' +
+        //             '<img class="direct-chat-img" src="../client/upload/logo.png" alt="Message User Image"><!-- /.direct-chat-img -->' +
+        //             '<div class="direct-chat-text">' +
+        //             ' Hãy kiểm tra lại bài, bạn còn 1 phút để nộp bài !' +
+        //             '</div>' +
+        //             '</div>' +
+        //             '</div>' +
+        //             '</div>' +
+        //             '</div>' +
+        //             '</div>' +
+        //             '</div>' +
+        //             '</div>')
 
-            }
-            if (distance <= 30000) {
-                $('.notification').addClass('hidden');
-            }
-            if (distance <= 1) {
-                clearInterval(x);
-                alert("Hết giờ ");
-                document.getElementById("time").innerHTML = "Hết giờ";
-            }
-        }, 1000);
+        //     }
+        //     if (distance <= 30000) {
+        //         $('.notification').addClass('hidden');
+        //     }
+        //     if (distance <= 1) {
+        //         clearInterval(x);
+        //         alert("Hết giờ ");
+        //         document.getElementById("time").innerHTML = "Hết giờ";
+        //     }
+        // }, 1000);
 
 
         //PHÂN TRANG
@@ -304,7 +302,7 @@ function show_lists_questions(data) {
         box_footer.append(ul);
         page_navigation.append(box_footer);
 
-        //css active trang đang được chọn 
+        //css active trang đang được chọn
         $('#page_navigation .page_link:first').addClass('active_page');
 
         $('.previous_link').addClass('disabled');

@@ -38,7 +38,10 @@
 
         <link rel="stylesheet" href="{{ asset ('client/css/client.css')}}">
 
-
+        <script src="{{ asset ('admin/bower_components/jquery/dist/jquery.min.js ') }}"></script>
+        <!-- jQuery UI 1.11.4 -->
+        <script src="{{ asset ('admin/bower_components/jquery-ui/jquery-ui.min.js ') }}"></script>
+  <script src="{{ asset ('client/js/countdown.js')}}"></script>
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -48,7 +51,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     </head>
     <body class="skin-blue sidebar-mini">
-        <div class="wrapper" style="background: #ecf0f5">   
+        <div class="wrapper" style="background: #ecf0f5">
             <section class="content">
                 <div id="error_message" style=" text-align: center;">
 
@@ -67,45 +70,33 @@
                         {{-- //</div> --}}
                     </div>
                     <div class="col-xs-4 col-md-4">
-                        {{-- <div class="box box-default color-palette-box">
+                        <div class="box box-default color-palette-box">
                             <div id="timestudent">
-                                
-                            </div> --}}
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">
+                                        <i class="fa fa-clock-o"></i> THỜI GIAN
+                                    </h3>
+                                            <div countdown="" data-date="{{$over_time}}">
+                                                <span data-hours="" class="text-red">00</span>
+                                                <span class="text-red">:</span>
+                                                <span data-minutes="" class="text-red">00</span>
+                                                <span class="text-red">:</span>
+                                                <span data-seconds="" class="text-red">00</span>
+                                            </div>
+                                    </div>
+
+                            <a href="/resetcd"><button id= "clear">Xóa session</button></a>
+                            </div>
                             <div id="student">
 
                             </div>
-                        {{-- </div> --}}
+                        </div>
 
                         <div id="list_number">
 
                         </div>
 
-                        <div id="notification">
-                        </div>
-                        {{-- <div class="row notification">
-                            <div class="col-md-10">
-                                <div class="box box-danger direct-chat direct-chat-danger">
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">Thông báo</h3>
-                                        <div class="box-tools pull-right">
-                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="box-body">
-                                        <div class="direct-chat-messages">
-                                            <div class="direct-chat-msg">
-                                                <div class="direct-chat-msg right">
-                                                    <img class="direct-chat-img" src="../client/upload/logo.png" alt="Message User Image"><!-- /.direct-chat-img -->
-                                                    <div class="direct-chat-text">
-                                                        Hãy kiểm tra lại bài, bạn còn 1 phút để nộp bài !
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>     --}}
+
                     </div>
                 </div>
             </section>
@@ -122,5 +113,5 @@
 <script src="{{ asset ('admin/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <!-- FastClick -->
 <script src="{{ asset ('admin/bower_components/fastclick/lib/fastclick.js') }}"></script>
-<!-- AdminLTE for demo purposes --> 
+<!-- AdminLTE for demo purposes -->
 <script src="{{ asset ('client/js/task.js') }}"></script>

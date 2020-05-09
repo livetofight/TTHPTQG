@@ -83,7 +83,11 @@ Route::group(['namespace'=>'API\Client',],function(){
     Route::get('/home', 'HomeController@index');
 
     Route::get('/resetcd', 'TaskController@resetcd');
+
     Route::get('/result','ExamController@index');
+
+    Route::get('/result','ExamController@index')->name('abc');
+
     Route::post('/result','ExamController@postdata');
 });
 

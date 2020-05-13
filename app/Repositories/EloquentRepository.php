@@ -62,7 +62,7 @@ abstract class EloquentRepository implements RepositoryInterface
      */
     public function create(array $attributes)
     {
-
+        //dd($this->_model->create($attributes));
         return $this->_model->create($attributes);
     }
 

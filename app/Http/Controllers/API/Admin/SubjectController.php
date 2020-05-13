@@ -50,6 +50,6 @@ class SubjectController extends Controller
     }
 
     public function doUpdate(Request $request){
-        $this->subjectService->updateSub($request->id, $request->all());
+        return $this->subjectService->updateSub($request->id, $request->all());
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Result;
+use App\Services\ResultService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Services\TaskService;
@@ -12,36 +14,31 @@ use function GuzzleHttp\Promise\task;
 class ExamController extends Controller
 {
     private $taskService;
+    private $resultService;
     var $data=array();
     var $page_size=2;
     protected $url;
 
-    public function __construct(TaskService $taskService){
+    public function __construct(TaskService $taskService, ResultService $resultService){
         $this->url=config('api.url');
         $this->taskService = $taskService;
+        $this->resultService = $resultService;
     }
 
     public function index(Request $request)
     {   
-        if ($request->ajax()){
-            $data = $request->array_selected;
-            var_dump($data);
-        }
-        return view('client.result');
+        //cần id_exam dể truy vấn...
+        $today = today();
+        $id_student = \Session::get('id');
+        $id_subject=$this->taskService->getidSubject($today);
+        $id_exam_array=$this->taskService->getIdExamArray($id_subject);
+        $id_exam=$this->taskService->getIdExam($id_student,$id_exam_array);
+        $data['checkout']=$this->taskService->review($id_student,$id_exam);
+        //$data['checkout']= $this->taskService->review($id_student,$id_exam);
+        //$data['count']= count($data['checkout']);
+        //printf($data['checkout']);
+        return view('client.result',$data);
     }
 
-    public function postdata(Request $request){
-        $numcorrect = 0;
-        $selected_ans= $request->arr_selected;
-        $id_exam=135;
-        $data=$this->taskService->getlistquestionbyidexam($id_exam);
-        for ($i=0; $i<count($selected_ans);$i++){
-            for ($j=0; $j<count($data);$j++){
-                if ($selected_ans[$i]['question']==$data[$j]['id'] && $selected_ans[$i]['selected']==$data[$j]['ans_correct']) $numcorrect++;
-            }   
-        }
-        //$returnHTML = view('client.result')->render();
-        return view('client.result')->render();
-        //return $numcorrect;
-    }   
+
 }

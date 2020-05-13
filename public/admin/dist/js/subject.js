@@ -72,6 +72,7 @@ $(document).ready(function(){
       if (confirm("Bạn có chắc chắn muốn xóa")) {
         $.ajax({
           url: '../admin/subject/delete/' + sub_id,
+          method:"GET",
           success:function(){
             $('#subject_table').DataTable().ajax.reload();
           }
@@ -104,6 +105,7 @@ $(document).ready(function(){
         method: "POST",
         data:{name:name, id:id, updated_at:updated_at},
         success:function(data){
+          console.log(data);
           $('#subject_table').DataTable().ajax.reload();
         }
       });

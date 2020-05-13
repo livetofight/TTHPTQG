@@ -15,7 +15,7 @@ class SubjectRepository  extends EloquentRepository
         return Subject::class;
     }  
     
-    public function find($id){
+    public function findSubject($id){
         return Subject::whereId($id)
                         ->with('schedule')
                         ->with('exam')

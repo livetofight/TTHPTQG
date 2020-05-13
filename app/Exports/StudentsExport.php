@@ -26,10 +26,14 @@ class StudentsExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
     * @return \Illuminate\Support\Collection
     */
     public function collection(){
+        // $student=Student::whereYear('created_at',date('Y'));
+        // dd($student->schoolList()->school()->value('name')->get());
+
         foreach (Student::whereYear('created_at',date('Y'))
-                        ->get(['username','password','fullname',
-                        'cmnd','date_of_birth','gender','nation',
-                        'address','created_at']) as $row => $value) {
+                        ->with('schoolList')
+                        ->with('examSubject')
+                        ->get() 
+                        as $row => $value) {
             $student[] = array(
                 '0' => $row + 1,
                 '1' => $value->username,
@@ -39,9 +43,9 @@ class StudentsExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
                 '5' => $value->date_of_birth->format('d/m/Y'),
                 '6' => $value->gender,
                 '7' => $value->nation,
-                //'8' => $value->id_school,
+                //'8' => $value->schoolList,
                 '9' => $value->address,
-                //'10' => $value->subject_list,
+                //'10'=> $value->examSubject->name,
                 '11' => $value->created_at->format('d/m/Y H:m:s'),
             );
         }
@@ -94,26 +98,26 @@ class StudentsExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
                     ),
                 );
                 
-                $event->sheet->getDelegate()->mergeCells('A1:L1');
+                // $event->sheet->getDelegate()->mergeCells('A1:L1');
 
-                $event->sheet->getDelegate()->row(1, function ($row) {
-                    $row->setFontFamily('Comic Sans MS');
-                    $row->setFontSize(30);
-                });
+                // $event->sheet->getDelegate()->row(1, function ($row) {
+                //     $row->setFontFamily('Comic Sans MS');
+                //     $row->setFontSize(30);
+                // });
 
-                $event->sheet->getDelegate()->row(1, array('Some big header here'));
+                // $event->sheet->getDelegate()->row(1, array('Some big header here'));
 
-                // second row styling and writing content
-                $event->sheet->getDelegate()->row(2, function ($row) {
+                // // second row styling and writing content
+                // $event->sheet->getDelegate()->row(2, function ($row) {
 
-                    // call cell manipulation methods
-                    $row->getDelegate()->setFontFamily('Comic Sans MS');
-                    $row->getDelegate()->setFontSize(15);
-                    $row->getDelegate()->setFontWeight('bold');
+                //     // call cell manipulation methods
+                //     $row->getDelegate()->setFontFamily('Comic Sans MS');
+                //     $row->getDelegate()->setFontSize(15);
+                //     $row->getDelegate()->setFontWeight('bold');
 
-                });
+                // });
 
-                 $event->$sheet->row(2, array('Something else here'));
+                //  $event->$sheet->row(2, array('Something else here'));
 
         // // getting data to display - in my case only one record
         // $event->$users = User::get()->toArray();

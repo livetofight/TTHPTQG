@@ -22,6 +22,7 @@ class HomeController extends Controller
         $id = \Session::get('id');
         //lay mon thi
         $id_subject=$this->homeService->getIdSubject();
+        //dd( $id_subject);
         if($id_subject == null){
             $notification['title']='Chưa đến ngày thi';
             $notification['text']='Vui lòng quay trở lại trong thời gian thi.';

@@ -4,11 +4,6 @@ $(function() {
     $(document).on('click', '#btnsubmit', function() {
         //window.location.href= "../result";
         var arr_selected = JSON.parse(localStorage.getItem("allselected"));
-
-
-
-
-
         //console.log(arr_selected);
 
         $.ajax({
@@ -94,6 +89,7 @@ function show_lists_questions(data) {
     let list = $('#list_question');
     list.empty();
     if (data['total_record'] == 0) {
+        $('#timestudent').empty();
         $('#error_message').append('<div class="callout callout-danger">' +
             '<h4>Chưa có đề thi!</h4>' +
             '<p>Vui lòng liên hệ với cán bộ coi thi !</p>' +
@@ -122,19 +118,24 @@ function show_lists_questions(data) {
             list.append(box);
 
         }
-
-
         //STUDENT
         let student = $('#student');
         let box_student = $('<div class="box box-default color-palette-box">')
-            //let student = $('#student');
-            //let timestudent = $('#timestudent');
         student.empty();
-        //timestudent.empty();
-        box_student.append('<div class="box-header with-border">' +
-            '<h3 class="box-title">' +
-            '</h3>' +
-            '</div>');
+        // box_student.append('<div class="box-header with-border">' +
+        //     '<h3 class="box-title">' +
+        //     '<i class="fa fa-clock-o"></i> THỜI GIAN' +
+        //     '</h3>' +
+        //     '<div countdown="" data-date="{{$over_time}}" style="text-align: center">' +
+        //     '<span data-hours="" class="text-red">00</span>' +
+        //     '<span class="text-red">:</span>' +
+        //     '<span data-minutes="" class="text-red">00</span>' +
+        //     '<span class="text-red">:</span>' +
+        //     '<span data-seconds="" class="text-red">00</span>' +
+        //     '</div>' +
+        //     '</div>' +
+
+        //     '<a href="/resetcd"><button id= "clear">Xóa session</button></a>');
         let box_body = $('<div class="box-body"></div>')
         let box_solid = $('<div class="box box-solid"></div>');
         let no_padding = $('<div class="box-body no-padding"></div>');
@@ -206,8 +207,7 @@ function show_lists_questions(data) {
         number_question.append(box);
         number_question.append('<div class="box box-solid">' +
             '<button type="button" class="btn btn-block btn-primary">Nộp bài</button>' +
-            '</div>')
-
+            '</div>');
 
         //PHÂN TRANG
         var show_item_page = data['page_size'];

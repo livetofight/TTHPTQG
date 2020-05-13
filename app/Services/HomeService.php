@@ -43,7 +43,7 @@ class HomeService
     }
 
     public function getSubject($id){
-        return $this->subjectRepository->find($id);
+        return $this->subjectRepository->findSubject($id);
     }
 
     //lay ra ma mon thi

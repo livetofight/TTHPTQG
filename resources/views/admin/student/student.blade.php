@@ -84,7 +84,7 @@
                                     {{-- <td>{{ $item->subject_list}} </td> --}}
                                     <td>
                                     <a href="{{url('admin/student/' .$item->id )}}"><i title="Sửa" class="fa fa-pencil-square-o" style="margin-right: 5px;margin-left: 5px; color: darkred;"></i></a>
-                                        @if ($item['isActive']==1) 
+                                        @if ($item['isActive']==1)
                                         <i title="Đã Thi" class="btn-isActive fa fa-eye "data-id={{ $item->id}} > </i>
                                         @else <i title="Chưa Thi" class="btn-isActive fa fa-eye-slash" data-id={{ $item->id}} > </i>
                                         @endif

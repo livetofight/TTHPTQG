@@ -36,9 +36,14 @@ class StudentController extends Controller
     {
         if($request->file('inputFile')){
             $file=$request->file('inputFile');
-            Excel::import(new StudentsImport, $file);
-            $result['status_value']=" Nhập File thành công";
+            try {
+                Excel::import(new StudentsImport, $file);
+                $result['status_value']=" Nhập File thành công";
             $result['status']=1;
+            } catch (ModelNotFoundException $exception) {
+                $result['status_value']=$exception->getMessage();
+                $result['status']=0;
+            }   
         } else{
             $result['status_value']=" Lỗi nhập File";
             $result['status']=0;
@@ -51,8 +56,8 @@ class StudentController extends Controller
     }
 
 
+    //that đổi trang thái đã thì thành chưa thi và ngc lại
     public function changeActive(Request $request){
-
         try {
             $result['status']=$this->studentService->changeExam($request->id);
             $result['status_value']=" Đổi trạng thái thành công";
@@ -78,17 +83,12 @@ class StudentController extends Controller
         $data['school']=$this->studentService->getAllSchool();
         $data['id_subject']=$this->studentService->findStudentSubject($id);
         $data['subject']=$this->studentService->getAllSubject();
+        $data['result']=$this->studentService->fStuResultSubject($id);
+        //dd($data);
         return view('admin.student.student-detail',$data);
     }
 
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Student  $Student
-     * @return \Illuminate\Http\Response
-     */
 
 
     /**

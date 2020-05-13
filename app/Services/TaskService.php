@@ -59,16 +59,15 @@ class TaskService
     public function getCountListQuestion($id_exam){
         return $this->questionListRepository->getCountListQuestion($id_exam);
     }
-    
+
     public function getTimeSubject($id_subject){
         return $this->examRepository->getTimeSubject($id_subject);
     }
 
-    
+
     public function findStudent($id){
         return $this->studentRepository->find($id);
     }
-
 
     public function getlistquestionbyidexam($id_exam){
         return $this->questionListRepository->get_list_question($id_exam);

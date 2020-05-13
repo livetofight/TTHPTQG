@@ -20,12 +20,9 @@ class HomeController extends Controller
     public function index()
     {
         $id = \Session::get('id');
-        
-        if($id==null){
-            return redirect('/');
-        }
         //lay mon thi
         $id_subject=$this->homeService->getIdSubject();
+        //dd( $id_subject);
         if($id_subject == null){
             $notification['title']='Chưa đến ngày thi';
             $notification['text']='Vui lòng quay trở lại trong thời gian thi.';
@@ -35,6 +32,7 @@ class HomeController extends Controller
             if($this->homeService->checksubject($id_subject,$student_sub)){
                 $data['student']=$this->homeService->findStudent($id);
                 $data['subject']=$this->homeService->getSubject($id_subject);
+                //dd($data['subject']);
                 $data['exam_subject']=$this->homeService->findArraySubject($student_sub);
                 return view('client.home.index',$data);
             } else{

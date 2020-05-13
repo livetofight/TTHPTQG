@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Exam;
+use App\Repositories\ExamListRepository;
 use App\Repositories\ExamRepository;
 use App\Repositories\QuestionListRepository;
 use App\Repositories\QuestionRepository;
@@ -12,14 +13,17 @@ class ExamService
     private $examRepository;
     private $questionRepository;
     private $questionListRepository;
+    private $examListRepository;
 
     public function __construct(ExamRepository $examRepository,
                                 QuestionRepository $questionRepository,
-                                QuestionListRepository $questionListRepository)
+                                QuestionListRepository $questionListRepository,
+                                ExamListRepository $examListRepository)
     {
         $this->examRepository = $examRepository;
         $this->questionRepository = $questionRepository;
         $this->questionListRepository = $questionListRepository;
+        $this->examListRepository = $examListRepository;
     }
 
 
@@ -39,7 +43,7 @@ class ExamService
     public function createExam( $id_subject, $number, $time){
         $this->examRepository->createExam($id_subject, $number, $time);
         $id_exam=$this->examRepository->getLastID();
-        $listIdQuestion = $this->questionRepository->getListID(1);
+        $listIdQuestion = $this->questionRepository->getListID($id_subject);
         // $question_id = $listIdQuestion[array_rand($listIdQuestion,1)];
         // var_dump($question_id);
         $arrayQuestionId=array();
@@ -65,6 +69,21 @@ class ExamService
     }
 
     public function delete(int $id){
-        return $this->examRepository->delete($id);
+        $exam_list=$this->examListRepository->getIdExamListByIdExam($id);
+        foreach($exam_list as $item){
+            $key=key($item);
+            $val=$item[$key];
+            // print_r($val);
+            $this->examListRepository->delete($val);
+        }
+        $questionList=$this->questionListRepository->getIdQuestionList($id);
+        print_r($questionList);
+        foreach($questionList as $item){
+            $key=key($item);
+            $val=$item[$key];
+            //print_r($item);
+            $this->questionListRepository->delete($val);
+        }
+        $this->examRepository->delete($id);
     }
 }

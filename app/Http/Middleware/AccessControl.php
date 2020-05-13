@@ -17,7 +17,7 @@ class AccessControl
      */
     public function handle($request, Closure $next)
     {
-        if(Session::has('login')&&Session::get('login')==true){
+        if(Session::has('loginStudent')&&Session::get('loginStudent')==true){
             return redirect('/home');
         }
         else {

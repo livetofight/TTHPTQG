@@ -65,6 +65,12 @@ class StudentRepository  extends EloquentRepository
         return false;
     }
 
+    //lấy môn thi và kết quả của đề thi
+    public function fStuResultSubject($id){
+        //dd($id);
+        print_r(Student::find($id)->with('result')->get()) ;
+    }
+
 
     //client
     //kt mon hoc sinh thi trung voi ngay thi hay k

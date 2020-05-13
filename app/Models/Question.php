@@ -19,7 +19,7 @@ class Question extends Model
         'updated_at'
     ];
 
-    protected $hidden = ['ans_correct'];
+    //protected $hidden = ['ans_correct'];
 
     public function questionList() {
         return $this->hasMany('App\Models\QuestionList','id_question','id');
@@ -28,6 +28,7 @@ class Question extends Model
     public function task(){
         return $this->hasMany('App\Models\Task','id_question');
     }
+
 
 
 }

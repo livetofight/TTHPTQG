@@ -63,11 +63,9 @@
                         <input type='hidden' id='number_of_pages' />
                         <div id="list_question">
                         </div>
-                        {{-- <div class="box-footer clearfix"> --}}
-                            <div id="page_navigation" style="text-align: center;">
+                        <div id="page_navigation" style="text-align: center;">
 
-                            </div>
-                        {{-- //</div> --}}
+                        </div>
                     </div>
                     <div class="col-xs-4 col-md-4">
                         <div class="box box-default color-palette-box">
@@ -76,16 +74,15 @@
                                     <h3 class="box-title">
                                         <i class="fa fa-clock-o"></i> THỜI GIAN
                                     </h3>
-                                            <div countdown="" data-date="{{$over_time}}">
-                                                <span data-hours="" class="text-red">00</span>
-                                                <span class="text-red">:</span>
-                                                <span data-minutes="" class="text-red">00</span>
-                                                <span class="text-red">:</span>
-                                                <span data-seconds="" class="text-red">00</span>
-                                            </div>
+                                    <div countdown="" data-date="{{$over_time}}" style="text-align: center">
+                                        <span data-hours="" class="text-red">00</span>
+                                        <span class="text-red">:</span>
+                                        <span data-minutes="" class="text-red">00</span>
+                                        <span class="text-red">:</span>
+                                        <span data-seconds="" class="text-red">00</span>
                                     </div>
-
-                            <a href="/resetcd"><button id= "clear">Xóa session</button></a>
+                                </div>
+                                <a href="/resetcd"><button id= "clear">Xóa session</button></a>
                             </div>
                             <div id="student">
 

@@ -37,13 +37,15 @@ class Student extends Model
         return $this->hasOne('App\Models\SchoolList', 'id_student');
     }
 
+    public function result() {
+        return $this->hasMany('App\Models\Result', 'id_student');
+    }
+
     // public function examList() {
     //     return $this->hasMany('App\Models\ExamList', 'id_student','id');
     // }
 
-    // public function result() {
-    //     return $this->hasMany('App\Models\Result', 'id_student','id');
-    // }
+    
 
     // public function task() {
     //     return $this->hasMany('App\Models\Task', 'id_student','id');

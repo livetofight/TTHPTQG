@@ -63,4 +63,9 @@ class QuestionListRepository  extends EloquentRepository
     //                                 ->get();
         
     // }
+    public function getIdQuestionList($id_exam){
+        return QuestionList::where('id_exam', $id_exam)
+                            ->get('id')
+                            ->toArray();
+    }
 }

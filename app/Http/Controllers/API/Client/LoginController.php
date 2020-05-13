@@ -45,7 +45,7 @@ class LoginController extends Controller
     }
 
     public function index() {
-        if(Session::has('login')&&Session::get('login')==true){
+        if(Session::has('loginStudent')&&Session::get('loginStudent')==true){
             return redirect('/home');
         }else{
             return redirect('/login');
@@ -84,7 +84,7 @@ class LoginController extends Controller
                 }
                 else{
                     $id=$student->first()->id;
-                    Request::session()->put('login', true);
+                    Request::session()->put('loginStudent', true);
                     Request::session()->put('id', $id);
                     Request::session()->put('fullname', $student->first()->fullname);
                     $this->studentService->setIsA($id,1);
@@ -101,7 +101,7 @@ class LoginController extends Controller
     }
     public function getLogout()
     {
-        if(Session::has('login') && Session::get('login') == true){
+        if(Session::has('loginStudent') && Session::get('loginStudent') == true){
             $id=Session::get('id');
             $this->studentService->setIsA($id,0);
             Request::session()->flush();

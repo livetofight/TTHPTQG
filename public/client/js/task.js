@@ -2,6 +2,9 @@ $(function() {
     get_list_questions();
 
     $(document).on('click', '#btnsubmit', function() {
+        //window.location.href= "../result";
+        var arr_selected = JSON.parse(localStorage.getItem("allselected"));
+        //console.log(arr_selected);
 
         var arr_selected = JSON.parse(localStorage.getItem("allselected"));
         
@@ -89,6 +92,7 @@ function show_lists_questions(data) {
     let list = $('#list_question');
     list.empty();
     if (data['total_record'] == 0) {
+        $('#timestudent').empty();
         $('#error_message').append('<div class="callout callout-danger">' +
             '<h4>Chưa có đề thi!</h4>' +
             '<p>Vui lòng liên hệ với cán bộ coi thi !</p>' +
@@ -117,19 +121,24 @@ function show_lists_questions(data) {
             list.append(box);
 
         }
-
-
         //STUDENT
         let student = $('#student');
         let box_student = $('<div class="box box-default color-palette-box">')
-            //let student = $('#student');
-            //let timestudent = $('#timestudent');
         student.empty();
-        //timestudent.empty();
-        box_student.append('<div class="box-header with-border">' +
-            '<h3 class="box-title">' +
-            '</h3>' +
-            '</div>');
+        // box_student.append('<div class="box-header with-border">' +
+        //     '<h3 class="box-title">' +
+        //     '<i class="fa fa-clock-o"></i> THỜI GIAN' +
+        //     '</h3>' +
+        //     '<div countdown="" data-date="{{$over_time}}" style="text-align: center">' +
+        //     '<span data-hours="" class="text-red">00</span>' +
+        //     '<span class="text-red">:</span>' +
+        //     '<span data-minutes="" class="text-red">00</span>' +
+        //     '<span class="text-red">:</span>' +
+        //     '<span data-seconds="" class="text-red">00</span>' +
+        //     '</div>' +
+        //     '</div>' +
+
+        //     '<a href="/resetcd"><button id= "clear">Xóa session</button></a>');
         let box_body = $('<div class="box-body"></div>')
         let box_solid = $('<div class="box box-solid"></div>');
         let no_padding = $('<div class="box-body no-padding"></div>');
@@ -167,7 +176,7 @@ function show_lists_questions(data) {
             let tr = $('<tr></tr>');
             for (let i = 0; i < data['total_record']; i++) {
                 n += 1;
-                tr.append('<th><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 2) + ')">' + n + '</span></th>');
+                tr.append('<th><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 3) + ')">' + n + '</span></th>');
             }
             tbody.append(tr);
         } else {
@@ -179,9 +188,9 @@ function show_lists_questions(data) {
                 for (let j = 0; j < 10; j++) {
                     n += 1;
                     if (n < 10) {
-                        tr.append('<th><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 2) + ')">0' + n + '</span></th>');
+                        tr.append('<th><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 3) + ')">0' + n + '</span></th>');
                     } else {
-                        tr.append('<th><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 2) + ')">' + n + '</span></th>');
+                        tr.append('<th><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 3) + ')">' + n + '</span></th>');
                     }
                 }
                 tbody.append(tr);
@@ -190,7 +199,7 @@ function show_lists_questions(data) {
                     let tr2 = $('<tr></tr>');
                     for (let h = 0; h < m; h++) {
                         n += 1;
-                        tr2.append('<th><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 2) + ')">' + n + '</span></th>');
+                        tr2.append('<th><span class="badge bg-light-blue" longdesc="' + (n - 1) + '" onclick="go_to_page(' + Math.floor((n - 1) / 3) + ')">' + n + '</span></th>');
                     }
                     tbody.append(tr2);
                 }
@@ -200,6 +209,7 @@ function show_lists_questions(data) {
         box.append(table);
         number_question.append(box);
         number_question.append('<div class="box box-solid">' +
+<<<<<<< HEAD
             '<button type="button" id="btnsubmit" class="btn btn-block btn-primary">Nộp bài</button>' +
             '</div>')
         check_selected();
@@ -275,6 +285,10 @@ function show_lists_questions(data) {
         //     }
         // }, 1000);
 
+=======
+            '<button type="button" class="btn btn-block btn-primary">Nộp bài</button>' +
+            '</div>');
+>>>>>>> d4099448e95617e39d9c2c077d72f9b04308801f
 
         //PHÂN TRANG
         var show_item_page = data['page_size'];

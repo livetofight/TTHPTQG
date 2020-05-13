@@ -69,5 +69,10 @@ class StudentService
     public function getAllSubject(){
         return $this->subjectRepository->getAll();  
     }
+
+    //lay hs vs môn thi và kq làm bài
+    public function fStuResultSubject($id){
+        return $this->studentRepository->fStuResultSubject($id);  
+    }
     
 }

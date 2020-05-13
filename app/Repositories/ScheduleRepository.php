@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Schedule;
-
+use Carbon\Carbon;
 class ScheduleRepository  extends EloquentRepository
 {
     /**
@@ -17,10 +17,13 @@ class ScheduleRepository  extends EloquentRepository
 
     public function getIdSubject()
     {
+        $time=\Carbon\Carbon::parse(now());
         $schedule = Schedule::whereDate('test_date',now());
-        //dd($schedule);
-        if(now()>'12:00') $sign='>';
+        $dt = Carbon::now();
+        $dt->setTime(12, 00, 00)->toDateTimeString();
+        if($time > $dt) $sign='>';
         else $sign='<';
-        return $schedule->where('test_date',$sign,\Carbon\Carbon::parse('12:00'))->value('id_subject');
-    }
+        return $schedule->where('test_date',$sign,$dt)->value('id_subject');
+        
+    } 
 }

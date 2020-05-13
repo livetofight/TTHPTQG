@@ -26,4 +26,10 @@ class ExamListRepository  extends EloquentRepository
         return ExamList::with('student')
                         ->get();
     }
+
+    public function getIdExamListByIdExam($id_exam){
+        return ExamList::where('id_exam', $id_exam)
+                        ->get('id')
+                        ->toArray();
+    }
 }

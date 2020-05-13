@@ -21,11 +21,11 @@
                     <div class="box-header" style="text-align: aligin; height: 50px;line-height: 50px;white-space: nowrap;">
                         <h2 class="box-title">Danh sách đề thi</h2>
                         <div class="pull-right">
-                            {{-- <a href="{{ asset ('/exam/addexam ') }}" class="btn btn-app"> <i class="fa  fa-plus"></i> Tạo đề thi</a> --}}
+                            <a class="btn btn-app "> <i class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#CreateExam"></i> Tạo đề thi</a>
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary, fa  fa-plus" data-toggle="modal" data-target="#CreateExam">
+                            {{-- <button type="button" class="btn btn-primary, fa  fa-plus" data-toggle="modal" data-target="#CreateExam">
                                 Tạo đề
-                            </button>
+                            </button> --}}
 
                             <!-- Create Modal -->
                             <div class="modal fade" id="CreateExam" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

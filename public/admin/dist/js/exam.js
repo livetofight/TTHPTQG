@@ -12,6 +12,13 @@ $(document).ready(function(){
             'Vui lòng điền đầy đủ thông tin.' +
             '</div>')
         }
+        else if(number <=0 || time <=0)
+        {
+            $('#error_message').html('<div class="callout callout-danger">' +
+            '<h4>Lỗi!</h4>' +
+            'Vui lòng chọn thông tin phù hợp.' +
+            '</div>')
+        }
         else{
             $.ajax({
                 headers: {
@@ -55,36 +62,15 @@ $(document).ready(function(){
             },
             type: "GET",
             url: baseUrl+"/admin/exam/deleteexam/"+id,
-            // data: {
-            //     id:id
-            // },
-            // data: $('#deleteFormID').serialize(),
             success:function(result){
-                //console.log(baseUrl);
-                var json_data = $.parseJSON(result);
-                //console.log(json_data);
-                    if(json_data.status == 1){
-
-                        $('#deleteModal').modal('hide');
-                        alert('success');
-                        location.reload();
-                        // window.location.replace(baseUrl+"/createexam");
-                    }
-                    else{
-                        $('#error_message').html('<div class="callout callout-danger">' +
-                                '<h4>Lỗi!</h4>' +
-                                'Không nhập được đề.' +
-                                '</div>')
-                    }
-                // console.log(result);
-                // $('#deleteModal').modal('hide');
-                // alert('success');
-                // location.reload();
+                console.log(result);
+                $('#deleteModal').modal('hide');
+                alert('Xóa thành công');
+                location.reload();
+            },
+            error: function(){
+                alert('Xóa không thành công');
             }
-            // ,
-            // error: function(error){
-            //     console.log(error);
-            // }
         });
     })
 });

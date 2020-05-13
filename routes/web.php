@@ -19,17 +19,13 @@ Auth::routes();
 //admin route
 Route::get('/ad', 'Auth\LoginController@index');
 
-Route::group(['prefix'=>'/admin'], function(){
+Route::group(['prefix' => '/admin'], function () {
     Route::group([
-        'middleware'=>['prevent-back-history','auth'],
-        'namespace'=>'API\Admin',
-    ], function(){
+        'middleware' => ['prevent-back-history', 'auth'],
+        'namespace' => 'API\Admin',
+    ], function () {
 
         Route::get('/home', 'HomeController@index');
-
-        Route::get('/question', 'ExamController@index');
-        Route::get('/question/export','ExportExcelController@exportQuestion')->name('exportQuestion');
-
         Route::get('/exam', 'ExamController@index');
         Route::post('/exam/createexam', 'ExamController@store');
         Route::post('/exam/editexam', 'ExamController@update');
@@ -45,18 +41,21 @@ Route::group(['prefix'=>'/admin'], function(){
         Route::post('/student/update', 'StudentController@update');
 
         Route::get('/question', 'QuestionController@index');
-        Route::get('/question/addque', 'QuestionController@add');
+        Route::post('/question/update', 'QuestionController@update');
+        Route::get('/question/detail/{id}', 'QuestionController@detail');
+        Route::get('/question/export','ExportExcelController@exportQuestion')->name('exportQuestion');
+        Route::post('/question/import', 'QuestionController@import');
 
-        Route::resource('/subject' , 'SubjectController');
-        Route::post('/subject','SubjectController@doUpLoad');
-        Route::post('/subject/insert','SubjectController@doInsert');
+        Route::resource('/subject', 'SubjectController');
+        Route::post('/subject', 'SubjectController@doUpLoad');
+        Route::post('/subject/insert', 'SubjectController@doInsert');
         Route::get('/subject/delete/{id}', 'SubjectController@doDelete');
-        Route::post('/subject/update','SubjectController@doUpdate');
+        Route::post('/subject/update', 'SubjectController@doUpdate');
     });
 
     Route::group([
-        'namespace'=>'Auth',
-    ], function(){
+        'namespace' => 'Auth',
+    ], function () {
 
         Route::get('/login', 'LoginController@getLogin')->name('login');
 
@@ -65,25 +64,27 @@ Route::group(['prefix'=>'/admin'], function(){
         Route::get('/logout', 'LogoutController@getLogout');
 
         Route::get('/profile', 'ProfileController@index');
+        Route::post('/changeprofile', 'ProfileController@update');
 
-        Route::get('/password/reset/{token?}', 'ResetPasswordController@');
-
-        Route::post('/forgotpassword', 'ResetPasswordController@resetpassword');
+        Route::get('/forgotpassword', 'ForgotPasswordController@showLinkRequestForm');
+        Route::post('/password/email', 'ForgotPasswordController@sendResetLinkEmail');
+        // Route::get('/password/email', 'ResetPasswordController@showResetForm');
+        Route::post('/password/reset', 'ResetPasswordController@reset');
     });
 });
 
 //client
 Route::group([
-    'middleware'=>['guest'],
-        'namespace'=>'API\Client',
+    'middleware' => ['guest'],
+    'namespace' => 'API\Client',
 
-    ],function(){
+], function () {
 
-    Route::get('/task','TaskController@index');
-    Route::get('/task/question','TaskController@getQuestion');
-    Route::get('/task/time','TaskController@getTime');
+    Route::get('/task', 'TaskController@index');
+    Route::get('/task/question', 'TaskController@getQuestion');
+    Route::get('/task/time', 'TaskController@getTime');
 
-    Route::get('/result','ExamController@index');
+    Route::get('/result', 'ExamController@index');
 
     Route::get('/', 'LoginController@index');
 
@@ -97,14 +98,11 @@ Route::group([
 
     Route::get('/resetcd', 'TaskController@resetcd');
 
-    Route::get('/result','ExamController@index');
+    Route::get('/result', 'ExamController@index');
 
-    Route::get('/result','ExamController@index')->name('abc');
+    Route::get('/result', 'ExamController@index')->name('abc');
 
-    Route::post('/result','ExamController@postdata');
+    Route::post('/result', 'ExamController@postdata');
 });
 
 // Route::get('/result', 'ResultController@index');
-
-
-

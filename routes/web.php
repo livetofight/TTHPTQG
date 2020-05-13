@@ -48,10 +48,15 @@ Route::group(['prefix'=>'/admin'], function(){
         Route::get('/question/addque', 'QuestionController@add');
 
         Route::resource('/subject' , 'SubjectController');
-        Route::post('/subject','SubjectController@doUpLoad');
+        //Route::post('/subject','SubjectController@doUpLoad');
         Route::post('/subject/insert','SubjectController@doInsert');
         Route::get('/subject/delete/{id}', 'SubjectController@doDelete');
         Route::post('/subject/update','SubjectController@doUpdate');
+
+        
+        Route::get('/result','ResultController@index');
+        Route::get('/result/calculatemark','ResultController@generateResult');
+
     });
 
     Route::group([
@@ -78,8 +83,8 @@ Route::group(['namespace'=>'API\Client',],function(){
     Route::get('/task','TaskController@index');
     Route::get('/task/question','TaskController@getQuestion');
     Route::get('/task/time','TaskController@getTime');
+    Route::post('/task','TaskController@saveTask');
 
-    Route::get('/result','ExamController@index');
 
     Route::get('/', 'LoginController@index');
 
@@ -95,9 +100,9 @@ Route::group(['namespace'=>'API\Client',],function(){
 
     Route::get('/result','ExamController@index');
 
-    Route::get('/result','ExamController@index')->name('abc');
+    //Route::get('/result','ResultController@index');
 
-    Route::post('/result','ExamController@postdata');
+    //Route::post('/result','ExamController@postdata');
 });
 
 // Route::get('/result', 'ResultController@index');

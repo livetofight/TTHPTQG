@@ -8,6 +8,7 @@ use App\Repositories\ExamRepository;
 use App\Repositories\ExamListRepository;
 use App\Repositories\SubjectRepository;
 use App\Repositories\StudentRepository;
+use App\Repositories\TaskRepository;
 
 class TaskService
 {
@@ -17,6 +18,8 @@ class TaskService
     private $examListRepository;
     private $subjectRepository;
     private $studentRepository;
+    private $taskRepository;
+
 
     public function __construct(
         ScheduleRepository $scheduleRepository,
@@ -24,7 +27,8 @@ class TaskService
         ExamRepository $examRepository,
         ExamListRepository $examListRepository,
         SubjectRepository $subjectRepository,
-        StudentRepository $studentRepository
+        StudentRepository $studentRepository,
+        TaskRepository $taskRepository
     ){
         $this->scheduleRepository = $scheduleRepository;
         $this->questionListRepository = $questionListRepository;
@@ -32,6 +36,8 @@ class TaskService
         $this->examListRepository = $examListRepository;
         $this->subjectRepository = $subjectRepository;
         $this->studentRepository=$studentRepository;
+        $this->taskRepository=$taskRepository;
+
     }
 
     public function getIdSubject(){
@@ -68,4 +74,26 @@ class TaskService
         return $this->questionListRepository->get_list_question($id_exam);
     }
     
+    public function luu(array $attributes){
+        //dd($attributes);
+        return $this->taskRepository->luu($attributes);
+    }
+
+
+    public function update_by_id_question($id, $selected){
+        return $this->taskRepository->updatebyidques($id,$selected);
+    }
+
+    public function calculate(){
+        return $this->taskRepository->calculate();
+    }
+
+    public function review($id_user,$id_exam){
+        return $this->taskRepository->review($id_user,$id_exam);
+    }
+
+
+    // public function getQuestionwithtask($id_exam){
+    //     return $this->questionListRepository->getListQuestionwithtask($id_exam);
+    // }
 }

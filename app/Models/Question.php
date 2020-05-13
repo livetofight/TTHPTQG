@@ -25,7 +25,9 @@ class Question extends Model
         return $this->hasMany('App\Models\QuestionList','id_question','id');
     }
 
-    
+    public function task(){
+        return $this->hasMany('App\Models\Task','id_question');
+    }
 
 
 }

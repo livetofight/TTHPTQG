@@ -4,7 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tasks extends Model
+class Task extends Model
 {
-    
+    protected $fillable = [
+        'id', 'answer_selected', 'id_question', 'id_exam', 'id_user',
+    ];
+
+    public function question(){
+        return $this->belongsTo('App\Models\Question','id_question');
+    }
 }

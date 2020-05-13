@@ -4,6 +4,7 @@ namespace App\Repositories;
 use App\Models\QuestionList;
 use App\Models\Question;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 
 
 class QuestionListRepository  extends EloquentRepository
@@ -55,4 +56,11 @@ class QuestionListRepository  extends EloquentRepository
         }
         return $item;
     }
+
+    // public function getListQuestionwithtask($id_exam){
+    //     return  QuestionList::whereIn('id_exam',$id_exam)
+    //                                 ->whereYear('created_at',date('Y'))
+    //                                 ->get();
+        
+    // }
 }

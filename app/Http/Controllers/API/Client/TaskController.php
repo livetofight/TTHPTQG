@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\API\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Task;
 use App\Services\ExamService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Services\TaskService;
 use Carbon\Carbon;
+use Illuminate\Support\Arr;
 
-use function GuzzleHttp\Promise\task;
 
 class TaskController extends Controller
 {
@@ -64,5 +65,28 @@ class TaskController extends Controller
     {
         \Session::pull('over_time', 'default');
         return ('<a href="home">xóa thành công</a>');
+    }
+
+    public function saveTask(Request $request){
+        $select_arr= $request->arr_selected;
+        $today = today();
+        $id_student = \Session::get('id');
+        $id_subject=$this->taskService->getidSubject($today);
+        $id_exam_array=$this->taskService->getIdExamArray($id_subject);
+        $id_exam=$this->taskService->getIdExam($id_student,$id_exam_array);
+        $data=$this->taskService->getQuestion($id_exam);
+
+        for ($i=0; $i<count($data);$i++){
+            
+                $task=["id_question"=>$data[$i]['question']['id'], "id_exam"=>$id_exam[0]['id_exam'], "id_user"=>$id_student ];
+                $this->taskService->luu($task);
+        }
+
+
+        for ($i=0; $i< count($select_arr) ; $i++ ){
+            $id_ques = $select_arr[$i]['question'];
+            $selected = $select_arr[$i]['selected'];
+            $this->taskService->update_by_id_question($id_ques,$selected);
+        }
     }
 }

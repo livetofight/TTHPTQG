@@ -14,6 +14,8 @@ class QuestionList extends Model
         return $this->belongsTo(Question::class,'id_question','id');
     }
 
+    
+
 }
 
 

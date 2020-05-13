@@ -2,24 +2,19 @@ $(function() {
     get_list_questions();
 
     $(document).on('click', '#btnsubmit', function() {
-        //window.location.href= "../result";
+
         var arr_selected = JSON.parse(localStorage.getItem("allselected"));
-
-
-
-
-
-        //console.log(arr_selected);
-
+        
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            url: "../result",
+            url: "../task",
             method: "POST",
-            data: { arr_selected: arr_selected },
+            data: { arr_selected: arr_selected,  },
             success: function(data) {
                 console.log(data);
+                //window.location.href= "../result"
             }
         });
     });
@@ -205,9 +200,9 @@ function show_lists_questions(data) {
         box.append(table);
         number_question.append(box);
         number_question.append('<div class="box box-solid">' +
-            '<button type="button" class="btn btn-block btn-primary">Nộp bài</button>' +
+            '<button type="button" id="btnsubmit" class="btn btn-block btn-primary">Nộp bài</button>' +
             '</div>')
-
+        check_selected();
         //THỜI GIAN
         //1 phút = 60000 ms
         // var time = data['time_start'].time;

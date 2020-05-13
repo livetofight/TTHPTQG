@@ -1,15 +1,5 @@
 $(document).ready(function() {
     baseUrl = window.location.origin;
-    $("#inputFile").hover(function(e) {
-        e.preventDefault();
-        $("#error_message").empty();
-    });
-
-
-    // $("#error_message").hover(function(e) {
-    //     e.preventDefault();
-    //     $("#error_message").empty();
-    // });
     $("#btn_import").click(function(e) {
         e.preventDefault();
         $("#error_message").empty();
@@ -18,14 +8,10 @@ $(document).ready(function() {
             .split(".")
             .pop()
             .toLowerCase();
-        if (inputFile == "")
-            $("#error_message").html(
-                '<div class="callout callout-danger">' +
-                "<h4>Lỗi!</h4>" +
-                "Vui lòng chọn tệp." +
-                "</div>"
-            );
-        else {
+        if (inputFile == "") {
+            Noti(1, "Lỗi !", "Vui lòng chọn tệp")
+            setTimeout(Destroy, 5000);
+        } else {
             if ($.inArray(type_file, ["xlsx", "xls"]) >= 0) {
                 var form_data = new FormData($("#file_form")[0]);
                 form_data.append(
@@ -49,22 +35,14 @@ $(document).ready(function() {
                         if (json_data.status) {
                             window.location.replace(baseUrl + "/admin/student");
                         } else {
-                            $("#error_message").html(
-                                '<div class="callout callout-danger">' +
-                                "<h4>Lỗi!</h4>" +
-                                "Không nhập được File." +
-                                "</div>"
-                            );
+                            Noti(1, "Lỗi !", "Không nhập được File.")
+                            setTimeout(Destroy, 5000);
                         }
                     }
                 });
             } else {
-                $("#error_message").html(
-                    '<div class="callout callout-danger">' +
-                    "<h4>Lỗi!</h4>" +
-                    "Vui lòng chọn tệp Excel." +
-                    "</div>"
-                );
+                Noti(1, "Lỗi !", "Vui lòng chọn tệp Excel")
+                setTimeout(Destroy, 5000);
             }
         }
     });
@@ -125,12 +103,8 @@ $(document).ready(function() {
             address.length == 0 ||
             subject_list.length == 0
         ) {
-            $("#error_message").html(
-                '<div class="callout callout-danger">' +
-                "<h4>Lỗi!</h4>" +
-                '<p>Vui lòng nhập đầy đủ thông tin.</p>' +
-                "</div>"
-            );
+            Noti(1, "Lỗi !", "Vui lòng nhập đầy đủ thông tin.")
+            setTimeout(Destroy, 5000);
         } else {
             if (confirm("Bạn muốn cập nhật cho học sinh này ?")) {
                 $.ajax({
@@ -154,19 +128,12 @@ $(document).ready(function() {
                     dataType: "json",
                     success: function(response) {
                         if (response == false) {
-                            $("#error_message").html(
-                                '<div class="callout callout-danger">' +
-                                "<h4>Lỗi!</h4>" +
-                                "Đã có lỗi phát sinh. Xin thử lại sau." +
-                                "</div>"
-                            );
+                            Noti(1, "Lỗi !", "Đã có lỗi phát sinh. Xin thử lại sau.")
+                            setTimeout(Destroy, 5000);
                         } else {
-                            $("#error_message").html(
-                                '<div class="callout callout-info">' +
-                                "<h4> Success !</h4>" +
-                                "<p>Cập nhật học sinh thành công.</p>" +
-                                "</div>"
-                            );
+                            Noti(0, "Thành Công !", "Cập nhật học sinh thành công.")
+                            setTimeout(Destroy, 5000);
+
                         }
                     },
                     error: function(response) {
@@ -177,3 +144,25 @@ $(document).ready(function() {
         }
     });
 });
+
+function Noti(type, title, message) {
+    if (type == 1) {
+        $("#error_message").html(
+            '<div class="callout callout-danger">' +
+            "<h4>" + title + "</h4>" +
+            "" + message + "" +
+            "</div>"
+        );
+    } else {
+        $("#error_message").html(
+            '<div class="callout callout-info">' +
+            "<h4>" + title + "</h4>" +
+            "" + message + "" +
+            "</div>"
+        );
+    }
+}
+
+function Destroy() {
+    $("#error_message").empty()
+}

@@ -120,7 +120,8 @@
                 this.active = false;
                 clearInterval(this.autoUpdate);
                 alert("Hết giờ ");
-                window.location.replace("/home");
+                $('#btnsubmit').click();
+                
             }
         },
 

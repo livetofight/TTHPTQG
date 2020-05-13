@@ -50,7 +50,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ asset ('admin/task') }}"><i class="fa fa-circle-o"></i> Bài làm</a></li>
+                    <li><a href="{{ asset ('admin/result') }}"><i class="fa fa-circle-o"></i> Bài làm</a></li>
                     <li><a href="{{ asset ('admin/result') }}"><i class="fa fa-circle-o"></i> Kết quả bài</a></li>
                 </ul>
             </li>

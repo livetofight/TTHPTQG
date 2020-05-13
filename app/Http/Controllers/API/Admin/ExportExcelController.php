@@ -7,22 +7,13 @@ use Illuminate\Http\Request;
 use Excel;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use App\Services\QuestionService;
 class ExportExcelController extends Controller
 {
-    public function exportStudent(){
-        $modelName= 'Student';
-        $table_heading=[
-        'STT',
-        'Username',
-        'Password',
-        'Họ tên',
-        'Giới tính',
-        'Năm sinh',
-        'CMND',
-        'Loại',
-        'DS môn thi',
-        'Tạo ngày',];
-        return Excel::download(new DataExport($modelName,$table_heading),$modelName.'.xlsx');
+    private $questionService;
+    public function __construct(QuestionService $questionService)
+    {
+        $this->questionService = $questionService;
     }
 
     public function exportQuestion(){
@@ -38,7 +29,7 @@ class ExportExcelController extends Controller
         'Đáp án đúng',
         'Ngày tạo',
         'Chỉnh sửa',];
-        return Excel::download(new DataExport($modelName,$table_heading),$modelName.'.xlsx');
+        return Excel::download(new DataExport($this->questionService,$table_heading),$modelName.'.xlsx');
     }
 }
 
@@ -46,16 +37,15 @@ class ExportExcelController extends Controller
 //class export
 class DataExport implements FromCollection,WithHeadings
 {
-    private $modelName;
+    private $questionService;
     private $filltable;
-    public function __construct(String $modelName, array $filltable)
+    public function __construct(QuestionService $questionService, array $filltable)
     {
-        $this->modelName= $modelName;
+        $this->questionService = $questionService;
         $this->filltable= $filltable;
     }
     function collection(){
-        $yourModel ="App\Models\\$this->modelName";
-        $data=$yourModel::all();
+        $data = $this->questionService->getListQuestion();
         return $data;
     }
     public function headings(): array

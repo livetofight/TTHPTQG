@@ -7,6 +7,10 @@ use App\Models\Question;
 use Illuminate\Http\Request;
 use App\Services\QuestionService;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Imports\QuestionsImport;
+use Maatwebsite\Excel\Facades\Excel;
+use PhpParser\Node\Stmt\TryCatch;
+
 class QuestionController extends Controller
 {
     private $questionService;
@@ -23,6 +27,7 @@ class QuestionController extends Controller
     public function index()
     {
         $data['question']=$this->questionService->getListQuestion();
+        $data['subject']=$this->questionService->getAllSubject();
         return view('admin.question.question',[ 'title' => 'Câu Hỏi'],$data);
     }
 
@@ -78,7 +83,9 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        //
+        $data = $request->all();
+        $question = $this->questionService->update($request->id, $data);
+        return json_encode($question);
     }
 
     /**
@@ -90,5 +97,26 @@ class QuestionController extends Controller
     public function destroy(Question $question)
     {
         //
+    }
+
+    public function detail($id){
+        $data['question']=$this->questionService->findQuestion($id);
+        $data['id_subject']=$this->questionService->findQuestionSubject($id);
+        $data['subject']=$this->questionService->getAllSubject();
+        return view('admin.question.question-detail',$data);
+    }
+
+    public function import(Request $request)
+    {
+        if($request->file('inputFile')){
+            $file=$request->file('inputFile');
+            Excel::import(new QuestionsImport, $file);
+            $result['status_value']=" Nhập File thành công";
+            $result['status']=1;
+        } else{
+            $result['status_value']=" Lỗi nhập File";
+            $result['status']=0;
+        }
+        return json_encode($result);
     }
 }

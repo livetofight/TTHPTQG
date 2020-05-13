@@ -306,6 +306,7 @@
 <script src="{{ asset ('admin/dist/js/student.js ') }}"></script>
 <script src="{{ asset ('admin/dist/js/exam.js')}}"></script>
 <script src="{{ asset ('admin/dist/js/login.js')}}"></script>
+<script src="{{ asset ('admin/dist/js/question.js')}}"></script>
 <script>
     //Date picker
     $('#datepicker').datepicker({

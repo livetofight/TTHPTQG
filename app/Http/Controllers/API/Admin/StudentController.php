@@ -38,10 +38,10 @@ class StudentController extends Controller
             $file=$request->file('inputFile');
             try {
                 Excel::import(new StudentsImport, $file);
-                $result['status_value']=" Nhập File thành công";
-            $result['status']=1;
-            } catch (ModelNotFoundException $exception) {
-                $result['status_value']=$exception->getMessage();
+                // $result['status_value']=" Nhập File thành công";
+                // $result['status']=1;
+            } catch (Exception $exception) {
+                $result['status_value']=$exception->getStatusCode();
                 $result['status']=0;
             }   
         } else{

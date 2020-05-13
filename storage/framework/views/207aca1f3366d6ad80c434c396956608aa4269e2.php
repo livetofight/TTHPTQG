@@ -84,7 +84,7 @@
                                     
                                     <td>
                                     <a href="<?php echo e(url('admin/student/' .$item->id )); ?>"><i title="Sửa" class="fa fa-pencil-square-o" style="margin-right: 5px;margin-left: 5px; color: darkred;"></i></a>
-                                        <?php if($item['isActive']==1): ?> 
+                                        <?php if($item['isActive']==1): ?>
                                         <i title="Đã Thi" class="btn-isActive fa fa-eye "data-id=<?php echo e($item->id); ?> > </i>
                                         <?php else: ?> <i title="Chưa Thi" class="btn-isActive fa fa-eye-slash" data-id=<?php echo e($item->id); ?> > </i>
                                         <?php endif; ?>

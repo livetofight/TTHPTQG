@@ -26,10 +26,6 @@ Route::group(['prefix'=>'/admin'], function(){
     ], function(){
 
         Route::get('/home', 'HomeController@index');
-
-        Route::get('/question', 'ExamController@index');
-        Route::get('/question/export','ExportExcelController@exportQuestion')->name('exportQuestion');
-
         Route::get('/exam', 'ExamController@index');
         Route::post('/exam/createexam', 'ExamController@store');
         Route::post('/exam/editexam', 'ExamController@update');
@@ -45,7 +41,10 @@ Route::group(['prefix'=>'/admin'], function(){
         Route::post('/student/update', 'StudentController@update');
 
         Route::get('/question', 'QuestionController@index');
-        Route::get('/question/addque', 'QuestionController@add');
+        Route::post('/question/update', 'QuestionController@update');
+        Route::get('/question/detail/{id}', 'QuestionController@detail');
+        Route::get('/question/export','ExportExcelController@exportQuestion')->name('exportQuestion');
+        Route::post('/question/import', 'QuestionController@import');
 
         Route::resource('/subject' , 'SubjectController');
         Route::post('/subject','SubjectController@doUpLoad');

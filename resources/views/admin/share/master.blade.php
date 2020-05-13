@@ -305,6 +305,7 @@
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
 <script src="{{ asset ('admin/dist/js/student.js ') }}"></script>
 <script src="{{ asset ('admin/dist/js/exam.js')}}"></script>
+<script src="{{ asset ('admin/dist/js/question.js')}}"></script>
 <script>
     //Date picker
     $('#datepicker').datepicker({

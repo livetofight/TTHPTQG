@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Subject;
 
-class SubjectRepository  extends EloquentRepository 
+class SubjectRepository  extends EloquentRepository
 {
     /**
      * get model
@@ -13,8 +13,8 @@ class SubjectRepository  extends EloquentRepository
     public function getModel()
     {
         return Subject::class;
-    }  
-    
+    }
+
     public function findSubject($id){
         return Subject::whereId($id)
                         ->with('schedule')
@@ -25,5 +25,9 @@ class SubjectRepository  extends EloquentRepository
     public function findArraySubject($arr_id){
         return Subject::whereIn('id',$arr_id)
                         ->get();
+    }
+    public function getSubjectTime($id){
+        return Subject::whereId($id)
+                        ->get("time");
     }
 }

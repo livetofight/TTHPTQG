@@ -52,7 +52,7 @@ Route::group(['prefix' => '/admin'], function () {
         Route::get('/subject/delete/{id}', 'SubjectController@doDelete');
         Route::post('/subject/update','SubjectController@doUpdate');
 
-        
+
         Route::get('/result','ResultController@index');
         Route::get('/result/calculatemark','ResultController@generateResult');
 
@@ -83,6 +83,7 @@ Route::group([
     'middleware' => ['guest'],
     'namespace' => 'API\Client',
     
+
 ], function () {
 
     Route::get('/task', 'TaskController@index');

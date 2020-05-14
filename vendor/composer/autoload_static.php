@@ -157,6 +157,7 @@ class ComposerStaticInit62df45cbd1942dc4f2ab1672b7005714
             'PhpParser\\' => 10,
             'PhpOption\\' => 10,
             'PhpOffice\\PhpSpreadsheet\\' => 25,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'O' => 
         array (
@@ -396,6 +397,10 @@ class ComposerStaticInit62df45cbd1942dc4f2ab1672b7005714
         array (
             0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
         ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
         'Opis\\Closure\\' => 
         array (
             0 => __DIR__ . '/..' . '/opis/closure/src',
@@ -594,6 +599,7 @@ class ComposerStaticInit62df45cbd1942dc4f2ab1672b7005714
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Imports\\QuestionsImport' => __DIR__ . '/../..' . '/app/Imports/QuestionsImport.php',
         'App\\Imports\\StudentsImport' => __DIR__ . '/../..' . '/app/Imports/StudentsImport.php',
         'App\\Models\\Exam' => __DIR__ . '/../..' . '/app/Models/Exam.php',
         'App\\Models\\ExamList' => __DIR__ . '/../..' . '/app/Models/ExamList.php',
@@ -615,7 +621,6 @@ class ComposerStaticInit62df45cbd1942dc4f2ab1672b7005714
         'App\\Repositories\\EloquentRepository' => __DIR__ . '/../..' . '/app/Repositories/EloquentRepository.php',
         'App\\Repositories\\ExamListRepository' => __DIR__ . '/../..' . '/app/Repositories/ExamListRepository.php',
         'App\\Repositories\\ExamRepository' => __DIR__ . '/../..' . '/app/Repositories/ExamRepository.php',
-        'App\\Repositories\\ExamSubjectRepository' => __DIR__ . '/../..' . '/app/Repositories/ExamSubjectRepository.php',
         'App\\Repositories\\QuestionListRepository' => __DIR__ . '/../..' . '/app/Repositories/QuestionListRepository.php',
         'App\\Repositories\\QuestionRepository' => __DIR__ . '/../..' . '/app/Repositories/QuestionRepository.php',
         'App\\Repositories\\RepositoryInterface' => __DIR__ . '/../..' . '/app/Repositories/RepositoryInterface.php',
@@ -2996,6 +3001,11 @@ class ComposerStaticInit62df45cbd1942dc4f2ab1672b7005714
         'Opis\\Closure\\SecurityProvider' => __DIR__ . '/..' . '/opis/closure/src/SecurityProvider.php',
         'Opis\\Closure\\SelfReference' => __DIR__ . '/..' . '/opis/closure/src/SelfReference.php',
         'Opis\\Closure\\SerializableClosure' => __DIR__ . '/..' . '/opis/closure/src/SerializableClosure.php',
+        'PHPMailer\\PHPMailer\\Exception' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/Exception.php',
+        'PHPMailer\\PHPMailer\\OAuth' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/OAuth.php',
+        'PHPMailer\\PHPMailer\\PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/PHPMailer.php',
+        'PHPMailer\\PHPMailer\\POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/POP3.php',
+        'PHPMailer\\PHPMailer\\SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/SMTP.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/AssertionFailedError.php',

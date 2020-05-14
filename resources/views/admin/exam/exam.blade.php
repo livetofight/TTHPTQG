@@ -101,7 +101,7 @@
                                         <td onblur="update({{$item->id}})" contenteditable id="{{$item->id}}">{{$item->time}}</td>
                                         <td>{{$item->created_at}}</td>
                                         <td>
-                                            <a href="#" class="delete btn btn-danger btn-sm btnDelete">Delete
+                                            <a href="#" class="fa fa-pencil-square-o">Delete
                                             {{-- <button type="button" class="delete btn btn-danger btn-sm" id="btnDelete">Delete</button> --}}
                                         </td>
                                     </tr>

@@ -55,6 +55,7 @@ Route::group(['prefix' => '/admin'], function () {
         
         Route::get('/result','ResultController@index');
         Route::get('/result/calculatemark','ResultController@generateResult');
+        Route::get('/result/aftercalculate','AfterCalculateController@index')->name('final');
 
     });
 
@@ -83,21 +84,16 @@ Route::group([
     'middleware' => ['guest'],
     'namespace' => 'API\Client',
 
-<<<<<<< HEAD
-    Route::get('/task','TaskController@index');
-    Route::get('/task/question','TaskController@getQuestion');
-    Route::get('/task/time','TaskController@getTime');
-    Route::post('/task','TaskController@saveTask');
+    
 
-=======
 ], function () {
 
     Route::get('/task', 'TaskController@index');
     Route::get('/task/question', 'TaskController@getQuestion');
     Route::get('/task/time', 'TaskController@getTime');
+    Route::post('/task','TaskController@saveTask');
 
     Route::get('/result', 'ExamController@index');
->>>>>>> d4099448e95617e39d9c2c077d72f9b04308801f
 
     Route::get('/', 'LoginController@index');
 
@@ -113,15 +109,12 @@ Route::group([
 
     Route::get('/result', 'ExamController@index');
 
-<<<<<<< HEAD
     //Route::get('/result','ResultController@index');
 
     //Route::post('/result','ExamController@postdata');
-=======
     Route::get('/result', 'ExamController@index')->name('abc');
 
     Route::post('/result', 'ExamController@postdata');
->>>>>>> d4099448e95617e39d9c2c077d72f9b04308801f
 });
 
 // Route::get('/result', 'ResultController@index');

@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Result;
+use App\Models\Question;
 
 class ResultRepository  extends EloquentRepository 
 {
@@ -15,6 +16,10 @@ class ResultRepository  extends EloquentRepository
         return Result::class;
     } 
 
+
+    public function resultExam(){
+        return Question::where('id',1)->get();
+    }
     
 
 }

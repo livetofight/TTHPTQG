@@ -2,24 +2,25 @@ $(function() {
     get_list_questions();
 
     $(document).on('click', '#btnsubmit', function() {
-        //window.location.href= "../result";
-        var arr_selected = JSON.parse(localStorage.getItem("allselected"));
-        //console.log(arr_selected);
+        if (confirm("Bạn có chắc chắn muốn nộp bài")) {
+            var arr_selected = JSON.parse(localStorage.getItem("allselected"));
 
-        var arr_selected = JSON.parse(localStorage.getItem("allselected"));
-        
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            url: "../task",
-            method: "POST",
-            data: { arr_selected: arr_selected,  },
-            success: function(data) {
-                console.log(data);
-                //window.location.href= "../result"
-            }
-        });
+            
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "../task",
+                method: "POST",
+                data: { arr_selected: arr_selected,  },
+                success: function(data) {
+                    localStorage.removeItem('allselected');
+                    localStorage.removeItem('num_selected');
+                    console.log(data);
+                    window.location.href= "../result"
+                }
+            });
+        }
     });
 });
 async function get_list_questions(data) {
@@ -39,6 +40,7 @@ async function get_list_questions(data) {
 
 
 function check_selected() {
+
     var num_selected = JSON.parse(localStorage.getItem("num_selected"));
     if (num_selected !== null) {
         for (let i = 0; i < num_selected.length; i++) {
@@ -108,13 +110,13 @@ function show_lists_questions(data) {
             box_header.append('<h3 class="box-title"><strong>Câu ' + number_question + ':</strong> </h3>');
             box_header.append('<span style="font-size: 16px">' + data[i].question.question_content + '</span>');
             box.append(box_header);
-            dl.append('<dt><input type="radio" name="question_' + i + '" value="A" class="minimal" onclick="change_css(' + i + ',\'' + data[i].question.ans_1 + '\',\'' + data[i].question.id + '\')" ' + check_session(data[i].question.id, data[i].question.ans_1) + '>A.</dt>' +
+            dl.append('<dt><input type="radio" name="question_' + i + '" value="A" class="minimal" onclick="change_css(' + i + ',\'A\',\'' + data[i].question.id + '\')" ' + check_session(data[i].question.id, 'A') + '>A.</dt>' +
                 '<dd>' + data[i].question.ans_1 + '.</dd>');
-            dl.append('<dt><input type="radio" name="question_' + i + '" value="B" class="minimal" onclick="change_css(' + i + ',\'' + data[i].question.ans_2 + '\',\'' + data[i].question.id + '\')" ' + check_session(data[i].question.id, data[i].question.ans_2) + '>B.</dt>' +
+            dl.append('<dt><input type="radio" name="question_' + i + '" value="B" class="minimal" onclick="change_css(' + i + ',\'B\',\'' + data[i].question.id + '\')" ' + check_session(data[i].question.id, 'B') + '>B.</dt>' +
                 '<dd>' + data[i].question.ans_2 + '.</dd>');
-            dl.append('<dt><input type="radio" name="question_' + i + '" value="C" class="minimal" onclick="change_css(' + i + ',\'' + data[i].question.ans_3 + '\',\'' + data[i].question.id + '\')" ' + check_session(data[i].question.id, data[i].question.ans_3) + '>C.</dt>' +
+            dl.append('<dt><input type="radio" name="question_' + i + '" value="C" class="minimal" onclick="change_css(' + i + ',\'C\',\'' + data[i].question.id + '\')" ' + check_session(data[i].question.id, 'C') + '>C.</dt>' +
                 '<dd>' + data[i].question.ans_3 + '.</dd>');
-            dl.append('<dt><input type="radio" name="question_' + i + '" value="D" class="minimal" onclick="change_css(' + i + ',\'' + data[i].question.ans_4 + '\',\'' + data[i].question.id + '\')" ' + check_session(data[i].question.id, data[i].question.ans_4) + '>D.</dt>' +
+            dl.append('<dt><input type="radio" name="question_' + i + '" value="D" class="minimal" onclick="change_css(' + i + ',\'D\',\'' + data[i].question.id + '\')" ' + check_session(data[i].question.id, 'D') + '>D.</dt>' +
                 '<dd>' + data[i].question.ans_4 + '.</dd>');
             box_body.append(dl);
             box.append(box_body);
@@ -209,87 +211,9 @@ function show_lists_questions(data) {
         box.append(table);
         number_question.append(box);
         number_question.append('<div class="box box-solid">' +
-<<<<<<< HEAD
             '<button type="button" id="btnsubmit" class="btn btn-block btn-primary">Nộp bài</button>' +
-            '</div>')
-        check_selected();
-        //THỜI GIAN
-        //1 phút = 60000 ms
-        // var time = data['time_start'].time;
-        // document.getElementById("time").innerHTML = "Bắt đầu";
-        // var timetask = time * 60000;
-        // var today = new Date();
-        // var gettime = today.getTime();
-
-        // timesetup = gettime + timetask;
-
-        // // cập nhập thời gian sau mỗi 1 giây
-        // var x = setInterval(function() {
-
-        //     var now = new Date().getTime();
-        //     // Lấy số thời gian chênh lệch
-        //     var distance = timesetup - now;
-
-        //     // Tính toán số  giờ, phút, giây từ thời gian chênh lệch
-        //     var hours = Math.floor(distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
-        //     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        //     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        //     if (hours < 10) {
-        //         hours = "0" + hours;
-        //     }
-        //     if (minutes < 10) {
-        //         minutes = "0" + minutes;
-        //     }
-        //     if (seconds < 10) {
-        //         seconds = "0" + seconds;
-        //     }
-        //     // HIển thị chuỗi thời gian trong thẻ p
-        //     document.getElementById("time").innerHTML = hours + ":" + minutes + ":" + seconds;
-
-        //     // Nếu thời gian kết thúc, hiển thị chuỗi thông báo
-        //     if (distance <= 60000) {
-        //         $('#notification').append('<div class="row notification">' +
-        //             '<div class="col-md-10">' +
-        //             '<div class="box box-danger direct-chat direct-chat-danger">' +
-        //             '<div class="box-header with-border">' +
-        //             '<h3 class="box-title">Thông báo</h3>' +
-        //             '<div class="box-tools pull-right">' +
-        //             '<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>' +
-        //             '</div>' +
-        //             '</div>' +
-        //             '<div class="box-body">' +
-        //             '<div class="direct-chat-messages">' +
-        //             '<div class="direct-chat-msg">' +
-        //             '<div class="direct-chat-msg right">' +
-        //             '<img class="direct-chat-img" src="../client/upload/logo.png" alt="Message User Image"><!-- /.direct-chat-img -->' +
-        //             '<div class="direct-chat-text">' +
-        //             ' Hãy kiểm tra lại bài, bạn còn 1 phút để nộp bài !' +
-        //             '</div>' +
-        //             '</div>' +
-        //             '</div>' +
-        //             '</div>' +
-        //             '</div>' +
-        //             '</div>' +
-        //             '</div>' +
-        //             '</div>')
-
-        //     }
-        //     if (distance <= 30000) {
-        //         $('.notification').addClass('hidden');
-        //     }
-        //     if (distance <= 1) {
-        //         clearInterval(x);
-        //         alert("Hết giờ ");
-        //         document.getElementById("time").innerHTML = "Hết giờ";
-        //     }
-        // }, 1000);
-
-=======
-            '<button type="button" class="btn btn-block btn-primary">Nộp bài</button>' +
             '</div>');
->>>>>>> d4099448e95617e39d9c2c077d72f9b04308801f
-
+        check_selected();
         //PHÂN TRANG
         var show_item_page = data['page_size'];
         var number_of_items = data['total_record'];
@@ -321,6 +245,8 @@ function show_lists_questions(data) {
 
         //hiển thị các phần tử từ 0 đến show_item_page không bao gồm show_item_page (slice)
         $('#list_question').children().slice(0, show_item_page).css('display', 'block');
+        //go_to_page(parseInt(localStorage.getItem('current_page')));
+        
     }
 }
 //Pagination JS
@@ -342,6 +268,7 @@ function next() {
 
 function go_to_page(page_num) {
     var current_page = parseInt($('#current_page').val());
+    //localStorage.setItem('current_page', current_page);
     var show_item_page = parseInt($('#show_item_page').val());
     total_page = parseInt($('#number_of_pages').val())
     start_from = page_num * show_item_page;

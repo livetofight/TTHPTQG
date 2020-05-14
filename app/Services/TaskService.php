@@ -91,6 +91,9 @@ class TaskService
         return $this->taskRepository->review($id_user,$id_exam);
     }
 
+    public function doneExam(){
+        return $this->taskRepository->doneExam();
+    }
 
     // public function getQuestionwithtask($id_exam){
     //     return $this->questionListRepository->getListQuestionwithtask($id_exam);

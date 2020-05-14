@@ -137,6 +137,25 @@
     </div>
     <!-- /.row -->
     <div class="row">
+        @foreach ($resultSubject as $item_O)
+            @foreach ($item_O->result as $item1=>$value1)
+                @foreach ($item_O->exam_list as $item2=>$value2)
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
+          
+                      <div class="info-box-content">
+                      <span class="info-box-text"></span>
+                        <span class="info-box-number">{{$value1->mark}}</span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                @endforeach
+            
+            @endforeach
+        @endforeach
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
             <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
@@ -149,7 +168,7 @@
           </div>
           <!-- /.info-box -->
         </div>
-        <!-- /.col -->
+        {{-- <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
             <span class="info-box-icon bg-green"><i class="fa fa-flag-o"></i></span>
@@ -187,7 +206,7 @@
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
-        </div>
+        </div> --}}
         <!-- /.col -->
       </div>
 </section>

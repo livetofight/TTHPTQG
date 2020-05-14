@@ -38,6 +38,10 @@ $(document).ready(function() {
                             Noti(1, "Lỗi !", "Không nhập được File.")
                             setTimeout(Destroy, 5000);
                         }
+                    },
+                    error: function() {
+                        Noti(1, "Lỗi !", "Không nhập được File.")
+                        setTimeout(Destroy, 5000);
                     }
                 });
             } else {

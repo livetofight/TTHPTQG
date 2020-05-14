@@ -67,8 +67,7 @@ class StudentRepository  extends EloquentRepository
 
     //lấy môn thi và kết quả của đề thi
     public function fStuResultSubject($id){
-        //dd($id);
-        print_r(Student::find($id)->with('result')->get()) ;
+        return Student::whereId($id)->with('result')->with('examList')->get() ;
     }
 
 

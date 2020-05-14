@@ -82,7 +82,7 @@ Route::group(['prefix' => '/admin'], function () {
 Route::group([
     'middleware' => ['guest'],
     'namespace' => 'API\Client',
-    
+
 
 ], function () {
 

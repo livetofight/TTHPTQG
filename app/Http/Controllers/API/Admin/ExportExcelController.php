@@ -26,9 +26,7 @@ class ExportExcelController extends Controller
         'Đáp án 4',
         'Đáp án đúng',
         'id môn học',
-        'question_content',
-        'Ngày tạo',
-        'Chỉnh sửa',];
+        'question_content'];
         return Excel::download(new DataExport($this->questionService,$table_heading),$modelName.'.xlsx');
     }
 }

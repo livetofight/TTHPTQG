@@ -15,8 +15,6 @@ class Question extends Model
         'ans_correct',
         'id_subject',
         'question_content',
-        'created_at',
-        'updated_at'
     ];
 
     //protected $hidden = ['ans_correct'];

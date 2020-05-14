@@ -40,7 +40,7 @@ class HomeController extends Controller
                 $notification['text']='Vui lòng quay trở lại trong thời gian thi môn mà bạn đã đăng ký.';
                 return view('client.error',$notification);
             }
-            
+
         }
     }
 }

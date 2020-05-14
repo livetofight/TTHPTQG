@@ -58,7 +58,7 @@ class TaskController extends Controller
         $data['student']=$this->taskService->findStudent($id_student);
         $data['total_record']=$this->taskService->getCountListQuestion($id_exam);
         $data['page_size']=$this->page_size;
-        $data['time_start']=$this->taskService->getTimeSubject($id_subject);
+        //$data['time_start']=$this->taskService->getTimeSubject($id_subject);
         echo json_encode($data);
     }
 

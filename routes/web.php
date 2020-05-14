@@ -55,6 +55,7 @@ Route::group(['prefix' => '/admin'], function () {
 
         Route::get('/result','ResultController@index');
         Route::get('/result/calculatemark','ResultController@generateResult');
+        Route::get('/result/aftercalculate','AfterCalculateController@index')->name('final');
 
     });
 
@@ -83,6 +84,8 @@ Route::group([
     'middleware' => ['guest'],
     'namespace' => 'API\Client',
 
+
+    
 
 ], function () {
 

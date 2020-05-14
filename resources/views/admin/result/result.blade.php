@@ -60,10 +60,10 @@
                             <thead>
                                 <tr>
                                     <th>STT</th>
-                                    <th>Đáp án chọn</th>
-                                    <th>Id câu hỏi</th>
-                                    <th>Id bài thi</th>
-                                    <th>Id học sinh</th>
+                                    <th>Mã học sinh</th>
+                                    <th>Tên học sinh</th>
+                                    <th>Mã đề thi</th>
+                                    {{-- <th>Id học sinh</th> --}}
 
                                 </tr>
                             </thead>
@@ -71,10 +71,10 @@
                                 @foreach ($result as $item )
                                 <tr>
                                     <td>{{ $item->id}}</td>
-                                    <td>{{ $item->answer_selected}}</td>
-                                    <td>{{ $item->id_question}}</td>
-                                    <td>{{ $item->id_exam}}</td>
                                     <td>{{ $item->id_user}}</td>
+                                    <td>{{ $item->student->fullname}}</td>
+                                    <td>{{ $item->id_exam}}</td>
+                                    {{-- <td>{{ $item->id_user}}</td> --}}
                                     {{-- <td>
                                         <i title="Sửa" class="fa fa-pencil-square-o" style="margin-right: 5px;margin-left: 5px;"></i>
 

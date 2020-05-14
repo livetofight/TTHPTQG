@@ -120,9 +120,25 @@
                 this.active = false;
                 clearInterval(this.autoUpdate);
                 alert("Hết giờ ");
-                $('#btnsubmit').click();
-
-
+                //$('#btnsubmit').click();
+                
+                var arr_selected = JSON.parse(localStorage.getItem("allselected"));
+                
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: "../task",
+                    method: "POST",
+                    data: { arr_selected: arr_selected,  },
+                    success: function(data) {
+                        localStorage.removeItem('allselected');
+                        localStorage.removeItem('num_selected');
+                        console.log(data);
+                        window.location.href= "../result"
+                    }
+                });
+                
             }
         },
 

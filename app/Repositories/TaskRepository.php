@@ -78,4 +78,11 @@ class TaskRepository  extends EloquentRepository
         $task->save();
     }
 
+
+    public function doneExam(){
+        $array= Task::groupBy('id_exam','id_user')->with('student')
+                    ->get();
+        return $array;
+    }
+
 }

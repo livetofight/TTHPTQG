@@ -20,4 +20,8 @@ class ResultService
     public function review($id_user,$id_exam){
         $this->resultRepository->review($id_user,$id_exam);
     }
+
+    public function resultExam(){
+        $this->resultRepository->resultExam();
+    }
 }

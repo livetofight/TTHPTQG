@@ -2,24 +2,25 @@ $(function() {
     get_list_questions();
 
     $(document).on('click', '#btnsubmit', function() {
-        //window.location.href= "../result";
-        var arr_selected = JSON.parse(localStorage.getItem("allselected"));
-        //console.log(arr_selected);
+        if (confirm("Bạn có chắc chắn muốn nộp bài")) {
+            var arr_selected = JSON.parse(localStorage.getItem("allselected"));
 
-        var arr_selected = JSON.parse(localStorage.getItem("allselected"));
-
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            url: "../task",
-            method: "POST",
-            data: { arr_selected: arr_selected, },
-            success: function(data) {
-                console.log(data);
-                //window.location.href= "../result"
-            }
-        });
+            
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "../task",
+                method: "POST",
+                data: { arr_selected: arr_selected,  },
+                success: function(data) {
+                    localStorage.removeItem('allselected');
+                    localStorage.removeItem('num_selected');
+                    console.log(data);
+                    window.location.href= "../result"
+                }
+            });
+        }
     });
 });
 async function get_list_questions(data) {
@@ -39,6 +40,7 @@ async function get_list_questions(data) {
 
 
 function check_selected() {
+
     var num_selected = JSON.parse(localStorage.getItem("num_selected"));
     if (num_selected !== null) {
         for (let i = 0; i < num_selected.length; i++) {
@@ -108,13 +110,13 @@ function show_lists_questions(data) {
             box_header.append('<h3 class="box-title"><strong>Câu ' + number_question + ':</strong> </h3>');
             box_header.append('<span style="font-size: 16px">' + data[i].question.question_content + '</span>');
             box.append(box_header);
-            dl.append('<dt><input type="radio" name="question_' + i + '" value="A" class="minimal" onclick="change_css(' + i + ',\'' + data[i].question.ans_1 + '\',\'' + data[i].question.id + '\')" ' + check_session(data[i].question.id, data[i].question.ans_1) + '>A.</dt>' +
+            dl.append('<dt><input type="radio" name="question_' + i + '" value="A" class="minimal" onclick="change_css(' + i + ',\'A\',\'' + data[i].question.id + '\')" ' + check_session(data[i].question.id, 'A') + '>A.</dt>' +
                 '<dd>' + data[i].question.ans_1 + '.</dd>');
-            dl.append('<dt><input type="radio" name="question_' + i + '" value="B" class="minimal" onclick="change_css(' + i + ',\'' + data[i].question.ans_2 + '\',\'' + data[i].question.id + '\')" ' + check_session(data[i].question.id, data[i].question.ans_2) + '>B.</dt>' +
+            dl.append('<dt><input type="radio" name="question_' + i + '" value="B" class="minimal" onclick="change_css(' + i + ',\'B\',\'' + data[i].question.id + '\')" ' + check_session(data[i].question.id, 'B') + '>B.</dt>' +
                 '<dd>' + data[i].question.ans_2 + '.</dd>');
-            dl.append('<dt><input type="radio" name="question_' + i + '" value="C" class="minimal" onclick="change_css(' + i + ',\'' + data[i].question.ans_3 + '\',\'' + data[i].question.id + '\')" ' + check_session(data[i].question.id, data[i].question.ans_3) + '>C.</dt>' +
+            dl.append('<dt><input type="radio" name="question_' + i + '" value="C" class="minimal" onclick="change_css(' + i + ',\'C\',\'' + data[i].question.id + '\')" ' + check_session(data[i].question.id, 'C') + '>C.</dt>' +
                 '<dd>' + data[i].question.ans_3 + '.</dd>');
-            dl.append('<dt><input type="radio" name="question_' + i + '" value="D" class="minimal" onclick="change_css(' + i + ',\'' + data[i].question.ans_4 + '\',\'' + data[i].question.id + '\')" ' + check_session(data[i].question.id, data[i].question.ans_4) + '>D.</dt>' +
+            dl.append('<dt><input type="radio" name="question_' + i + '" value="D" class="minimal" onclick="change_css(' + i + ',\'D\',\'' + data[i].question.id + '\')" ' + check_session(data[i].question.id, 'D') + '>D.</dt>' +
                 '<dd>' + data[i].question.ans_4 + '.</dd>');
             box_body.append(dl);
             box.append(box_body);
@@ -210,10 +212,8 @@ function show_lists_questions(data) {
         number_question.append(box);
         number_question.append('<div class="box box-solid">' +
             '<button type="button" id="btnsubmit" class="btn btn-block btn-primary">Nộp bài</button>' +
-            '</div>')
+            '</div>');
         check_selected();
-
-
         //PHÂN TRANG
         var show_item_page = data['page_size'];
         var number_of_items = data['total_record'];
@@ -245,6 +245,8 @@ function show_lists_questions(data) {
 
         //hiển thị các phần tử từ 0 đến show_item_page không bao gồm show_item_page (slice)
         $('#list_question').children().slice(0, show_item_page).css('display', 'block');
+        //go_to_page(parseInt(localStorage.getItem('current_page')));
+        
     }
 }
 //Pagination JS
@@ -266,6 +268,7 @@ function next() {
 
 function go_to_page(page_num) {
     var current_page = parseInt($('#current_page').val());
+    //localStorage.setItem('current_page', current_page);
     var show_item_page = parseInt($('#show_item_page').val());
     total_page = parseInt($('#number_of_pages').val())
     start_from = page_num * show_item_page;

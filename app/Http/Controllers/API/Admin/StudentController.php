@@ -39,10 +39,16 @@ class StudentController extends Controller
             try {
                 Excel::import(new StudentsImport, $file);
                 $result['status_value']=" Nhập File thành công";
-            $result['status']=1;
-            } catch (ModelNotFoundException $exception) {
-                $result['status_value']=$exception->getMessage();
-                $result['status']=0;
+                $result['status']=1;
+            } catch (Exception $exception) {
+                //$result['status_value'] = ;
+                //$result['status']=2;
+                //return json_encode(array("error" => $exception->getMessage()));
+                //return json_encode($result);
+                //return response()->json(['error' => 'Error msg'], 500); // Status code here
+                //return $result['status_value']=$exception->getStatusCode();
+                //$result['status']=0;
+                //return back()->with('error', 'Contacts imported successfully.');
             }   
         } else{
             $result['status_value']=" Lỗi nhập File";
@@ -83,7 +89,7 @@ class StudentController extends Controller
         $data['school']=$this->studentService->getAllSchool();
         $data['id_subject']=$this->studentService->findStudentSubject($id);
         $data['subject']=$this->studentService->getAllSubject();
-        $data['result']=$this->studentService->fStuResultSubject($id);
+        $data['resultSubject']=$this->studentService->fStuResultSubject($id);
         //dd($data);
         return view('admin.student.student-detail',$data);
     }
@@ -99,7 +105,6 @@ class StudentController extends Controller
      */
     public function update(Request $request)
     {
-
         $data = $request->all();
         $data['date_of_birth']= new DateTime($request->date_of_birth);
         $student = $this->studentService->update($request->id, $data);

@@ -28,4 +28,8 @@ class SubjectService
     public function updateSub(int $id, array $subject){
         return $this->subjectRepository->update($id, $subject);
     }
+    public function getSubjectTime(int $id)
+    {
+        return $this->subjectRepository->getSubjectTime($id);
+    }
 }

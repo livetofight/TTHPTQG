@@ -136,6 +136,25 @@
     </div>
     <!-- /.row -->
     <div class="row">
+        <?php $__currentLoopData = $resultSubject; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_O): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php $__currentLoopData = $item_O->result; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item1=>$value1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php $__currentLoopData = $item_O->exam_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item2=>$value2): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
+          
+                      <div class="info-box-content">
+                      <span class="info-box-text"></span>
+                        <span class="info-box-number"><?php echo e($value1->mark); ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
             <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
@@ -148,45 +167,7 @@
           </div>
           <!-- /.info-box -->
         </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-green"><i class="fa fa-flag-o"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Bookmarks</span>
-              <span class="info-box-number">410</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="fa fa-files-o"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Uploads</span>
-              <span class="info-box-number">13,648</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa fa-star-o"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Likes</span>
-              <span class="info-box-number">93,139</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
+        
         <!-- /.col -->
       </div>
 </section>

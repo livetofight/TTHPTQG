@@ -11,13 +11,13 @@ class QuestionsImport implements ToModel,WithStartRow
     public function model(array $row)
     {
         return new Question([
-            'id_subject'        =>  $row[1],
-            'question_content'  =>  $row[2],
-            'ans_1'             =>  $row[3],
-            'ans_2'             =>  $row[4],
-            'ans_3'             =>  $row[5],
-            'ans_4'             =>  $row[6],
-            'ans_correct'       =>  $row[7],
+            'ans_1'             =>  $row[1],
+            'ans_2'             =>  $row[2],
+            'ans_3'             =>  $row[3],
+            'ans_4'             =>  $row[4],
+            'ans_correct'       =>  $row[5],
+            'id_subject'        =>  $row[6],
+            'question_content'  =>  $row[7],
 
         ]);
     }

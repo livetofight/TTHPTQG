@@ -79,7 +79,12 @@
                                 <label class="col-xs-2 col-sm-2 control-label">Đáp án đúng </label>
                                 <label class="col-xs-1 col-sm-1 control-label">:</label>
                                 <div class="col-xs-9 col-sm-9">
-                                <textarea id="ans_correct" class="form-control" value="">{{$question->ans_correct}}</textarea>
+                                    <select class="form-control select1" style="width: 100%;" id="ans_correct">
+                                        <option value="A" {{ $question->ans_correct == "A" ? 'selected' : '' }}>A</option>
+                                        <option value="B" {{ $question->ans_correct == "B" ? 'selected' : '' }}>B</option>
+                                        <option value="C" {{ $question->ans_correct == "C" ? 'selected' : '' }}>C</option>
+                                        <option value="D" {{ $question->ans_correct == "D" ? 'selected' : '' }}>D</option>
+                                    </select>
                                 </div>
                             </div>
                         </form>

@@ -31,7 +31,11 @@ Route::group(['prefix' => '/admin'], function () {
         Route::post('/exam/editexam', 'ExamController@update');
         Route::get('/exam/deleteexam/{id}', 'ExamController@delete');
 
-        Route::get('/listexam', 'ExamListController@index');
+        Route::get('/schedule', 'ScheduleController@index');
+        Route::post('/schedule/create', 'ScheduleController@store');
+        Route::post('/schedule/editexam', 'ScheduleController@update');
+        Route::get('/schedule/delete/{id}', 'ScheduleController@delete');
+
 
         Route::get('/student', 'StudentController@index');
         Route::post('/student/import', 'StudentController@import');
@@ -83,9 +87,10 @@ Route::group(['prefix' => '/admin'], function () {
 Route::group([
     'middleware' => ['guest'],
     'namespace' => 'API\Client',
-    
 
-    
+
+
+
 
 ], function () {
 

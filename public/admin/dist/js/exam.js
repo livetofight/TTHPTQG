@@ -5,7 +5,6 @@ $(document).ready(function(){
         $('#error_message').empty();
         var subject_id = $('#subject').val();
         var number = $('#number').val();
-        var time = $('#time').val();
         if(subject_id == '' || number == '' || time == ''){
             $('#error_message').html('<div class="callout callout-danger">' +
             '<h4>Lỗi!</h4>' +
@@ -28,8 +27,7 @@ $(document).ready(function(){
                 type: 'POST',
                 data: {
                     subject_id: subject_id,
-                    number: number,
-                    time: time
+                    number: number
                 },
                 success:function(data){
                     $('#CreateExam').modal('hide');

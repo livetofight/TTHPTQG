@@ -51,7 +51,6 @@ class ExamController extends Controller
     {
         $id_subject = $request->input('subject_id');
         $number = $request->input('number');
-        $time = $request->input('time');
         // if($this->examService->createExam($id_subject, $number, $time)){
         //     $result['status']=1;
         // }
@@ -59,7 +58,7 @@ class ExamController extends Controller
         //     $result['status']=0;
         // }
         // echo json_encode($result);
-        $this->examService->createExam($id_subject, $number, $time);
+        $this->examService->createExam($id_subject, $number);
     }
 
     /**

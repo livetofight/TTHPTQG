@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Models\Task;
 use App\Services\ResultService;
 
-class TaskRepository  extends EloquentRepository 
+class TaskRepository  extends EloquentRepository
 {
 
     private $resultService;
@@ -30,7 +30,7 @@ class TaskRepository  extends EloquentRepository
             $data->answer_selected = $selected;
             $data->save();
         }
-        
+
        //return $task;
     }
 
@@ -50,9 +50,9 @@ class TaskRepository  extends EloquentRepository
                         ->where('id_student',$item['id_student'])->count();
             $count=0;
             foreach ($task as $compare){
-                
+
                 if ($compare['answer_selected']==$compare['question']['ans_correct']) $count++;
-                
+
 
             }
             $mark =10/$numques*$count;
@@ -60,7 +60,7 @@ class TaskRepository  extends EloquentRepository
             $this->resultService->storageResult($attibutes);
         }
 
-        
+
         return $array;
     }
 
@@ -84,5 +84,5 @@ class TaskRepository  extends EloquentRepository
                     ->get();
         return $array;
     }
-    
+
 }

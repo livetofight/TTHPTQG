@@ -21,14 +21,14 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body" style="text-align: justify">
-              <p>Bộ Giáo dục tổ chức thi 5 bài, gồm 3 bài thi độc lập là: Toán, Ngữ văn, Ngoại ngữ và 2 bài thi tổ hợp là Khoa học Tự nhiên (tổ hợp các môn Vật lý, Hóa học, Sinh học), Khoa học Xã hội (tổ hợp các môn Lịch sử, Địa lý, Giáo dục công dân đối với thí sinh học chương trình giáo dục THPT; tổ hợp các môn Lịch sử, Địa lý đối với thí sinh học chương trình giáo dục thường xuyên). 
+              <p>Bộ Giáo dục tổ chức thi 5 bài, gồm 3 bài thi độc lập là: Toán, Ngữ văn, Ngoại ngữ và 2 bài thi tổ hợp là Khoa học Tự nhiên (tổ hợp các môn Vật lý, Hóa học, Sinh học), Khoa học Xã hội (tổ hợp các môn Lịch sử, Địa lý, Giáo dục công dân đối với thí sinh học chương trình giáo dục THPT; tổ hợp các môn Lịch sử, Địa lý đối với thí sinh học chương trình giáo dục thường xuyên).
 
                 Để xét công nhận tốt nghiệp THPT, thí sinh THPT phải dự thi 4 bài thi, gồm 3 bài thi độc lập là Toán, Ngữ văn, Ngoại ngữ và một bài thi tự chọn trong số 2 bài thi tổ hợp. Thí sinh giáo dục thường xuyên dự thi 3 bài, gồm 2 bài thi độc lập là Toán, Ngữ văn và một bài thi do thí sinh tự chọn trong số 2 bài thi tổ hợp.
-                
-                Để tăng cơ hội xét tuyển sinh đại học, cao đẳng, thí sinh được chọn dự thi cả 2 bài thi tổ hợp. Điểm bài thi tổ hợp nào cao hơn sẽ được chọn để tính điểm xét công nhận tốt nghiệp THPT. 
 
-               
-                
+                Để tăng cơ hội xét tuyển sinh đại học, cao đẳng, thí sinh được chọn dự thi cả 2 bài thi tổ hợp. Điểm bài thi tổ hợp nào cao hơn sẽ được chọn để tính điểm xét công nhận tốt nghiệp THPT.
+
+
+
                 </p>
             </div>
             <!-- /.box-body -->
@@ -63,7 +63,7 @@
                                         <tr>
                                             <td>Thời gian</td>
                                             <td>:</td>
-                                            <td>{{$subject->first()->exam->first()->time}} phút</td>
+                                            <td>{{$subject->first()->time}} phút</td>
                                         </tr>
 
                                         <tr>
@@ -117,8 +117,8 @@
                                         <tr>
                                             <td>Môn thi</td>
                                             <td>:</td>
-                                            <td>    
-                                                @foreach ($exam_subject as $item=>$value)    
+                                            <td>
+                                                @foreach ($exam_subject as $item=>$value)
                                                     {{$value->name}}
                                                     @if($item != count($exam_subject)-1) {{","}}
                                                     @endif
@@ -151,7 +151,7 @@
                     </div>
                 </div>
             </div>
-          
+
         </div>
         <!-- /.col -->
     </div>

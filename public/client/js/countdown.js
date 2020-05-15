@@ -121,7 +121,8 @@
                 clearInterval(this.autoUpdate);
                 alert("Hết giờ ");
                 $('#btnsubmit').click();
-                
+
+
             }
         },
 

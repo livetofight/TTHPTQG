@@ -24,6 +24,10 @@ class ScheduleRepository  extends EloquentRepository
         if($time > $dt) $sign='>';
         else $sign='<';
         return $schedule->where('test_date',$sign,$dt)->value('id_subject');
-        
-    } 
+
+    }
+    public function getListSchedule(){
+        return Schedule::with('subject')
+                        ->get();
+    }
 }

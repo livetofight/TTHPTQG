@@ -72,7 +72,7 @@ class TaskService
     public function getlistquestionbyidexam($id_exam){
         return $this->questionListRepository->get_list_question($id_exam);
     }
-    
+
     public function luu(array $attributes){
         //dd($attributes);
         return $this->taskRepository->luu($attributes);

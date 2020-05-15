@@ -44,9 +44,9 @@ class StudentsExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
                 '6' => $value->gender,
                 '7' => $value->nation,
                 //'8' => $value->schoolList,
-                '9' => $value->address,
+                '8' => $value->address,
                 //'10'=> $value->examSubject->name,
-                '11' => $value->created_at->format('d/m/Y H:m:s'),
+                '9' => $value->created_at->format('d/m/Y H:m:s'),
             );
         }
 
@@ -54,7 +54,7 @@ class StudentsExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
     }
 
     public function headings() :array {
-    	return ["STT", "Mã đăng nhập", "Mật khẩu", "Họ và tên", "CMND", "Ngày sinh", "Giới tính","Dân tộc","Mã trường", "Địa chỉ", "Môn thi", "Ngày tạo"];
+    	return ["STT", "Mã đăng nhập", "Mật khẩu", "Họ và tên", "CMND", "Ngày sinh", "Giới tính","Dân tộc", "Địa chỉ","Ngày tạo"];
     }
 
     // public function sheets(): array

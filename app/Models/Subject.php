@@ -12,7 +12,7 @@ class Subject extends Model
     const CREATED_AT = 'creation_date';
     const UPDATED_AT = 'last_update';
     protected $fillable = [
-        'id', 'name', 'created_at', 'updated_at',
+        'id', 'name','time', 'created_at', 'updated_at',
     ];
 
     /**

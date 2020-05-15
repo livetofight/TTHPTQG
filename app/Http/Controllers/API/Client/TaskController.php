@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\API\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Subject;
 use App\Models\Task;
 use App\Services\ExamService;
+use App\Services\SubjectService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Services\TaskService;
@@ -16,21 +18,23 @@ class TaskController extends Controller
 {
     private $taskService;
     private $examService;
+    private $subjectService;
     var $data=array();
     var $page_size=3;
     protected $url;
 
-    public function __construct(TaskService $taskService,ExamService $examService){
+    public function __construct(TaskService $taskService,ExamService $examService,SubjectService $subjectService){
         $this->url=config('api.url');
         $this->taskService = $taskService;
         $this->examService = $examService;
+        $this->subjectService = $subjectService;
     }
     public function index(){
         $id = \Session::get('id');
-        $today = today();
-        $subject=$this->taskService->getidSubject($today);
-        $subjectTime=$this->examService->getExamTime($subject);
-        $over_time=now()->addMinute($subjectTime['time']);
+        //$today = today();
+        $subject=$this->taskService->getidSubject();
+        $subjectTime=$this->subjectService->getSubjectTime($subject);
+        $over_time=now()->addMinute($subjectTime[0]['time']);
         if (\Session::has('over_time')) {
             $data['over_time']= \Session::get('over_time');
         }
@@ -74,7 +78,7 @@ class TaskController extends Controller
         $data=$this->taskService->getQuestion($id_exam);
 
         for ($i=0; $i<count($data);$i++){
-            
+
                 $task=["id_question"=>$data[$i]['question']['id'], "id_exam"=>$id_exam[0]['id_exam'], "id_user"=>$id_student ];
                 $this->taskService->luu($task);
         }

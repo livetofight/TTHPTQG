@@ -41,9 +41,9 @@ class Student extends Model
         return $this->hasMany('App\Models\Result', 'id_student');
     }
 
-    // public function examList() {
-    //     return $this->hasMany('App\Models\ExamList', 'id_student','id');
-    // }
+    public function examList() {
+        return $this->hasMany('App\Models\ExamList', 'id_student');
+    }
 
     
 

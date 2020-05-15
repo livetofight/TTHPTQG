@@ -42,7 +42,7 @@ class ExamRepository  extends EloquentRepository
     }
 
 
-    
+
 
     public function getListExam(){
         return Exam::with('subject')
@@ -59,11 +59,10 @@ class ExamRepository  extends EloquentRepository
         return Exam::orderBy('created_at', 'desc')->first()->id;
     }
 
-    public function createExam($id_subject, $number, $time){
+    public function createExam($id_subject, $number){
         $exam = new Exam();
         $exam->id_subject = $id_subject;
         $exam->number = $number;
-        $exam->time = $time;
         $exam->save();
     }
 

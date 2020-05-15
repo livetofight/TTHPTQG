@@ -40,20 +40,15 @@
                         </div>
                     @endif
 
-                    <form action="{{ url('admin/subject') }}" enctype="multipart/form-data" method="POST">
-                        {{ csrf_field() }}
+
                         <div class="box-header" style="text-align: height: 50px;line-height: 50px;white-space: nowrap;">
                             <h3 class="box-title">Danh sách môn học</h3>
                             <div class="pull-right">
-                                <a class="btn btn-app ">
-                                    <input type="file" name="select_file" id="exampleInputFile">
-                                </a>
-                                <input type="submit" class="btn btn-app " value="Import"/><i class="glyphicon glyphicon-import"></i>
-                                {{-- <a class="btn btn-app "><i class="glyphicon glyphicon-export"></i>Export</a> --}}
+                                <button class="btn btn-app" id="add">Add</button>
                             </div>
                         </div>
-                    </form>
-                    <button class="btn btn-app" id="add">Add</button>
+
+
 
                     <div class="box-body">
                         <table id="subject_table" class="table table-bordered table-hover">
@@ -84,12 +79,12 @@
                                         <i title=" Xóa " class="fa fa-trash-o " style="color: darkred; "></i>
                                     </td>
                                 </tr>
-                            
+
                                 @endforeach
                             </tbody> --}}
                         </table>
 
-                        
+
 
 
                     </div>

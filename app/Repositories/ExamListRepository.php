@@ -16,7 +16,7 @@ class ExamListRepository  extends EloquentRepository
     }
 
     public function getIdExam($id_student, $id_exam_array){
-        return ExamList::whereId_user($id_student)
+        return ExamList::whereId_student($id_student)
                         ->whereIn('id_exam',$id_exam_array)
                         ->get(['id_exam'])
                         ->toArray();

@@ -84,7 +84,6 @@
                                     <th>Mã đề thi</th>
                                     <th>Tên môn học</th>
                                     <th>Số lượng câu hỏi</th>
-                                    <th>Thời gian thi</th>
                                     <th>Thời gian tạo</th>
                                     <th>Công cụ</th>
                                 </tr>
@@ -98,7 +97,6 @@
                                         <td>{{$item->id}}</td>
                                         <td>{{$item->subject->name}}</td>
                                         <td>{{$item->number}}</td>
-                                        <td onblur="update({{$item->id}})" contenteditable id="{{$item->id}}">{{$item->time}}</td>
                                         <td>{{$item->created_at}}</td>
                                         <td>
                                             <a href="#" class="delete btn btn-danger btn-sm btnDelete">Delete

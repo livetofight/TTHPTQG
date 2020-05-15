@@ -64,4 +64,8 @@ $(document).ready(function(){
             });
         }
     })
+
+    $('#btnCancel').click(function(){
+        redirect('../admin/home');
+    })
 });

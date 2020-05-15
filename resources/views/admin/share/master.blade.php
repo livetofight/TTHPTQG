@@ -26,6 +26,8 @@
   <link rel="stylesheet" href="{{ asset ('admin/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css ') }}">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="{{ asset ('admin/bower_components/bootstrap-daterangepicker/daterangepicker.css ') }}">
+
+
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{ asset ('admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css ') }}">
   <!-- iCheck -->
@@ -34,6 +36,7 @@
   <link rel="stylesheet" href="{{ asset ('admin/bower_components/select2/dist/css/select2.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset ('admin/dist/css/AdminLTE.min.css ') }}">
+  <link rel="stylesheet" href="{{ asset ('admin/bower_components/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css ') }}">
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -278,6 +281,7 @@
 <script src="{{ asset ('admin/bower_components/bootstrap-daterangepicker/daterangepicker.js ') }}"></script>
 <!-- datepicker -->
 <script src="{{ asset ('admin/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js ') }}"></script>
+<script src="{{ asset ('admin/bower_components/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js ') }}"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="{{ asset ('admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js ') }}"></script>
 <!-- Slimscroll -->
@@ -307,13 +311,20 @@
 <script src="{{ asset ('admin/dist/js/exam.js')}}"></script>
 <script src="{{ asset ('admin/dist/js/login.js')}}"></script>
 <script src="{{ asset ('admin/dist/js/question.js')}}"></script>
-<script>
+<script src="{{ asset ('admin/dist/js/schedule.js')}}"></script>
+<script type="text/javascript">
     //Date picker
     $('#datepicker').datepicker({
       autoclose: true,
       format: 'dd/mm/yyyy'
     })
+
+
+
+    // $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'DD/MM/YYYY h:mm A' })
+    // $('.calendar').empty();
     $(function() {
+
       $('#example2').DataTable()
       $('#example1').DataTable({
         "language":{
@@ -339,6 +350,9 @@
       });
       //Initialize Select2 Elements
     $('.select2').select2()
+    })
+    $('#datetimepicker').datetimepicker({
+        //daysOfWeekDisabled: [0, 6]
     })
 </script>
 

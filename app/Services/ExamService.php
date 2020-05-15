@@ -40,8 +40,8 @@ class ExamService
     {
         return $this->examRepository->getTimeSubject($id_subject);
     }
-    public function createExam( $id_subject, $number, $time){
-        $this->examRepository->createExam($id_subject, $number, $time);
+    public function createExam( $id_subject, $number){
+        $this->examRepository->createExam($id_subject, $number);
         $id_exam=$this->examRepository->getLastID();
         $listIdQuestion = $this->questionRepository->getListID($id_subject);
         // $question_id = $listIdQuestion[array_rand($listIdQuestion,1)];

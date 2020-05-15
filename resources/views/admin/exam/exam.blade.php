@@ -58,10 +58,6 @@
                                               <label>Số câu hỏi</label>
                                               <input type="number" class="form-control" id="number" placeholder="Nhập số lượng câu hỏi">
                                             </div>
-                                            <div class="form-group">
-                                                <label>Thời gian làm bài</label>
-                                                <input type="number" class="form-control" id="time" placeholder="Nhập thời gian làm bài">
-                                              </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -99,8 +95,8 @@
                                         <td>{{$item->number}}</td>
                                         <td>{{$item->created_at}}</td>
                                         <td>
-                                            <a href="#" class="delete btn btn-danger btn-sm btnDelete">Delete
-                                            {{-- <button type="button" class="delete btn btn-danger btn-sm" id="btnDelete">Delete</button> --}}
+                                            {{-- <a href="#" class="fa fa-pencil-square-o">Delete --}}
+                                            <button type="button" class="delete btn btn-danger btn-sm" id="btnDelete">Delete</button>
                                         </td>
                                     </tr>
                                 @endforeach

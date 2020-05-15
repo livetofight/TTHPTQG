@@ -18,51 +18,19 @@
                 <div class="box box-primary">
                     <div class="box-header">
                         <h3 class="box-title">Điểm thi</h3>
-                        {{-- <div class="pull-right">
-                            <a href="{{ asset ('admin/result/calculatemark ') }}" class="btn btn-info "> <i class="fa  fa-plus"></i> Tính điểm</a>
-                        </div> --}}
+
                     </div>
 
-                    {{-- @if(count($errors) > 0)
-                        <div class="alert alert-danger">
-                            Upload Validation Error<br><br>
-                            <ul>
-                                @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                    @if($message = Session::get('success'))
-                        <div class="alert alert-success alert-block">
-                            <button type="button" class="close" data-dismiss="alert">×</button>
-                                <strong>{{ $message }}</strong>
-                        </div>
-                    @endif --}}
-
-                    {{-- <form action="{{ url('admin/subject') }}" enctype="multipart/form-data" method="POST">
-                        {{ csrf_field() }}
-                        <div class="box-header" style="text-align: height: 50px;line-height: 50px;white-space: nowrap;">
-                            <h3 class="box-title">Danh sách bài thi</h3>
-                            <div class="pull-right">
-                                <a class="btn btn-app ">
-                                    <input type="file" name="select_file" id="exampleInputFile">
-                                </a>
-                                <input type="submit" class="btn btn-app " value="Import"/><i class="glyphicon glyphicon-import"></i>
-                                <a class="btn btn-app "><i class="glyphicon glyphicon-export"></i>Export</a>
-                            </div>
-                        </div>
-                    </form> --}}
-                    {{-- <button class="btn btn-app" id="add">Add</button> --}}
 
                     <div class="box-body">
                         <table id="mark_table" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>STT</th>
-                                    <th>Số câu trả lời đúng</th>
-                                    <th>Id bài thi</th>
-                                    <th>Id user</th>
+                                    <th>Mã học sinh</th>
+                                    <th>Tên học sinh</th>
+                                    <th>Mã đề thi</th>
+                                    <th>Số câu đúng</th>
                                     <th>Điểm số</th>
 
                                 </tr>
@@ -71,20 +39,12 @@
                                 @foreach ($mark as $item )
                                 <tr>
                                     <td>{{ $item->id}}</td>
-                                    <td>{{ $item->answer_correct}}</td>
-                                    
-                                    <td>{{ $item->id_exam}}</td>
                                     <td>{{ $item->id_user}}</td>
+                                    <td>{{ $item->student->fullname}}</td>
+                                    <td>{{ $item->id_exam}}</td>
+                                    <td>{{ $item->answer_correct}}</td>
                                     <td>{{ $item->mark}}</td>
-                                    {{-- <td>
-                                        <i title="Sửa" class="fa fa-pencil-square-o" style="margin-right: 5px;margin-left: 5px;"></i>
-
-                                        @if ($item['isActive']==1) <i title=" Hiện " class="fa fa-eye"> </i>
-                                        @else <i title=" Ẩn " class="fa fa-eye-slash"> </i>
-                                        @endif
-
-                                        <i title=" Xóa " class="fa fa-trash-o " style="color: darkred; "></i>
-                                    </td> --}}
+                                    
                                 </tr>
                             
                                 @endforeach

@@ -36,7 +36,18 @@ class QuestionRepository  extends EloquentRepository
         }
         return false;
     }
-
+    public function getAll(){
+        return Question::get([
+            'id',
+            'ans_1',
+            'ans_2',
+            'ans_3',
+            'ans_4',
+            'ans_correct',
+            'id_subject',
+            'question_content',
+        ]);
+    }
 
 
 

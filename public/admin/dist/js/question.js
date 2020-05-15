@@ -12,14 +12,15 @@ $(document).ready(function() {
             .split(".")
             .pop()
             .toLowerCase();
-        if (inputFile == "")
+        if (inputFile == "") {
             $("#error_message").html(
                 '<div class="callout callout-danger">' +
                 "<h4>Lỗi!</h4>" +
                 "Vui lòng chọn tệp." +
                 "</div>"
             );
-        else {
+            setTimeout(Destroy, 5000);
+        } else {
             if ($.inArray(type_file, ["xlsx", "xls"]) >= 0) {
                 var form_data = new FormData($("#file_form")[0]);
                 form_data.append(
@@ -49,6 +50,7 @@ $(document).ready(function() {
                                 "Vui lòng kiểm tra lại." +
                                 "</div>"
                             );
+                            setTimeout(Destroy, 5000);
                         }
                     }
                 });
@@ -59,6 +61,7 @@ $(document).ready(function() {
                     "Vui lòng chọn tệp Excel." +
                     "</div>"
                 );
+                setTimeout(Destroy, 5000);
             }
         }
 
@@ -88,6 +91,7 @@ $(document).ready(function() {
                 '<p>Vui lòng nhập đầy đủ thông tin.</p>' +
                 "</div>"
             );
+            setTimeout(Destroy, 5000);
         } else {
             if (confirm("Bạn muốn cập nhật thông tin cho câu hỏi này ?")) {
                 $.ajax({
@@ -124,6 +128,7 @@ $(document).ready(function() {
                                 "<p>Cập nhật thành công.</p>" +
                                 "</div>"
                             );
+                            setTimeout(Destroy, 5000);
                         }
                     },
                     error: function(response) {

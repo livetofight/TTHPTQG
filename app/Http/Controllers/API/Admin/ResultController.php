@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API\Admin;
 use App\Services\TaskService;
+use App\Services\ResultService;
 use App\Http\Controllers\Controller;
 use App\Models\Result;
 use Illuminate\Http\Request;
@@ -12,13 +13,15 @@ class ResultController extends Controller
 {
 
     private $taskService;
+    private $resultService;
 
 
 
 
-    public function __construct(TaskService $taskService){
+    public function __construct(TaskService $taskService,ResultService $resultService){
         $this->url=config('api.url');
         $this->taskService = $taskService;
+        $this->resultService = $resultService;
     }
     /**
      * Display a listing of the resource.
@@ -27,7 +30,9 @@ class ResultController extends Controller
      */
     public function index()
     {
-        $data['result']= Task::all();
+        $data['result'] = $this->taskService->doneExam();
+        //echo $test;
+        //$data['result']= Task::all();
         return view('admin.result.result',$data);
     }
 
@@ -40,8 +45,10 @@ class ResultController extends Controller
 
     public function generateResult(){
         $this->taskService->calculate();
-        $data['mark']= Result::all();
-        return view('admin.result.calculate',$data);
+
+        
+        //printf($data['mark']);
+        return redirect()->route('final');
     }
 
 

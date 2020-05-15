@@ -13,4 +13,8 @@ class Task extends Model
     public function question(){
         return $this->belongsTo('App\Models\Question','id_question');
     }
+
+    public function student(){
+        return $this->belongsTo('App\Models\Student', 'id_user');
+    }
 }

@@ -56,7 +56,7 @@ class TaskRepository  extends EloquentRepository
 
             }
             $mark =10/$numques*$count;
-            $attibutes=['answer_correct'=>$count, 'id_exam'=>$item['id_exam'], 'id_student'=>$item['id_student'], 'mark'=>$mark];
+            $attibutes=['answer_correct'=>$count, 'id_exam'=>$item['id_exam'], 'id_student'=>$item['id_student'], 'mark'=>$mark, 'num_ques'=>$numques];
             $this->resultService->storageResult($attibutes);
         }
 
@@ -74,7 +74,7 @@ class TaskRepository  extends EloquentRepository
         $task = new Task;
         $task->id_question= $attibutes['id_question'];
         $task->id_exam= $attibutes['id_exam'];
-        $task->id_user= $attibutes['id_user'];
+        $task->id_student= $attibutes['id_student'];
         $task->save();
     }
 

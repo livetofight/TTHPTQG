@@ -5,13 +5,13 @@ $(document).ready(function(){
         $('#error_message').empty();
         var subject_id = $('#subject').val();
         var number = $('#number').val();
-        if(subject_id == '' || number == '' || time == ''){
+        if(subject_id == '' || number == ''){
             $('#error_message').html('<div class="callout callout-danger">' +
             '<h4>Lỗi!</h4>' +
             'Vui lòng điền đầy đủ thông tin.' +
             '</div>')
         }
-        else if(number <=0 || time <=0)
+        else if(number <=0)
         {
             $('#error_message').html('<div class="callout callout-danger">' +
             '<h4>Lỗi!</h4>' +

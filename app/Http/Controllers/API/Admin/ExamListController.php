@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\ExamList;
 use Illuminate\Http\Request;
 use App\Services\ExamListService;
+use App\Services\SubjectService;
+use SebastianBergmann\Environment\Console;
 
 class ExamListController extends Controller
 {
@@ -15,16 +17,19 @@ class ExamListController extends Controller
      * @return \Illuminate\Http\Response
      */
     private $examlistService;
+    private $subjectService;
 
-    public function __construct(ExamListService $examlistService)
+    public function __construct(ExamListService $examlistService, SubjectService $subjectService)
     {
         $this->examlistService = $examlistService;
+        $this->subjectService = $subjectService;
     }
 
     public function index()
     {
         $data['examlist'] = $this->examlistService->getExamList();
-        return view('admin.exam.listexam',[ 'title' => 'ExamList'], $data);
+        $data['subject'] = $this->subjectService->getListSubject();
+        return view('admin.exam.examlist',[ 'title' => 'ExamList'], $data);
     }
 
     /**
@@ -45,7 +50,8 @@ class ExamListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id_subject = $request->input('id_subject');
+        $this->examlistService->playexam(6);
     }
 
     /**

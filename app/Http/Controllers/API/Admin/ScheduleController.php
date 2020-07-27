@@ -106,4 +106,18 @@ class ScheduleController extends Controller
     {
         //
     }
+
+    public function delete($id)
+    {
+        $this->scheduleService->delete($id);
+        // if($this->examService->delete($id)){
+        //     $result['status']=1;
+        // }else{
+        //     $result['status']=0;
+        // }
+        // return json_encode($result);
+        // $exam = Exam::find($id);
+        // $exam->delete();
+        // return $exam;
+    }
 }

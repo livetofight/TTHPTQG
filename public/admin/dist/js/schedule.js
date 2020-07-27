@@ -36,19 +36,19 @@ $(document).ready(function(){
         }
     })
 
-    $('.btnDeleteSche').on('click',function(){
+    $('#btnDeleteSche').on('click',function(){
         $('#DeleteSchedule').modal('show');
         $tr = $(this).closest('tr');
         var data = $tr.children("td").map(function(){
             return $(this).text();
         }).get();
         console.log(data);
-        $('#delete_id').val(data[0]);
+        $('#delete_idsche').val(data[0]);
     });
 
-    $('#deleteFormID').on('submit', function(e){
+    $('#deleteFormIDSchedule').on('submit', function(e){
         e.preventDefault();
-        var id = $('#delete_id').val();
+        var id = $('#delete_idsche').val();
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -57,7 +57,7 @@ $(document).ready(function(){
             url: baseUrl+"/admin/schedule/delete/"+id,
             success:function(result){
                 console.log(result);
-                $('#deleteModal').modal('hide');
+                $('#DeleteSchedule').modal('hide');
                 alert('Xóa thành công');
                 location.reload();
             },

@@ -9,7 +9,7 @@
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="#">Thi</a></li>
-            <li class="active">Lịch thi</li>
+            <li class="active">Danh sách thi</li>
         </ol>
     </section>
 
@@ -19,19 +19,19 @@
             <div class="col-xs-12">
                 <div class="box box-primary">
                     <div class="box-header" style="text-align: height: 50px;line-height: 50px;white-space: nowrap;">
-                        <h2 class="box-title">Lịch thi</h2>
+                        <h2 class="box-title">Danh sách thi</h2>
                         <div class="pull-right">
-                            <a class="btn btn-app "> <i class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#CreateSchedule"></i> Tạo lịch thi</a>
-                            <div class="modal fade" id="CreateSchedule" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <a class="btn btn-app "> <i class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#PlayExam"></i> Phát đề thi</a>
+                            <div class="modal fade" id="PlayExam" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                    <h4 class="modal-title" id="exampleModalLabel">Tạo lịch thi</h4>
+                                    <h4 class="modal-title" id="exampleModalLabel">Phát đề thi</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                     </div>
-                                    <div id="error_message">
+                                    <div id="error_message_exam">
 
                                     </div>
                                     <form method="POST">
@@ -48,15 +48,10 @@
                                                 <option value="2">2</option> --}}
                                               </select>
                                             </div>
-                                            <div class="form-group">
-                                              <label>Ngày thi</label>
-
-                                              <input type="text" class="form-control" id="datetimepicker" placeholder="Chọn thời gian thi">
-                                            </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary" id="btnCreateSche">Save changes</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                            <button type="button" class="btn btn-primary" id="btnPlayExam">Phát đề</button>
                                         </div>
                                     </form>
                                 </div>
@@ -71,18 +66,18 @@
                             <thead>
                                 <tr>
                                     <th>STT</th>
-                                    <th>Môn thi</th>
-                                    <th>Ngày thi</th>
+                                    <th>ID đề thi</th>
+                                    <th>Thí sinh</th>
                                     <th>Công cụ</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($schedule as $item)
+                                @foreach ($examlist as $item)
                                     <tr>
                                         <td>{{$item->id}}</td>
-                                        <td>{{$item->subject->name}}</td>
+                                        <td>{{$item->id_exam}}</td>
                                         <td >
-                                            {{$item->test_date}} </td>
+                                            {{$item->student->fullname}} </td>
                                         <td>
                                             <button type="button" class="delete btn btn-danger btn-sm" id="btnDeleteSche">Delete</button>
                                         </td>
@@ -90,30 +85,6 @@
                                 @endforeach
                             </tbody>
                         </table>
-
-                        <div class="modal fade" id="DeleteSchedule" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Xóa lịch thi</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                </div>
-                                <form id="deleteFormIDSchedule">
-                                    <div class="modal-body">
-                                        {{@csrf_field()}}
-                                        <input type="text" name="id" id="delete_idsche">
-                                        <p>Bạn có chắc chắn muốn xóa lịch thi này?</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Delete</button>
-                                    </div>
-                                </form>
-                            </div>
-                            </div>
-                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>

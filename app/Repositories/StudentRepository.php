@@ -42,11 +42,11 @@ class StudentRepository  extends EloquentRepository
     //pluck trích xuất một số giá trị nhất định từ bộ sưu tập
     public function findStudentSubject($id){
         return Student::find($id)->examSubject()->get()->pluck('id')->toArray();
-    } 
+    }
 
     public function findStudentSchool($id){
         return Student::find($id)->schoolList()->get();
-    } 
+    }
 
     //update
     //Phương thức sync chấp nhận 1 mảng ID để đưa vào bảng trung gian. Bất kì ID nào không ở trong mảng này sẽ bị xóa khỏi bảng trung gian
@@ -75,10 +75,15 @@ class StudentRepository  extends EloquentRepository
     //kt mon hoc sinh thi trung voi ngay thi hay k
     public function checksubject($id_subject,$id_stu_subject){
         $id_stu_subject=collect($id_stu_subject)->contains(function($value,$key) use($id_subject) {
-            return $value == $id_subject ; 
+            return $value == $id_subject ;
         });
         return $id_stu_subject ;
     }
 
-    
+    public function getListIDByIDSubject($id_subject)
+    {
+        // return Student::where
+    }
+
+
 }

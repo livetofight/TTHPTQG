@@ -60,8 +60,8 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary" id="btnCreate">Save changes</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                            <button type="button" class="btn btn-primary" id="btnCreate">Tạo đề</button>
                                         </div>
                                     </form>
                                 </div>
@@ -80,7 +80,6 @@
                                     <th>Mã đề thi</th>
                                     <th>Tên môn học</th>
                                     <th>Số lượng câu hỏi</th>
-                                    <th>Thời gian thi</th>
                                     <th>Thời gian tạo</th>
                                     <th>Công cụ</th>
                                 </tr>
@@ -94,11 +93,10 @@
                                         <td>{{$item->id}}</td>
                                         <td>{{$item->subject->name}}</td>
                                         <td>{{$item->number}}</td>
-                                        <td>{{$item->time}}</td>
                                         <td>{{$item->created_at}}</td>
                                         <td>
-                                            {{-- <a href="#" class="fa fa-pencil-square-o">Delete --}}
-                                            <button type="button" class="delete btn btn-danger btn-sm" id="btnDelete">Delete</button>
+                                            <a href="#" class="btn btn-danger btn-sm btnDelete">Delete </a>
+                                            {{-- <button type="button" class="delete btn btn-danger btn-sm" id="btnDelete">Delete</button> --}}
                                         </td>
                                     </tr>
                                 @endforeach
@@ -106,7 +104,7 @@
                         </table>
 
                         <!-- Start modal delete -->
-                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="deleteExamModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -118,12 +116,12 @@
                                 <form id="deleteFormID">
                                     <div class="modal-body">
                                         {{@csrf_field()}}
-                                        <input type="text" name="id" id="delete_id">
-                                        <p>Are you sure delete this exam?</p>
+                                        <input type="text" name="id" id="id_exam">
+                                        <p>Bạn có chắc chắn muốn xóa bài thi này?</p>
                                     </div>
                                     <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Delete</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                    <button type="submit" class="btn btn-primary">Xóa</button>
                                     </div>
                                 </form>
                             </div>

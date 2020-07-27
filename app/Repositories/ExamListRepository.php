@@ -32,4 +32,9 @@ class ExamListRepository  extends EloquentRepository
                         ->get('id')
                         ->toArray();
     }
+
+    public function getListExam()
+    {
+        return ExamList::with('student')->get();
+    }
 }

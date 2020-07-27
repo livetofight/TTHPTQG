@@ -39,6 +39,7 @@
                 <ul class="treeview-menu">
                     <li><a href="{{ asset ('admin/exam') }}"><i class="fa fa-circle-o"></i> Danh sách đề thi</a></li>
                     <li><a href="{{ asset ('admin/schedule') }}"><i class="fa fa-circle-o"></i> Lịch thi</a></li>
+                    <li><a href="{{ asset ('admin/examlist') }}"><i class="fa fa-circle-o"></i> Danh sách thi</a></li>
                 </ul>
             </li>
             <li class="treeview">

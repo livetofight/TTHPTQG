@@ -25,4 +25,8 @@ class ScheduleService
     {
         return $this->scheduleRepository->create($schedule);
     }
+
+    public function delete(int $id){
+        return $this->scheduleRepository->delete($id);
+    }
 }

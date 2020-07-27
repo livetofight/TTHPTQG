@@ -5,13 +5,13 @@ $(document).ready(function(){
         $('#error_message').empty();
         var subject_id = $('#subject').val();
         var number = $('#number').val();
-        if(subject_id == '' || number == '' || time == ''){
+        if(subject_id == '' || number == ''){
             $('#error_message').html('<div class="callout callout-danger">' +
             '<h4>Lỗi!</h4>' +
             'Vui lòng điền đầy đủ thông tin.' +
             '</div>')
         }
-        else if(number <=0 || time <=0)
+        else if(number <=0)
         {
             $('#error_message').html('<div class="callout callout-danger">' +
             '<h4>Lỗi!</h4>' +
@@ -42,18 +42,18 @@ $(document).ready(function(){
     })
 
     $('.btnDelete').on('click',function(){
-        $('#deleteModal').modal('show');
+        $('#deleteExamModal').modal('show');
         $tr = $(this).closest('tr');
         var data = $tr.children("td").map(function(){
             return $(this).text();
         }).get();
         console.log(data);
-        $('#delete_id').val(data[0]);
+        $('#id_exam').val(data[0]);
     });
 
     $('#deleteFormID').on('submit', function(e){
         e.preventDefault();
-        var id = $('#delete_id').val();
+        var id = $('#id_exam').val();
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -70,6 +70,37 @@ $(document).ready(function(){
                 alert('Xóa không thành công');
             }
         });
+    })
+
+    $('#btnPlayExam').on('click', function(){
+        e.preventDefault();
+        $('#error_message_exam').empty();
+        var id_subject = $('#subject').val();
+        if(id_subject==''){
+            $('#error_message_exam').html('<div class="callout callout-danger">' +
+            '<h4>Lỗi!</h4>' +
+            'Vui lòng điền đầy đủ thông tin.' +
+            '</div>')
+        } else {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: baseUrl+'/admin/examlist/createexamlist',
+                type: 'POST',
+                data: {
+                    id_subject: id_subject
+                },
+                success:function(data){
+                    $('#PlayExam').modal('hide');
+                    alert('Exam is Played!!');
+                    location.reload();
+                },
+                error: function(){
+                    alert('Error! try it again');
+                }
+            });
+        }
     })
 });
 

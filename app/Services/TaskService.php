@@ -60,9 +60,9 @@ class TaskService
         return $this->questionListRepository->getCountListQuestion($id_exam);
     }
 
-    public function getTimeSubject($id_subject){
-        return $this->examRepository->getTimeSubject($id_subject);
-    }
+    // public function getTimeSubject($id_subject){
+    //     return $this->examRepository->getTimeSubject($id_subject);
+    // }
 
 
     public function findStudent($id){
